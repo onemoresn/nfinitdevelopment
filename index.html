@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7HYNQ4WFMR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7HYNQ4WFMR');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KaviTek, LLC — Purpose-Built Software. One Price. No Subscriptions.</title>
+  <link rel="icon" href="data:,">
+  <meta name="description" content="KaviTek builds custom Microsoft Power Platform apps and MSAL-secured web applications for small businesses, nonprofits, and government contractors — deployed inside your own Microsoft 365 tenant." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#0d1b2a',
+            'navy-dark': '#08111a',
+            'navy-light': '#152438',
+            accent: '#2b5797',
+            'accent-light': '#3a6db5',
+            'accent-dark': '#1e3f6f',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --navy-dark: #08111a;
+      --navy-light: #152438;
+      --accent: #2b5797;
+      --accent-light: #3a6db5;
+      --accent-dark: #1e3f6f;
+      --gray-light: #f5f7fa;
+      --gray-border: #e2e8f0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--navy);
+      background: #fff;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--accent); color: #fff; }
+
+    /* ─── NAVIGATION ─────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+    #navbar.transparent { background: transparent; }
+    #navbar.solid {
+      background: var(--navy);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,0.82);
+      font-weight: 500;
+      font-size: 0.88rem;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-link:hover { color: #fff; border-bottom-color: var(--accent-light); }
+    .nav-link:focus-visible {
+      outline: 2px solid var(--accent-light);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    /* ─── BUTTONS ──────────────────────────────────────────── */
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      padding: 0.65rem 1.5rem;
+      border-radius: 7px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(43,87,151,0.4);
+    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible {
+      outline: 3px solid #7fb3ff;
+      outline-offset: 3px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      padding: 0.65rem 1.5rem;
+      border-radius: 7px;
+      border: 2px solid rgba(255,255,255,0.45);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.85);
+      transform: translateY(-2px);
+    }
+    .btn-outline:focus-visible {
+      outline: 3px solid rgba(255,255,255,0.6);
+      outline-offset: 3px;
+    }
+
+    /* ─── HAMBURGER ────────────────────────────────────────── */
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 5px;
+      border-radius: 4px;
+    }
+    .hamburger:focus-visible { outline: 2px solid #7fb3ff; }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.28s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    #mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.75rem 1.5rem 1.25rem;
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu .nav-link { font-size: 0.95rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    #mobile-menu .nav-link:last-of-type { border-bottom: none; }
+
+    /* ─── SECTION TYPOGRAPHY ──────────────────────────────── */
+    .section-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-title.light { color: #fff; }
+
+    /* ─── HERO ─────────────────────────────────────────────── */
+    #hero {
+      background: var(--navy);
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(43,87,151,0.25);
+      border: 1px solid rgba(43,87,151,0.5);
+      color: #93c5fd;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── TRUST BAR ────────────────────────────────────────── */
+    .trust-bar { background: #f5f7fa; border-bottom: 1px solid var(--gray-border); }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.83rem;
+    }
+    .trust-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ─── CARDS ────────────────────────────────────────────── */
+    .service-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.25rem;
+      box-shadow: 0 2px 16px rgba(13,27,42,0.07);
+      border: 1px solid var(--gray-border);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(13,27,42,0.13);
+    }
+    .card-icon {
+      width: 54px; height: 54px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .tag-pill {
+      background: #eef2f9;
+      color: #1e3f6f;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid #d0daf0;
+    }
+    .use-case-chip {
+      background: #fff;
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      border: 1.5px solid #d0daf0;
+      white-space: nowrap;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .use-case-chip:hover {
+      background: #eef2f9;
+      border-color: var(--accent);
+    }
+
+    /* ─── PRODUCT GALLERY ─────────────────────────────────── */
+    .product-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(13,27,42,0.08);
+      border: 1px solid var(--gray-border);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 52px rgba(13,27,42,0.14);
+    }
+    .product-card video {
+      width: 100%;
+      display: block;
+      background: var(--navy-dark);
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .product-card-body {
+      padding: 1.5rem 1.75rem 1.75rem;
+      flex: 1;
+    }
+
+    /* ─── WHY ROWS ─────────────────────────────────────────── */
+    .why-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--gray-border);
+    }
+    .why-row:last-child { border-bottom: none; }
+    .why-icon {
+      width: 54px; height: 54px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.4rem;
+    }
+
+    /* ─── PRICING ──────────────────────────────────────────── */
+    .pricing-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem 1.75rem 2.25rem;
+      border: 2px solid var(--gray-border);
+      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 56px rgba(13,27,42,0.11);
+    }
+    .pricing-card.popular {
+      border-color: var(--accent);
+      box-shadow: 0 8px 32px rgba(43,87,151,0.2);
+    }
+    .pricing-card.popular:hover { box-shadow: 0 24px 60px rgba(43,87,151,0.28); }
+    .popular-badge {
+      position: absolute;
+      top: -14px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 1.1rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .pricing-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #475569;
+      font-size: 0.88rem;
+      padding: 0.3rem 0;
+    }
+    .pricing-feature svg { flex-shrink: 0; }
+
+    /* ─── HOW IT WORKS ─────────────────────────────────────── */
+    #how-it-works { background: var(--navy); }
+    .step-wrap { position: relative; }
+    .step-num {
+      width: 50px; height: 50px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 1rem;
+      position: relative; z-index: 1;
+      margin: 0 auto 0.75rem;
+      box-shadow: 0 0 0 6px rgba(43,87,151,0.18);
+    }
+    .step-num.done { background: #059669; box-shadow: 0 0 0 6px rgba(5,150,105,0.18); }
+    .step-line {
+      position: absolute;
+      top: 25px;
+      left: calc(50% + 25px);
+      width: calc(100% - 50px);
+      height: 2px;
+      background: linear-gradient(to right, rgba(43,87,151,0.5), rgba(43,87,151,0.15));
+    }
+
+    /* ─── SERVE CARDS ──────────────────────────────────────── */
+    .serve-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--gray-border);
+      box-shadow: 0 2px 12px rgba(13,27,42,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .serve-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(13,27,42,0.1);
+    }
+
+    /* ─── CONTACT ──────────────────────────────────────────── */
+    #contact { background: var(--accent); }
+    .form-field {
+      width: 100%;
+      padding: 0.78rem 1rem;
+      border-radius: 8px;
+      border: 1.5px solid rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+    }
+    .form-field::placeholder { color: rgba(255,255,255,0.5); }
+    .form-field:focus {
+      border-color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.16);
+    }
+    .form-field:focus-visible { box-shadow: 0 0 0 3px rgba(255,255,255,0.25); }
+    .btn-submit {
+      width: 100%;
+      background: #fff;
+      color: var(--accent-dark);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-submit:hover {
+      background: #eef4ff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    .btn-submit:focus-visible { outline: 3px solid rgba(255,255,255,0.7); outline-offset: 3px; }
+    #success-msg {
+      display: none;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 14px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    /* ─── SCROLL ANIMATIONS ────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: 0.1s; }
+    .fade-up.d2 { transition-delay: 0.2s; }
+    .fade-up.d3 { transition-delay: 0.3s; }
+    .fade-up.d4 { transition-delay: 0.4s; }
+    .fade-up.d5 { transition-delay: 0.5s; }
+    .fade-up.d6 { transition-delay: 0.6s; }
+
+    /* ─── SCROLL CUE ───────────────────────────────────────── */
+    @keyframes bounceY {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(9px); }
+    }
+    .scroll-cue { animation: bounceY 2.2s ease-in-out infinite; }
+
+    /* ─── FOOTER ───────────────────────────────────────────── */
+    footer { background: var(--navy-dark); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     STICKY NAVIGATION
+═══════════════════════════════════════════════════ -->
+<nav id="navbar" class="transparent" role="navigation" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a href="#" aria-label="KaviTek home" style="text-decoration:none;">
+        <img src="PNG_KaviTekLogo.png" alt="KaviTek LLC" style="height:40px; width:auto; display:block;" />
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-7" role="list">
+        <a href="#services" class="nav-link" role="listitem">Services</a>
+        <a href="#portfolio" class="nav-link" role="listitem">Portfolio</a>
+        <a href="#about" class="nav-link" role="listitem">About</a>
+        <a href="#why-kavitek" class="nav-link" role="listitem">Why KaviTek</a>
+        <a href="#pricing" class="nav-link" role="listitem">Pricing</a>
+        <a href="#contact" class="nav-link" role="listitem">Contact</a>
+      </div>
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:block">
+        <a href="#contact" class="btn-primary">Get a Free Quote</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="hamburger md:hidden" id="ham-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" role="menu" aria-label="Mobile navigation">
+    <a href="#services"    class="nav-link" role="menuitem">Services</a>
+    <a href="#portfolio"   class="nav-link" role="menuitem">Portfolio</a>
+    <a href="#about"       class="nav-link" role="menuitem">About</a>
+    <a href="#why-kavitek" class="nav-link" role="menuitem">Why KaviTek</a>
+    <a href="#pricing"     class="nav-link" role="menuitem">Pricing</a>
+    <a href="#contact"     class="nav-link" role="menuitem">Contact</a>
+    <a href="#contact" class="btn-primary mt-3" style="text-align:center;" role="menuitem">Get a Free Quote</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════════════ -->
+<section id="hero" aria-labelledby="hero-heading">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center py-28 pt-36">
+
+    <div class="fade-up" style="display:flex; justify-content:center; margin-bottom:1.5rem;">
+      <span class="hero-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Microsoft 365 Native · Spotsylvania, Virginia
+      </span>
+    </div>
+
+    <h1 id="hero-heading" class="fade-up" style="font-size:clamp(2.1rem, 5.5vw, 3.85rem); font-weight:900; color:#fff; line-height:1.08; letter-spacing:-0.03em; margin-bottom:1.5rem;">
+      Purpose-Built Software.<br />
+      <span style="color:#93c5fd;">One Price.</span> No Subscriptions.
+    </h1>
+
+    <p class="fade-up d2" style="font-size:clamp(1rem, 2.2vw, 1.18rem); color:rgba(255,255,255,0.75); max-width:660px; margin:0 auto 2.75rem; line-height:1.75;">
+      KaviTek builds custom Microsoft Power Platform apps and MSAL-secured web applications for small businesses, nonprofits, and government contractors&nbsp;— deployed inside your own Microsoft&nbsp;365 tenant.
+    </p>
+
+    <div class="fade-up d3" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+      <a href="#services" class="btn-primary" style="font-size:1rem; padding:0.85rem 2.1rem;">See Our Services</a>
+      <a href="#pricing"  class="btn-outline"  style="font-size:1rem; padding:0.85rem 2.1rem;">View Pricing</a>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="scroll-cue" style="position:absolute; bottom:2rem; left:50%;" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     TRUST BAR
+═══════════════════════════════════════════════════ -->
+<section class="trust-bar py-7" aria-label="Trust signals">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-wrap justify-center md:justify-between items-center gap-6">
+
+      <div class="trust-item fade-up">
+        <div class="trust-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <span>Microsoft Power Platform</span>
+      </div>
+
+      <div class="trust-item fade-up d1">
+        <div class="trust-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <span>MSAL / Entra ID Secured</span>
+      </div>
+
+      <div class="trust-item fade-up d2">
+        <div class="trust-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <span>One-Time Pricing</span>
+      </div>
+
+      <div class="trust-item fade-up d3">
+        <div class="trust-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span>Tenant-Hosted Deployment</span>
+      </div>
+
+      <div class="trust-item fade-up d4">
+        <div class="trust-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <span>Virginia-Based, Remote Delivery</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SERVICES SECTION
+═══════════════════════════════════════════════════ -->
+<section id="services" style="background:#fff; padding:5.5rem 0;" aria-labelledby="services-heading">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-14 fade-up">
+      <span class="section-label">What We Build</span>
+      <h2 id="services-heading" class="section-title">Software That Lives in Your Ecosystem</h2>
+      <p style="color:#64748b; max-width:540px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
+        Every solution deploys inside your Microsoft&nbsp;365 tenant. Your data never touches our servers.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-10">
+
+      <!-- Card A: Power Platform -->
+      <div class="service-card fade-up">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <h3 style="font-size:1.28rem; font-weight:700; color:var(--navy); margin-bottom:0.65rem;">Power Platform Applications</h3>
+        <p style="color:#64748b; line-height:1.78; font-size:0.93rem;">
+          Power Apps (Canvas &amp; Model-Driven), Power Automate workflows, Power BI dashboards, Dataverse &amp; SharePoint integration. Built inside your Microsoft&nbsp;365 environment. <strong style="color:var(--navy);">No new software to install.</strong>
+        </p>
+        <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid #e2e8f0;">
+          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="tag-pill">Power Apps</span>
+            <span class="tag-pill">Power Automate</span>
+            <span class="tag-pill">Power BI</span>
+            <span class="tag-pill">Dataverse</span>
+            <span class="tag-pill">SharePoint</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card B: MSAL Web Apps -->
+      <div class="service-card fade-up d2">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3 style="font-size:1.28rem; font-weight:700; color:var(--navy); margin-bottom:0.65rem;">MSAL-Secured Web Apps</h3>
+        <p style="color:#64748b; line-height:1.78; font-size:0.93rem;">
+          Custom HTML/CSS/JavaScript apps secured with Microsoft Authentication Library. Deployed as SharePoint-hosted pages or Azure Static Web Apps inside your tenant. <strong style="color:var(--navy);">Only your team can access them.</strong>
+        </p>
+        <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid #e2e8f0;">
+          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="tag-pill">MSAL</span>
+            <span class="tag-pill">Entra ID</span>
+            <span class="tag-pill">Azure Static Web Apps</span>
+            <span class="tag-pill">SharePoint</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card C: Website Development -->
+      <div class="service-card fade-up d4">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3 style="font-size:1.28rem; font-weight:700; color:var(--navy); margin-bottom:0.65rem;">Website Development</h3>
+        <p style="color:#64748b; line-height:1.78; font-size:0.93rem;">
+          Custom brochure sites, business websites, and government-oriented web portals. Static or CMS-powered, GitHub-hosted or self-hosted. Built with clean code, fast load times, and WCAG accessibility compliance. <strong style="color:var(--navy);">Developer-grade quality. Lean overhead pricing.</strong>
+        </p>
+        <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid #e2e8f0;">
+          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="tag-pill">Static Sites</span>
+            <span class="tag-pill">GitHub Pages</span>
+            <span class="tag-pill">WCAG</span>
+            <span class="tag-pill">SEO</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Use-case chips -->
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.65rem;" class="fade-up d2">
+      <span class="use-case-chip">Employee Portals</span>
+      <span class="use-case-chip">Project Dashboards</span>
+      <span class="use-case-chip">Intake Forms</span>
+      <span class="use-case-chip">Approval Workflows</span>
+      <span class="use-case-chip">BI Reporting</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PRODUCT GALLERY
+═══════════════════════════════════════════════════ -->
+<section id="portfolio" style="background:var(--gray-light); padding:5.5rem 0;" aria-labelledby="portfolio-heading">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-14 fade-up">
+      <span class="section-label">Live Demos</span>
+      <h2 id="portfolio-heading" class="section-title">See What We&rsquo;ve Built</h2>
+      <p style="color:#64748b; max-width:520px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
+        Real apps built and deployed inside Microsoft&nbsp;365 environments. Watch the demos below.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-7">
+
+      <!-- Jeopardy Employee Engagement App -->
+      <div class="product-card fade-up">
+        <video src="DemoJeopardyApp.mp4" controls preload="metadata" aria-label="Demo: Jeopardy Employee Engagement App"></video>
+        <div class="product-card-body">
+          <div style="display:flex; align-items:center; gap:0.65rem; margin-bottom:0.65rem;">
+            <div class="card-icon" style="width:40px; height:40px; border-radius:10px; flex-shrink:0; margin-bottom:0;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3 style="font-size:1.08rem; font-weight:700; color:var(--navy); margin:0;">Jeopardy Employee Engagement App</h3>
+          </div>
+          <p style="color:#64748b; line-height:1.75; font-size:0.88rem;">
+            A custom web application that brings real-time, interactive Jeopardy-style gameplay to employee engagement events. Features a live real-time database so every buzz-in and score update is instantly synced across all players.
+          </p>
+          <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="tag-pill">Web App</span>
+            <span class="tag-pill">Real-Time Database</span>
+            <span class="tag-pill">Employee Engagement</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Plot App -->
+      <div class="product-card fade-up d2">
+        <video src="DemoMapPlotApp.mp4" controls preload="metadata" aria-label="Demo: Map Plot App"></video>
+        <div class="product-card-body">
+          <div style="display:flex; align-items:center; gap:0.65rem; margin-bottom:0.65rem;">
+            <div class="card-icon" style="width:40px; height:40px; border-radius:10px; flex-shrink:0; margin-bottom:0;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+            </div>
+            <h3 style="font-size:1.08rem; font-weight:700; color:var(--navy); margin:0;">Map Plot App</h3>
+          </div>
+          <p style="color:#64748b; line-height:1.75; font-size:0.88rem;">
+            A custom web application for fun, interactive employee engagement activities like ice breakers. Participants plot their locations on a live map in real-time, with a shared database keeping everyone in sync instantly.
+          </p>
+          <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="tag-pill">Web App</span>
+            <span class="tag-pill">Real-Time Database</span>
+            <span class="tag-pill">Employee Engagement</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service Request App -->
+      <div class="product-card fade-up d4">
+        <video src="DemoServiceRequestApp.mp4" controls preload="metadata" aria-label="Demo: Service Request App"></video>
+        <div class="product-card-body">
+          <div style="display:flex; align-items:center; gap:0.65rem; margin-bottom:0.65rem;">
+            <div class="card-icon" style="width:40px; height:40px; border-radius:10px; flex-shrink:0; margin-bottom:0;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3 style="font-size:1.08rem; font-weight:700; color:var(--navy); margin:0;">Service Request App</h3>
+          </div>
+          <p style="color:#64748b; line-height:1.75; font-size:0.88rem;">
+            Available as both a web application and a Power App. Secured with MSAL / Entra ID authentication and powered by a SharePoint List data source &mdash; giving your team a clean, structured way to submit, route, and track service requests without a single email chain.
+          </p>
+          <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="tag-pill">Web App</span>
+            <span class="tag-pill">Power Apps</span>
+            <span class="tag-pill">MSAL</span>
+            <span class="tag-pill">SharePoint List</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Taekwondo Student Management App -->
+      <div class="product-card fade-up d6">
+        <video src="DemoTaekwondoStudentManageApp.mp4" controls preload="metadata" aria-label="Demo: Taekwondo Student Management App"></video>
+        <div class="product-card-body">
+          <div style="display:flex; align-items:center; gap:0.65rem; margin-bottom:0.65rem;">
+            <div class="card-icon" style="width:40px; height:40px; border-radius:10px; flex-shrink:0; margin-bottom:0;" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 style="font-size:1.08rem; font-weight:700; color:var(--navy); margin:0;">Taekwondo Student Management App</h3>
+          </div>
+          <p style="color:#64748b; line-height:1.75; font-size:0.88rem;">
+            A purpose-built web application for martial arts schools to manage student records, belt ranks, and attendance. Streamlines class administration so instructors can focus on teaching, not paperwork.
+          </p>
+          <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="tag-pill">Web App</span>
+            <span class="tag-pill">Student Management</span>
+            <span class="tag-pill">Small Business</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-12 fade-up">
+      <p style="color:#64748b; font-size:0.95rem; margin-bottom:1.25rem;">Ready to build something like this for your organization?</p>
+      <a href="#contact" class="btn-primary" style="font-size:1rem; padding:0.85rem 2.1rem;">Start a Free Discovery Call</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     WHY KAVITEK
+═══════════════════════════════════════════════════ -->
+<section id="why-kavitek" style="background:var(--gray-light); padding:5.5rem 0;" aria-labelledby="why-heading">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-14 fade-up">
+      <span class="section-label">Our Advantages</span>
+      <h2 id="why-heading" class="section-title">Why Organizations Choose KaviTek</h2>
+    </div>
+
+    <div>
+      <div class="why-row fade-up">
+        <div class="why-icon" aria-hidden="true">💰</div>
+        <div>
+          <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem;">One-Time Price</h3>
+          <p style="color:#64748b; line-height:1.75; font-size:0.93rem;">No per-seat SaaS fees. Pay once, own it forever. Over 5 years, save <strong style="color:var(--accent);">60–80%</strong> vs. comparable subscription tools.</p>
+        </div>
+      </div>
+
+      <div class="why-row fade-up d1">
+        <div class="why-icon" aria-hidden="true">🔒</div>
+        <div>
+          <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem;">Your Data Stays in Your Tenant</h3>
+          <p style="color:#64748b; line-height:1.75; font-size:0.93rem;">We never store client data on KaviTek infrastructure. Your Microsoft&nbsp;365 tenant, your data, your control.</p>
+        </div>
+      </div>
+
+      <div class="why-row fade-up d2">
+        <div class="why-icon" aria-hidden="true">🤝</div>
+        <div>
+          <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem;">Direct Access to Your Developer</h3>
+          <p style="color:#64748b; line-height:1.75; font-size:0.93rem;">No account managers. No offshore hand-offs. You work directly with the person building your solution.</p>
+        </div>
+      </div>
+
+      <div class="why-row fade-up d3">
+        <div class="why-icon" aria-hidden="true">⚡</div>
+        <div>
+          <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem;">Fast, Lean Delivery</h3>
+          <p style="color:#64748b; line-height:1.75; font-size:0.93rem;">Most projects delivered in <strong style="color:var(--accent);">2–8 weeks</strong>. No enterprise overhead. Just clean, working software.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PRICING SECTION
+═══════════════════════════════════════════════════ -->
+<section id="pricing" style="background:#fff; padding:5.5rem 0;" aria-labelledby="pricing-heading">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-14 fade-up">
+      <span class="section-label">Investment</span>
+      <h2 id="pricing-heading" class="section-title">Simple, Transparent Pricing</h2>
+      <p style="color:#64748b; max-width:500px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
+        Every project starts with a free discovery call and a fixed-price proposal. No surprises.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 items-start">
+
+      <!-- Starter -->
+      <div class="pricing-card fade-up">
+        <div style="font-size:0.74rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Starter</div>
+        <div style="font-size:2.1rem; font-weight:900; color:var(--navy); line-height:1; margin-bottom:0.2rem;">$2,500–<wbr/>$5,000</div>
+        <div style="color:#94a3b8; font-size:0.82rem; margin-bottom:1.5rem;">one-time fixed price</div>
+        <div style="border-top:1px solid #e2e8f0; padding-top:1.4rem; margin-bottom:1.75rem;">
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Single-app build</div>
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Requirements discovery</div>
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Documentation included</div>
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 30-day post-launch support</div>
+        </div>
+        <a href="#contact" class="btn-primary" style="display:block; text-align:center; width:100%;">Get Started</a>
+      </div>
+
+      <!-- Business (Popular) -->
+      <div class="pricing-card popular fade-up d2" style="padding-top:2.5rem;">
+        <div class="popular-badge">Most Popular</div>
+        <div style="font-size:0.74rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Business</div>
+        <div style="font-size:2.1rem; font-weight:900; color:var(--navy); line-height:1; margin-bottom:0.2rem;">$5,000–<wbr/>$12,000</div>
+        <div style="color:#94a3b8; font-size:0.82rem; margin-bottom:1.5rem;">one-time fixed price</div>
+        <div style="border-top:1px solid #e2e8f0; padding-top:1.4rem; margin-bottom:1.75rem;">
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Multi-app build</div>
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> System integration</div>
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> End-user training</div>
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 90-day post-launch support</div>
+        </div>
+        <a href="#contact" class="btn-primary" style="display:block; text-align:center; width:100%;">Get Started</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="pricing-card fade-up d4">
+        <div style="font-size:0.74rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Enterprise</div>
+        <div style="font-size:2.1rem; font-weight:900; color:var(--navy); line-height:1; margin-bottom:0.2rem;">$12,000–<wbr/>$25,000+</div>
+        <div style="color:#94a3b8; font-size:0.82rem; margin-bottom:1.5rem;">one-time fixed price</div>
+        <div style="border-top:1px solid #e2e8f0; padding-top:1.4rem; margin-bottom:1.75rem;">
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Full suite development</div>
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Custom integrations</div>
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Staff training included</div>
+          <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Advisory retainer included</div>
+        </div>
+        <a href="#contact" class="btn-primary" style="display:block; text-align:center; width:100%;">Get Started</a>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-9 fade-up">
+      <p style="color:#94a3b8; font-size:0.88rem;">
+        Optional annual maintenance retainer available: <strong style="color:#64748b;">$1,200–$3,600/yr</strong>
+      </p>
+      <div class="mt-5">
+        <a href="#contact" class="btn-primary" style="font-size:1rem; padding:0.9rem 2.5rem;">Request a Free Quote</a>
+      </div>
+    </div>
+
+    <!-- ── WEBSITE DEVELOPMENT PRICING ── -->
+    <div style="margin-top:5rem; padding-top:4.5rem; border-top:2px solid #e2e8f0;" class="fade-up">
+
+      <div class="text-center mb-12">
+        <span class="section-label">Website Development</span>
+        <h3 style="font-size:clamp(1.45rem,2.8vw,2rem); font-weight:800; color:var(--navy); line-height:1.15; letter-spacing:-0.02em; margin-bottom:0.75rem;">Website Pricing</h3>
+        <p style="color:#64748b; max-width:540px; margin:0 auto; font-size:1rem; line-height:1.75;">
+          Priced between low-end freelancers and high-end agencies &mdash; developer-grade quality with lean overhead. All projects include a fixed-price proposal after a free discovery call.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 items-start">
+
+        <!-- Brochure Site -->
+        <div class="pricing-card fade-up">
+          <div style="font-size:0.74rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Brochure Site</div>
+          <div style="font-size:2.1rem; font-weight:900; color:var(--navy); line-height:1; margin-bottom:0.2rem;">$1,500–<wbr/>$3,000</div>
+          <div style="color:#94a3b8; font-size:0.82rem; margin-bottom:1.5rem;">one-time fixed price</div>
+          <div style="border-top:1px solid #e2e8f0; padding-top:1.4rem; margin-bottom:1.75rem;">
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 3–5 pages, custom design</div>
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> GitHub Pages or static hosting</div>
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Contact form</div>
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Basic SEO setup</div>
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Fast turnaround</div>
+          </div>
+          <a href="#contact" class="btn-primary" style="display:block; text-align:center; width:100%;">Get Started</a>
+        </div>
+
+        <!-- Business Site (Popular) -->
+        <div class="pricing-card popular fade-up d2" style="padding-top:2.5rem;">
+          <div class="popular-badge">Most Popular</div>
+          <div style="font-size:0.74rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Business Site</div>
+          <div style="font-size:2.1rem; font-weight:900; color:var(--navy); line-height:1; margin-bottom:0.2rem;">$3,000–<wbr/>$5,000</div>
+          <div style="color:#94a3b8; font-size:0.82rem; margin-bottom:1.5rem;">one-time fixed price</div>
+          <div style="border-top:1px solid #e2e8f0; padding-top:1.4rem; margin-bottom:1.75rem;">
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 6–12 pages, custom UI</div>
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> CMS + blog setup</div>
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> CRM / Power Automate / SharePoint integrations</div>
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Training included</div>
+          </div>
+          <a href="#contact" class="btn-primary" style="display:block; text-align:center; width:100%;">Get Started</a>
+        </div>
+
+        <!-- Advanced / GovCon -->
+        <div class="pricing-card fade-up d4">
+          <div style="font-size:0.74rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.5rem;">Advanced / GovCon</div>
+          <div style="font-size:2.1rem; font-weight:900; color:var(--navy); line-height:1; margin-bottom:0.2rem;">$5,000–<wbr/>$7,500+</div>
+          <div style="color:#94a3b8; font-size:0.82rem; margin-bottom:1.5rem;">one-time fixed price</div>
+          <div style="border-top:1px solid #e2e8f0; padding-top:1.4rem; margin-bottom:1.75rem;">
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Complex information architecture</div>
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> MSAL / Entra ID authentication</div>
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> SharePoint-integrated portals</div>
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> WCAG accessibility compliance</div>
+            <div class="pricing-feature"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Documentation + training</div>
+          </div>
+          <a href="#contact" class="btn-primary" style="display:block; text-align:center; width:100%;">Get Started</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════════════ -->
+<section id="how-it-works" style="padding:5.5rem 0;" aria-labelledby="process-heading">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-16 fade-up">
+      <span class="section-label" style="color:#93c5fd;">Our Process</span>
+      <h2 id="process-heading" class="section-title light">From Discovery to Delivery in 7 Simple Steps</h2>
+    </div>
+
+    <!-- Desktop stepper -->
+    <div class="hidden lg:grid fade-up" style="grid-template-columns:repeat(7,1fr); gap:0.5rem;">
+
+      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
+        <div style="position:relative;">
+          <div class="step-num">1</div>
+          <div class="step-line"></div>
+        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Discovery</div>
+        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Free 30-min call to scope your needs</div>
+      </div>
+
+      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
+        <div style="position:relative;">
+          <div class="step-num">2</div>
+          <div class="step-line"></div>
+        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Design</div>
+        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Wireframes &amp; fixed-price proposal</div>
+      </div>
+
+      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
+        <div style="position:relative;">
+          <div class="step-num">3</div>
+          <div class="step-line"></div>
+        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Build</div>
+        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Development with regular check-ins</div>
+      </div>
+
+      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
+        <div style="position:relative;">
+          <div class="step-num">4</div>
+          <div class="step-line"></div>
+        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Test</div>
+        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">UAT with your team in staging</div>
+      </div>
+
+      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
+        <div style="position:relative;">
+          <div class="step-num">5</div>
+          <div class="step-line"></div>
+        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Deploy</div>
+        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Live release to your tenant</div>
+      </div>
+
+      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
+        <div style="position:relative;">
+          <div class="step-num">6</div>
+          <div class="step-line"></div>
+        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Train</div>
+        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Live training for your users</div>
+      </div>
+
+      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
+        <div style="position:relative;">
+          <div class="step-num done">7</div>
+        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Handoff</div>
+        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Docs, source files, full ownership</div>
+      </div>
+
+    </div>
+
+    <!-- Mobile stepper -->
+    <div class="lg:hidden space-y-5 fade-up" aria-label="Process steps">
+      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">1</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Discovery</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Free 30-min call to scope your needs</div></div></div>
+      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">2</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Design</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Wireframes &amp; fixed-price proposal</div></div></div>
+      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">3</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Build</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Development with regular check-ins</div></div></div>
+      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">4</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Test</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">UAT with your team in staging</div></div></div>
+      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">5</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Deploy</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Live release to your tenant</div></div></div>
+      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">6</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Train</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Live training for your users</div></div></div>
+      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:#059669; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">7</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Handoff</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Docs, source files, full ownership</div></div></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     WHO WE SERVE
+═══════════════════════════════════════════════════ -->
+<section id="about" style="background:var(--gray-light); padding:5.5rem 0;" aria-labelledby="serve-heading">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-14 fade-up">
+      <span class="section-label">Our Clients</span>
+      <h2 id="serve-heading" class="section-title">Built for Organizations Like Yours</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+
+      <div class="serve-card fade-up">
+        <div style="font-size:2.25rem; margin-bottom:0.9rem;" aria-hidden="true">🏢</div>
+        <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">Small Businesses</h3>
+        <p style="color:#64748b; line-height:1.75; font-size:0.92rem;">10–200 employees using Microsoft 365 who need custom workflows and tools without enterprise price tags.</p>
+      </div>
+
+      <div class="serve-card fade-up d1">
+        <div style="font-size:2.25rem; margin-bottom:0.9rem;" aria-hidden="true">🤲</div>
+        <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">Nonprofits</h3>
+        <p style="color:#64748b; line-height:1.75; font-size:0.92rem;">Limited IT budgets with big operational needs. We help nonprofits automate manual processes and maximize their M365 investment.</p>
+      </div>
+
+      <div class="serve-card fade-up d2">
+        <div style="font-size:2.25rem; margin-bottom:0.9rem;" aria-hidden="true">🏛️</div>
+        <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">Government Contractors</h3>
+        <p style="color:#64748b; line-height:1.75; font-size:0.92rem;">Secure, compliant, tenant-hosted tooling for organizations operating under strict data governance requirements.</p>
+      </div>
+
+      <div class="serve-card fade-up d3">
+        <div style="font-size:2.25rem; margin-bottom:0.9rem;" aria-hidden="true">⚖️</div>
+        <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">Professional Services</h3>
+        <p style="color:#64748b; line-height:1.75; font-size:0.92rem;">Law, accounting, and consulting firms who need purpose-built tools that match their exact workflows — not the other way around.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CONTACT / QUOTE SECTION
+═══════════════════════════════════════════════════ -->
+<section id="contact" style="padding:5.5rem 0;" aria-labelledby="contact-heading">
+  <div class="max-w-2xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-10 fade-up">
+      <h2 id="contact-heading" style="font-size:clamp(1.7rem, 3.5vw, 2.4rem); font-weight:800; color:#fff; line-height:1.15; letter-spacing:-0.02em; margin-bottom:0.85rem;">
+        Ready to Build Something That Actually Fits?
+      </h2>
+      <p style="color:rgba(255,255,255,0.78); font-size:1.02rem; line-height:1.75;">
+        Start with a free 30-minute discovery call. No commitment, no pressure.
+      </p>
+    </div>
+
+    <!-- Form -->
+    <div id="form-wrap" class="fade-up d1">
+      <form id="contact-form" novalidate>
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="f-name" style="color:rgba(255,255,255,0.82); font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.38rem;">Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="f-name" name="name" class="form-field" placeholder="Your full name" required autocomplete="name" />
+          </div>
+          <div>
+            <label for="f-org" style="color:rgba(255,255,255,0.82); font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.38rem;">Organization</label>
+            <input type="text" id="f-org" name="organization" class="form-field" placeholder="Company or org name" autocomplete="organization" />
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="f-email" style="color:rgba(255,255,255,0.82); font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.38rem;">Email <span aria-hidden="true">*</span></label>
+          <input type="email" id="f-email" name="email" class="form-field" placeholder="you@yourorganization.com" required autocomplete="email" />
+        </div>
+        <div class="mb-6">
+          <label for="f-msg" style="color:rgba(255,255,255,0.82); font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.38rem;">Tell us what you need <span aria-hidden="true">*</span></label>
+          <textarea id="f-msg" name="message" class="form-field" rows="5" placeholder="Describe your project, current challenge, or what you're hoping to automate..." required style="resize:vertical;"></textarea>
+        </div>
+        <div id="form-error" role="alert" style="display:none; color:#fca5a5; font-size:0.85rem; margin-bottom:0.9rem; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); padding:0.65rem 0.9rem; border-radius:6px;"></div>
+        <button type="submit" class="btn-submit">Request Free Discovery Call</button>
+      </form>
+    </div>
+
+    <!-- Success -->
+    <div id="success-msg" role="alert" aria-live="polite">
+      <div style="font-size:2.75rem; margin-bottom:1rem;" aria-hidden="true">✅</div>
+      <h3 style="color:#fff; font-size:1.45rem; font-weight:700; margin-bottom:0.65rem;">You're on our radar!</h3>
+      <p style="color:rgba(255,255,255,0.82); line-height:1.75; font-size:0.97rem;">
+        Thanks for reaching out. We'll be in touch within one business day to schedule your free discovery call.
+      </p>
+    </div>
+
+    <p class="text-center mt-8 fade-up" style="color:rgba(255,255,255,0.45); font-size:0.83rem;">
+      Based in Spotsylvania, VA · Remote delivery nationwide
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer style="padding:3.5rem 0 2rem;" aria-label="Site footer">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="grid md:grid-cols-3 gap-10 mb-8">
+
+      <!-- Logo + tagline -->
+      <div>
+        <div style="margin-bottom:0.7rem;">
+          <img src="PNG_KaviTekLogo.png" alt="KaviTek LLC" style="height:42px; width:auto;" />
+        </div>
+        <p style="color:rgba(255,255,255,0.38); font-size:0.85rem; line-height:1.7; max-width:270px;">
+          To empower organizations with purpose-built software — delivered simply, securely, and affordably.
+        </p>
+      </div>
+
+      <!-- Nav links -->
+      <nav aria-label="Footer navigation">
+        <div style="display:flex; flex-direction:column; gap:0.55rem;" class="md:items-center">
+          <a href="#services"    class="nav-link" style="font-size:0.85rem;">Services</a>
+          <a href="#portfolio"   class="nav-link" style="font-size:0.85rem;">Portfolio</a>
+          <a href="#about"       class="nav-link" style="font-size:0.85rem;">About</a>
+          <a href="#why-kavitek" class="nav-link" style="font-size:0.85rem;">Why KaviTek</a>
+          <a href="#pricing"     class="nav-link" style="font-size:0.85rem;">Pricing</a>
+          <a href="#contact"     class="nav-link" style="font-size:0.85rem;">Contact</a>
+        </div>
+      </nav>
+
+      <!-- Copyright -->
+      <div class="md:text-right">
+        <p style="color:rgba(255,255,255,0.3); font-size:0.78rem; line-height:1.9;">
+          © 2025 KaviTek, LLC<br />
+          Spotsylvania, Virginia<br />
+          All Rights Reserved
+        </p>
+      </div>
+
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem;">
+      <p style="color:rgba(255,255,255,0.18); font-size:0.73rem; text-align:center;">
+        KaviTek, LLC is an independent software development company and is not affiliated with Microsoft Corporation.
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── NAV SCROLL ─────────────────────────────────── */
+  const navbar = document.getElementById('navbar');
+
+  function syncNav() {
+    if (window.scrollY > 55) {
+      navbar.classList.replace('transparent', 'solid');
+    } else {
+      navbar.classList.replace('solid', 'transparent');
+    }
+  }
+  window.addEventListener('scroll', syncNav, { passive: true });
+  syncNav();
+
+  /* ── HAMBURGER ──────────────────────────────────── */
+  const hamBtn     = document.getElementById('ham-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamBtn.addEventListener('click', function () {
+    const opening = !mobileMenu.classList.contains('open');
+    mobileMenu.classList.toggle('open', opening);
+    hamBtn.classList.toggle('open', opening);
+    hamBtn.setAttribute('aria-expanded', opening);
+    hamBtn.setAttribute('aria-label', opening ? 'Close navigation menu' : 'Open navigation menu');
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+      hamBtn.classList.remove('open');
+      hamBtn.setAttribute('aria-expanded', 'false');
+      hamBtn.setAttribute('aria-label', 'Open navigation menu');
+    });
+  });
+
+  /* ── SCROLL ANIMATIONS ──────────────────────────── */
+  const fadeEls = document.querySelectorAll('.fade-up');
+
+  const io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+  fadeEls.forEach(function (el) { io.observe(el); });
+
+  /* ── HERO CANVAS PARTICLE NETWORK ───────────────── */
+  (function initCanvas() {
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, pts;
+
+    function resize() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function Point() {
+      this.x  = Math.random() * W;
+      this.y  = Math.random() * H;
+      this.vx = (Math.random() - 0.5) * 0.35;
+      this.vy = (Math.random() - 0.5) * 0.35;
+      this.r  = Math.random() * 1.8 + 0.8;
+      this.a  = Math.random() * 0.4 + 0.15;
+    }
+
+    Point.prototype.tick = function () {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > W) this.vx *= -1;
+      if (this.y < 0 || this.y > H) this.vy *= -1;
+    };
+
+    function init() {
+      var count = Math.min(Math.floor((W * H) / 10000), 90);
+      pts = [];
+      for (var i = 0; i < count; i++) pts.push(new Point());
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      var MAX = 130;
+
+      for (var i = 0; i < pts.length; i++) {
+        pts[i].tick();
+
+        ctx.beginPath();
+        ctx.arc(pts[i].x, pts[i].y, pts[i].r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(58,109,181,' + pts[i].a + ')';
+        ctx.fill();
+
+        for (var j = i + 1; j < pts.length; j++) {
+          var dx = pts[i].x - pts[j].x;
+          var dy = pts[i].y - pts[j].y;
+          var d  = Math.sqrt(dx * dx + dy * dy);
+          if (d < MAX) {
+            var alpha = (1 - d / MAX) * 0.22;
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.strokeStyle = 'rgba(43,87,151,' + alpha + ')';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    init();
+    draw();
+
+    window.addEventListener('resize', function () { resize(); init(); }, { passive: true });
+  })();
+
+  /* ── CONTACT FORM ───────────────────────────────── */
+  var form       = document.getElementById('contact-form');
+  var formWrap   = document.getElementById('form-wrap');
+  var successMsg = document.getElementById('success-msg');
+  var formErr    = document.getElementById('form-error');
+
+  function showError(msg) {
+    formErr.textContent = msg;
+    formErr.style.display = 'block';
+    formErr.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name    = document.getElementById('f-name').value.trim();
+    var email   = document.getElementById('f-email').value.trim();
+    var message = document.getElementById('f-msg').value.trim();
+
+    if (!name) {
+      showError('Please enter your name.');
+      document.getElementById('f-name').focus();
+      return;
+    }
+    if (!email) {
+      showError('Please enter your email address.');
+      document.getElementById('f-email').focus();
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError('Please enter a valid email address.');
+      document.getElementById('f-email').focus();
+      return;
+    }
+    if (!message) {
+      showError('Please tell us a bit about your project.');
+      document.getElementById('f-msg').focus();
+      return;
+    }
+
+    formErr.style.display = 'none';
+
+    var org     = document.getElementById('f-org').value.trim();
+    var subject = encodeURIComponent('Discovery Call Request from ' + name + (org ? ' \u2013 ' + org : ''));
+    var body    = encodeURIComponent(
+      'Name: ' + name + '\r\n' +
+      'Organization: ' + (org || '(not provided)') + '\r\n' +
+      'Email: ' + email + '\r\n\r\n' +
+      message
+    );
+
+    window.location.href = 'mailto:kavitek.developer@gmail.com?subject=' + subject + '&body=' + body;
+
+    formWrap.style.display = 'none';
+    successMsg.style.display = 'block';
+    successMsg.focus();
+  });
+
+  ['f-name', 'f-email', 'f-msg'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () {
+      formErr.style.display = 'none';
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
