@@ -615,6 +615,84 @@
     }
     .stripe-pay-btn:focus-visible { outline: 3px solid #7fb3ff; outline-offset: 3px; }
 
+    /* ─── BC SERIES PRODUCT LINE TRIGGER ────────────────── */
+    .bc-series-trigger {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--accent-dark) 100%);
+      border-radius: 16px;
+      padding: 2.25rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      box-shadow: 0 2px 16px rgba(13,27,42,0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      user-select: none;
+    }
+    .bc-series-trigger:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 52px rgba(13,27,42,0.22);
+    }
+    .bc-series-trigger:focus-visible {
+      outline: 3px solid var(--accent-light);
+      outline-offset: 3px;
+    }
+    .bc-browse-btn {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.65rem 1.75rem;
+      border-radius: 30px;
+      border: 1.5px solid rgba(255,255,255,0.22);
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: inherit;
+    }
+    .bc-browse-btn:hover { background: rgba(255,255,255,0.2); }
+
+    /* ─── BC SERIES MODAL ────────────────────────────────── */
+    #bc-series-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 998;
+      background: rgba(8,17,26,0.72);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    #bc-series-modal.open { display: flex; }
+    .bc-modal-inner {
+      background: #fff;
+      border-radius: 18px;
+      width: 100%;
+      max-width: 700px;
+      box-shadow: 0 32px 80px rgba(13,27,42,0.32);
+      overflow: hidden;
+      position: relative;
+      animation: modalIn 0.25s ease;
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+    .bc-modal-header {
+      background: var(--navy);
+      padding: 1.5rem 1.75rem 1.35rem;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .bc-modal-body {
+      padding: 1.75rem;
+    }
+    @media (max-width: 520px) {
+      .bc-products-grid { grid-template-columns: 1fr !important; }
+    }
+
     /* ─── FOOTER ───────────────────────────────────────────── */
     footer { background: var(--navy-dark); }
   </style>
@@ -1055,6 +1133,19 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- BC Series Product Line -->
+    <div class="mt-8 fade-up">
+      <div class="bc-series-trigger" id="bc-series-trigger" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="bc-series-modal" aria-label="Browse BC Series product line">
+        <img src="DCicon.png" alt="DC Series Icon" style="width:72px; height:72px; object-fit:contain; border-radius:14px; background:rgba(255,255,255,0.08); padding:0.5rem;" />
+        <div>
+          <div style="color:rgba(255,255,255,0.5); font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.3rem;">Product Line</div>
+          <h3 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0 0 0.5rem; line-height:1.3;">BC Series &mdash; Video Products</h3>
+          <p style="color:rgba(255,255,255,0.6); font-size:0.88rem; line-height:1.7; max-width:520px; margin:0 auto;">Purpose-built video products for business communications. Two editions available &mdash; BC1 and BC2.</p>
+        </div>
+        <button class="bc-browse-btn" tabindex="-1" aria-hidden="true">Browse BC Series &rarr;</button>
+      </div>
     </div>
 
     <div class="text-center mt-10 fade-up">
@@ -1697,7 +1788,9 @@
     'jeopardy':   'https://buy.stripe.com/REPLACE_WITH_JEOPARDY_LINK',
     'mapplot':    'https://buy.stripe.com/REPLACE_WITH_MAPPLOT_LINK',
     'servicereq': 'https://buy.stripe.com/REPLACE_WITH_SERVICEREQ_LINK',
-    'taekwondo':  'https://buy.stripe.com/REPLACE_WITH_TAEKWONDO_LINK'
+    'taekwondo':  'https://buy.stripe.com/REPLACE_WITH_TAEKWONDO_LINK',
+    'bc1':        'https://buy.stripe.com/REPLACE_WITH_BC1_LINK',
+    'bc2':        'https://buy.stripe.com/REPLACE_WITH_BC2_LINK'
   };
 
   var payModal      = document.getElementById('payment-modal');
@@ -1727,6 +1820,7 @@
 
   document.querySelectorAll('.product-buy-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
+      if (bcModal && bcModal.classList.contains('open')) closeBcModal();
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     });
   });
@@ -1741,8 +1835,117 @@
     if (e.key === 'Escape' && payModal.classList.contains('open')) closePayModal();
   });
 
+  /* ── BC SERIES PRODUCT LINE MODAL ────────────────── */
+  var bcModal      = document.getElementById('bc-series-modal');
+  var bcModalClose = document.getElementById('bc-modal-close-btn');
+  var bcTrigger    = document.getElementById('bc-series-trigger');
+
+  function openBcModal() {
+    bcModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    bcModalClose.focus();
+  }
+
+  function closeBcModal() {
+    bcModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (bcTrigger) {
+    bcTrigger.addEventListener('click', openBcModal);
+    bcTrigger.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBcModal(); }
+    });
+  }
+
+  if (bcModalClose) {
+    bcModalClose.addEventListener('click', closeBcModal);
+  }
+
+  bcModal.addEventListener('click', function (e) {
+    if (e.target === bcModal) closeBcModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && bcModal.classList.contains('open')) closeBcModal();
+  });
+
 })();
 </script>
+
+<!-- ═══════════════════════════════════════════════════
+     BC SERIES PRODUCT LINE MODAL
+═══════════════════════════════════════════════════ -->
+<div id="bc-series-modal" role="dialog" aria-modal="true" aria-labelledby="bc-modal-title">
+  <div class="bc-modal-inner">
+
+    <div class="bc-modal-header">
+      <button class="modal-close-btn" id="bc-modal-close-btn" aria-label="Close BC Series window">&#x2715;</button>
+      <div style="display:flex; align-items:center; gap:1rem;">
+        <img src="DCicon.png" alt="DC Series Icon" style="width:50px; height:50px; object-fit:contain; border-radius:10px; background:rgba(255,255,255,0.1); padding:0.35rem; flex-shrink:0;" />
+        <div>
+          <div style="color:rgba(255,255,255,0.5); font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.2rem;">Product Line</div>
+          <h2 id="bc-modal-title" style="color:#fff; font-size:1.3rem; font-weight:800; margin:0; line-height:1.25;">BC Series &mdash; Video Products</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="bc-modal-body">
+      <p style="color:#64748b; font-size:0.88rem; line-height:1.75; margin-bottom:1.5rem;">
+        Two purpose-built video products for business communications. Each is a one-time purchase &mdash; no subscriptions.
+      </p>
+
+      <div class="bc-products-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+
+        <!-- BC1_vid -->
+        <div class="product-dl-card" style="margin:0;">
+          <div class="product-dl-icon" style="background:#fff; overflow:hidden;" aria-hidden="true">
+            <img src="DCicon.png" alt="BC1 Video Icon" style="width:75%; height:75%; object-fit:contain;" />
+          </div>
+          <div class="product-dl-body">
+            <h3 style="font-size:0.97rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; line-height:1.35;">BC1 Video</h3>
+            <p style="color:#64748b; font-size:0.82rem; line-height:1.7; flex:1; margin-bottom:1rem;">Entry-level business communications video product. Ready for immediate deployment in any environment.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+              <span class="tag-pill">Video</span>
+              <span class="tag-pill">Business</span>
+            </div>
+            <div style="margin-bottom:1.1rem;">
+              <div class="product-price">$49</div>
+              <div class="product-price-note">one-time purchase</div>
+            </div>
+            <button class="btn-primary product-buy-btn" data-name="BC1 Video" data-price="$49" data-desc="Entry-level business communications video product. Ready for immediate deployment in any environment." data-stripe-key="bc1" style="display:block; width:100%; font-size:0.88rem; padding:0.6rem 1rem; cursor:pointer;">Buy Now &middot; $49</button>
+          </div>
+        </div>
+
+        <!-- BC2_vid -->
+        <div class="product-dl-card" style="margin:0;">
+          <div class="product-dl-icon" style="background:#fff; overflow:hidden;" aria-hidden="true">
+            <img src="DCicon.png" alt="BC2 Video Icon" style="width:75%; height:75%; object-fit:contain;" />
+          </div>
+          <div class="product-dl-body">
+            <h3 style="font-size:0.97rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; line-height:1.35;">BC2 Video</h3>
+            <p style="color:#64748b; font-size:0.82rem; line-height:1.7; flex:1; margin-bottom:1rem;">Advanced business communications video product. Includes expanded features and scalable deployment options.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+              <span class="tag-pill">Video</span>
+              <span class="tag-pill">Business</span>
+            </div>
+            <div style="margin-bottom:1.1rem;">
+              <div class="product-price">$79</div>
+              <div class="product-price-note">one-time purchase</div>
+            </div>
+            <button class="btn-primary product-buy-btn" data-name="BC2 Video" data-price="$79" data-desc="Advanced business communications video product. Includes expanded features and scalable deployment options." data-stripe-key="bc2" style="display:block; width:100%; font-size:0.88rem; padding:0.6rem 1rem; cursor:pointer;">Buy Now &middot; $79</button>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="color:#94a3b8; font-size:0.75rem; text-align:center; margin-top:1.5rem; line-height:1.65;">
+        After purchase, your download link will be sent within one business day.
+      </p>
+    </div>
+
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════
      PAYMENT MODAL
