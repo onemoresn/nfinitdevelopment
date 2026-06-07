@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7HYNQ4WFMR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7HYNQ4WFMR');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products — N-FINIT DEVELOPMENT</title>
+  <link rel="icon" href="data:,">
+  <meta name="description" content="Browse N-FINIT DEVELOPMENT's ready-made, production-ready software apps. One-time purchase, no subscriptions. Jeopardy, Map Plot, Service Request, Taekwondo, BC1, BC2." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#0d1b2a',
+            'navy-dark': '#08111a',
+            'navy-light': '#152438',
+            accent: '#2b5797',
+            'accent-light': '#3a6db5',
+            'accent-dark': '#1e3f6f',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --navy-dark: #08111a;
+      --navy-light: #152438;
+      --accent: #2b5797;
+      --accent-light: #3a6db5;
+      --accent-dark: #1e3f6f;
+      --gray-light: #f5f7fa;
+      --gray-border: #e2e8f0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--navy);
+      background: #fff;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--accent); color: #fff; }
+
+    /* ─── NAVIGATION ─────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--navy);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,0.82);
+      font-weight: 500;
+      font-size: 0.88rem;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-link:hover { color: #fff; border-bottom-color: var(--accent-light); }
+    .nav-link.active { color: #fff; border-bottom-color: var(--accent-light); }
+    .nav-link:focus-visible {
+      outline: 2px solid var(--accent-light);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    /* ─── BUTTONS ──────────────────────────────────────────── */
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      padding: 0.65rem 1.5rem;
+      border-radius: 7px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(43,87,151,0.4);
+    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 3px solid #7fb3ff; outline-offset: 3px; }
+
+    /* ─── HAMBURGER ────────────────────────────────────────── */
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 5px;
+      border-radius: 4px;
+    }
+    .hamburger:focus-visible { outline: 2px solid #7fb3ff; }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.28s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    #mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.75rem 1.5rem 1.25rem;
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu .nav-link { font-size: 0.95rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    #mobile-menu .nav-link:last-of-type { border-bottom: none; }
+
+    /* ─── SECTION TYPOGRAPHY ──────────────────────────────── */
+    .section-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    /* ─── TAG PILLS ────────────────────────────────────────── */
+    .tag-pill {
+      background: #eef2f9;
+      color: #1e3f6f;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid #d0daf0;
+    }
+
+    /* ─── PRODUCT CARDS ────────────────────────────────────── */
+    .prod-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(13,27,42,0.08);
+      border: 1px solid var(--gray-border);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .prod-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 52px rgba(13,27,42,0.14);
+    }
+    .prod-card video {
+      width: 100%;
+      display: block;
+      background: var(--navy-dark);
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .prod-card-body {
+      padding: 1.4rem 1.6rem 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .prod-card-icon {
+      width: 44px; height: 44px;
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .prod-price {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .prod-price-note {
+      font-size: 0.74rem;
+      color: #94a3b8;
+      margin-top: 0.2rem;
+    }
+
+    /* ─── PAYMENT MODAL ────────────────────────────────────── */
+    #payment-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(8,17,26,0.72);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    #payment-modal.open { display: flex; }
+    .payment-modal-inner {
+      background: #fff;
+      border-radius: 18px;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: 0 32px 80px rgba(13,27,42,0.32);
+      overflow: hidden;
+      position: relative;
+      animation: modalIn 0.25s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.94) translateY(14px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .payment-modal-header {
+      background: var(--navy);
+      padding: 1.5rem 1.75rem 1.35rem;
+      position: relative;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 0.85rem; right: 0.85rem;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: rgba(255,255,255,0.7);
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1.15rem;
+      line-height: 1;
+      transition: background 0.2s, color 0.2s;
+    }
+    .modal-close-btn:hover { background: rgba(255,255,255,0.22); color: #fff; }
+    .modal-close-btn:focus-visible { outline: 2px solid rgba(255,255,255,0.5); outline-offset: 2px; }
+    .payment-modal-body { padding: 1.75rem; }
+    .stripe-pay-btn {
+      width: 100%;
+      background: #5469d4;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.9rem 1rem;
+      border-radius: 9px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      text-decoration: none;
+      margin-bottom: 1rem;
+    }
+    .stripe-pay-btn:hover {
+      background: #4152c4;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(84,105,212,0.4);
+    }
+    .stripe-pay-btn:focus-visible { outline: 3px solid #7fb3ff; outline-offset: 3px; }
+
+    /* ─── SCROLL ANIMATIONS ────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: 0.08s; }
+    .fade-up.d2 { transition-delay: 0.16s; }
+    .fade-up.d3 { transition-delay: 0.24s; }
+    .fade-up.d4 { transition-delay: 0.32s; }
+    .fade-up.d5 { transition-delay: 0.40s; }
+
+    /* ─── FOOTER ───────────────────────────────────────────── */
+    footer { background: var(--navy-dark); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     STICKY NAVIGATION
+═══════════════════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a href="index.html" aria-label="N-FINIT DEVELOPMENT home" style="text-decoration:none;">
+        <img src="N-FNIT%20Logo.png?v=2" alt="N-FINIT DEVELOPMENT" style="height:40px; width:auto; display:block;" />
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-7" role="list">
+        <a href="index.html#services"    class="nav-link" role="listitem">Services</a>
+        <a href="index.html#portfolio"   class="nav-link" role="listitem">Portfolio</a>
+        <a href="products.html"          class="nav-link active" role="listitem">Products</a>
+        <a href="index.html#about"       class="nav-link" role="listitem">About</a>
+        <a href="index.html#why-n-finit" class="nav-link" role="listitem">Why N-FINIT</a>
+        <a href="index.html#pricing"     class="nav-link" role="listitem">Pricing</a>
+        <a href="index.html#contact"     class="nav-link" role="listitem">Contact</a>
+      </div>
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:block">
+        <a href="index.html#contact" class="btn-primary">Get a Free Quote</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="hamburger md:hidden" id="ham-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" role="menu" aria-label="Mobile navigation">
+    <a href="index.html#services"    class="nav-link" role="menuitem">Services</a>
+    <a href="index.html#portfolio"   class="nav-link" role="menuitem">Portfolio</a>
+    <a href="products.html"          class="nav-link active" role="menuitem">Products</a>
+    <a href="index.html#about"       class="nav-link" role="menuitem">About</a>
+    <a href="index.html#why-n-finit" class="nav-link" role="menuitem">Why N-FINIT</a>
+    <a href="index.html#pricing"     class="nav-link" role="menuitem">Pricing</a>
+    <a href="index.html#contact"     class="nav-link" role="menuitem">Contact</a>
+    <a href="index.html#contact" class="btn-primary mt-3" style="text-align:center;" role="menuitem">Get a Free Quote</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE HERO
+═══════════════════════════════════════════════════ -->
+<section style="background:var(--navy); padding:6.5rem 0 4.5rem;" aria-labelledby="products-page-heading">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+    <span class="section-label">Ready-Made Software</span>
+    <h1 id="products-page-heading" style="font-size:clamp(2rem, 5vw, 3.2rem); font-weight:900; color:#fff; line-height:1.1; letter-spacing:-0.03em; margin:0.5rem 0 1.2rem;">
+      Download Our Apps
+    </h1>
+    <p style="font-size:clamp(0.97rem, 2vw, 1.1rem); color:rgba(255,255,255,0.7); max-width:600px; margin:0 auto; line-height:1.8;">
+      Six pre-built, production-ready applications available for immediate purchase. One-time price &mdash; no subscriptions. We&rsquo;ll send your download link and setup guide within one business day.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PRODUCTS GRID
+═══════════════════════════════════════════════════ -->
+<section style="background:var(--gray-light); padding:4rem 0 6rem;" aria-label="All products">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+      <!-- ── Jeopardy Employee Engagement App ───────────── -->
+      <div class="prod-card fade-up">
+        <video src="DemoJeopardyApp.mp4" controls preload="metadata" aria-label="Demo: Jeopardy Employee Engagement App"></video>
+        <div class="prod-card-body">
+          <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+            <div class="prod-card-icon" style="border:1px solid var(--gray-border);" aria-hidden="true">
+              <img src="EmployeeJeopardy.png" alt="" style="width:100%; height:100%; object-fit:contain;" />
+            </div>
+            <h2 style="font-size:0.96rem; font-weight:700; color:var(--navy); line-height:1.35; margin:0;">Jeopardy Employee Engagement App</h2>
+          </div>
+          <p style="color:#64748b; font-size:0.84rem; line-height:1.75; flex:1; margin-bottom:1rem;">Real-time interactive Jeopardy-style game for employee engagement events with live scoring and instant sync across all players.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+            <span class="tag-pill">Web App</span>
+            <span class="tag-pill">Real-Time</span>
+            <span class="tag-pill">Employee Engagement</span>
+          </div>
+          <div style="border-top:1px solid var(--gray-border); padding-top:1.1rem; margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;">
+            <div>
+              <div class="prod-price">$29</div>
+              <div class="prod-price-note">one-time purchase</div>
+            </div>
+            <button class="btn-primary product-buy-btn"
+              data-name="Jeopardy Employee Engagement App"
+              data-price="$29"
+              data-desc="Real-time interactive Jeopardy-style game for employee engagement events with live scoring."
+              data-stripe-key="jeopardy"
+              style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Buy Now &middot; $29</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Map Plot App ────────────────────────────────── -->
+      <div class="prod-card fade-up d1">
+        <video src="DemoMapPlotApp.mp4" controls preload="metadata" aria-label="Demo: Map Plot App"></video>
+        <div class="prod-card-body">
+          <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+            <div class="prod-card-icon" style="border:1px solid var(--gray-border);" aria-hidden="true">
+              <img src="MapPlotIcon.png" alt="" style="width:100%; height:100%; object-fit:contain;" />
+            </div>
+            <h2 style="font-size:0.96rem; font-weight:700; color:var(--navy); line-height:1.35; margin:0;">Map Plot App</h2>
+          </div>
+          <p style="color:#64748b; font-size:0.84rem; line-height:1.75; flex:1; margin-bottom:1rem;">Interactive real-time map for team ice breakers &mdash; participants pin their location live from any device with a shared database keeping everyone in sync.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+            <span class="tag-pill">Web App</span>
+            <span class="tag-pill">Real-Time</span>
+            <span class="tag-pill">Employee Engagement</span>
+          </div>
+          <div style="border-top:1px solid var(--gray-border); padding-top:1.1rem; margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;">
+            <div>
+              <div class="prod-price">$19</div>
+              <div class="prod-price-note">one-time purchase</div>
+            </div>
+            <button class="btn-primary product-buy-btn"
+              data-name="Map Plot App"
+              data-price="$19"
+              data-desc="Interactive real-time map for team ice breakers — participants pin their location live from any device."
+              data-stripe-key="mapplot"
+              style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Buy Now &middot; $19</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Service Request App ─────────────────────────── -->
+      <div class="prod-card fade-up d2">
+        <video src="DemoServiceRequestApp.mp4" controls preload="metadata" aria-label="Demo: Service Request App"></video>
+        <div class="prod-card-body">
+          <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+            <div class="prod-card-icon" style="background:linear-gradient(135deg,#3730a3,#6366f1);" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h2 style="font-size:0.96rem; font-weight:700; color:var(--navy); line-height:1.35; margin:0;">Service Request App</h2>
+          </div>
+          <p style="color:#64748b; font-size:0.84rem; line-height:1.75; flex:1; margin-bottom:1rem;">MSAL-secured request submission and tracking backed by a SharePoint List &mdash; no email chains, no chaos.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+            <span class="tag-pill">MSAL</span>
+            <span class="tag-pill">SharePoint</span>
+            <span class="tag-pill">Web App</span>
+          </div>
+          <div style="border-top:1px solid var(--gray-border); padding-top:1.1rem; margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;">
+            <div>
+              <div class="prod-price">$299</div>
+              <div class="prod-price-note">one-time purchase</div>
+            </div>
+            <button class="btn-primary product-buy-btn"
+              data-name="Service Request App"
+              data-price="$299"
+              data-desc="MSAL-secured request submission and tracking backed by a SharePoint List — no email chains needed."
+              data-stripe-key="servicereq"
+              style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Buy Now &middot; $299</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Taekwondo Student Management App ───────────── -->
+      <div class="prod-card fade-up d3">
+        <video src="DemoTaekwondoStudentManagementApp.mp4" controls preload="metadata" aria-label="Demo: Taekwondo Student Management App"></video>
+        <div class="prod-card-body">
+          <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+            <div class="prod-card-icon" style="background:linear-gradient(135deg,#7c2d12,#ea580c);" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h2 style="font-size:0.96rem; font-weight:700; color:var(--navy); line-height:1.35; margin:0;">Taekwondo Student Management App</h2>
+          </div>
+          <p style="color:#64748b; font-size:0.84rem; line-height:1.75; flex:1; margin-bottom:1rem;">Manage student records, belt ranks, and attendance for martial arts schools. Purpose-built for instructors who need simplicity.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+            <span class="tag-pill">Web App</span>
+            <span class="tag-pill">Small Business</span>
+          </div>
+          <div style="border-top:1px solid var(--gray-border); padding-top:1.1rem; margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;">
+            <div>
+              <div class="prod-price">$199</div>
+              <div class="prod-price-note">one-time purchase</div>
+            </div>
+            <button class="btn-primary product-buy-btn"
+              data-name="Taekwondo Student Management App"
+              data-price="$199"
+              data-desc="Manage student records, belt ranks, and attendance for martial arts schools. Purpose-built for instructors."
+              data-stripe-key="taekwondo"
+              style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Buy Now &middot; $199</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BC1 — Business Card Video ──────────────────── -->
+      <div class="prod-card fade-up d4">
+        <video src="BC1_vid.mp4" controls preload="metadata" aria-label="Demo: BC1 Business Card Video"></video>
+        <div class="prod-card-body">
+          <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+            <div class="prod-card-icon" style="border:1px solid var(--gray-border);" aria-hidden="true">
+              <img src="DCicon.png" alt="" style="width:100%; height:100%; object-fit:contain;" />
+            </div>
+            <h2 style="font-size:0.96rem; font-weight:700; color:var(--navy); line-height:1.35; margin:0;">BC1 &mdash; Business Card Video</h2>
+          </div>
+          <p style="color:#64748b; font-size:0.84rem; line-height:1.75; flex:1; margin-bottom:1rem;">Entry-level digital business card video. Shareable, professional, and always up to date &mdash; no printing, no outdated info.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+            <span class="tag-pill">Video</span>
+            <span class="tag-pill">Business Card</span>
+            <span class="tag-pill">Digital</span>
+          </div>
+          <div style="border-top:1px solid var(--gray-border); padding-top:1.1rem; margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;">
+            <div>
+              <div class="prod-price">$49</div>
+              <div class="prod-price-note">one-time purchase</div>
+            </div>
+            <button class="btn-primary product-buy-btn"
+              data-name="BC1 — Business Card Video"
+              data-price="$49"
+              data-desc="Entry-level digital business card video. Shareable, professional, and always up to date."
+              data-stripe-key="bc1"
+              style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Buy Now &middot; $49</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BC2 — Business Card Video ──────────────────── -->
+      <div class="prod-card fade-up d5">
+        <video src="BC2_vid.mp4" controls preload="metadata" aria-label="Demo: BC2 Business Card Video"></video>
+        <div class="prod-card-body">
+          <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+            <div class="prod-card-icon" style="border:1px solid var(--gray-border);" aria-hidden="true">
+              <img src="DCicon.png" alt="" style="width:100%; height:100%; object-fit:contain;" />
+            </div>
+            <h2 style="font-size:0.96rem; font-weight:700; color:var(--navy); line-height:1.35; margin:0;">BC2 &mdash; Business Card Video</h2>
+          </div>
+          <p style="color:#64748b; font-size:0.84rem; line-height:1.75; flex:1; margin-bottom:1rem;">Advanced digital business card video with expanded features and premium production quality for teams and professionals who want to stand out.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+            <span class="tag-pill">Video</span>
+            <span class="tag-pill">Business Card</span>
+            <span class="tag-pill">Digital</span>
+          </div>
+          <div style="border-top:1px solid var(--gray-border); padding-top:1.1rem; margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;">
+            <div>
+              <div class="prod-price">$79</div>
+              <div class="prod-price-note">one-time purchase</div>
+            </div>
+            <button class="btn-primary product-buy-btn"
+              data-name="BC2 — Business Card Video"
+              data-price="$79"
+              data-desc="Advanced digital business card video with expanded features and premium production quality."
+              data-stripe-key="bc2"
+              style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Buy Now &middot; $79</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-14 fade-up">
+      <p style="color:#64748b; font-size:0.93rem; margin-bottom:1.25rem;">After purchase, we&rsquo;ll send your download link and deployment guide within one business day.</p>
+      <a href="index.html#contact" class="btn-primary" style="font-size:0.97rem; padding:0.8rem 2.25rem;">Have Questions? Request a Free Discovery Call</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PAYMENT MODAL
+═══════════════════════════════════════════════════ -->
+<div id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="modal-product-name">
+  <div class="payment-modal-inner">
+
+    <div class="payment-modal-header">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close payment window">&#x2715;</button>
+      <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.85rem;">
+        <div style="background:rgba(255,255,255,0.1); border-radius:10px; width:44px; height:44px; display:flex; align-items:center; justify-content:center; flex-shrink:0;" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <div>
+          <div style="color:rgba(255,255,255,0.5); font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.15rem;">Secure Checkout</div>
+          <div id="modal-product-name" style="color:#fff; font-weight:700; font-size:1rem; line-height:1.3;"></div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:0.4rem;">
+        <span id="modal-price" style="color:#fff; font-size:2.1rem; font-weight:900; line-height:1;"></span>
+        <span style="color:rgba(255,255,255,0.45); font-size:0.8rem;">one-time &middot; no subscription</span>
+      </div>
+    </div>
+
+    <div class="payment-modal-body">
+      <p id="modal-desc" style="color:#64748b; font-size:0.88rem; line-height:1.75; margin-bottom:1.4rem;"></p>
+
+      <div style="background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:10px; padding:1rem 1.1rem; margin-bottom:1.5rem;">
+        <div style="font-size:0.82rem; font-weight:700; color:var(--navy); margin-bottom:0.55rem;">What you&rsquo;ll receive:</div>
+        <div style="display:flex; flex-direction:column; gap:0.45rem;">
+          <div style="display:flex; align-items:center; gap:0.5rem; color:#475569; font-size:0.83rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Full source code (download link sent within 1 business day)</div>
+          <div style="display:flex; align-items:center; gap:0.5rem; color:#475569; font-size:0.83rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Setup &amp; deployment guide</div>
+          <div style="display:flex; align-items:center; gap:0.5rem; color:#475569; font-size:0.83rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 30-day email support</div>
+        </div>
+      </div>
+
+      <a id="modal-stripe-btn" href="#" target="_blank" rel="noopener noreferrer" class="stripe-pay-btn" aria-label="Proceed to secure Stripe checkout">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <span id="modal-btn-text">Proceed to Secure Checkout</span>
+      </a>
+
+      <div style="display:flex; align-items:center; justify-content:center; gap:0.4rem; color:#94a3b8; font-size:0.74rem; margin-bottom:0.85rem;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Payments secured &amp; processed by <strong style="color:#6772e5;">Stripe</strong>
+      </div>
+
+      <p style="color:#94a3b8; font-size:0.72rem; text-align:center; line-height:1.65;">
+        You&rsquo;ll be redirected to Stripe&rsquo;s secure checkout. After payment, we&rsquo;ll email your download link within 1 business day.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer style="padding:3.5rem 0 2rem;" aria-label="Site footer">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="grid md:grid-cols-3 gap-10 mb-8">
+
+      <!-- Logo + tagline -->
+      <div>
+        <div style="margin-bottom:0.7rem;">
+          <img src="N-FNIT%20Logo.png?v=2" alt="N-FINIT DEVELOPMENT" style="height:42px; width:auto;" />
+        </div>
+        <p style="color:rgba(255,255,255,0.38); font-size:0.85rem; line-height:1.7; max-width:270px;">
+          To empower organizations with purpose-built software &mdash; delivered simply, securely, and affordably.
+        </p>
+      </div>
+
+      <!-- Nav links -->
+      <nav aria-label="Footer navigation">
+        <div style="display:flex; flex-direction:column; gap:0.55rem;" class="md:items-center">
+          <a href="index.html#services"    class="nav-link" style="font-size:0.85rem;">Services</a>
+          <a href="index.html#portfolio"   class="nav-link" style="font-size:0.85rem;">Portfolio</a>
+          <a href="products.html"          class="nav-link" style="font-size:0.85rem;">Products</a>
+          <a href="index.html#about"       class="nav-link" style="font-size:0.85rem;">About</a>
+          <a href="index.html#why-n-finit" class="nav-link" style="font-size:0.85rem;">Why N-FINIT</a>
+          <a href="index.html#pricing"     class="nav-link" style="font-size:0.85rem;">Pricing</a>
+          <a href="index.html#contact"     class="nav-link" style="font-size:0.85rem;">Contact</a>
+        </div>
+      </nav>
+
+      <!-- Copyright -->
+      <div class="md:text-right">
+        <p style="color:rgba(255,255,255,0.3); font-size:0.78rem; line-height:1.9;">
+          &copy; 2026 N-FINIT DEVELOPMENT<br />
+          Spotsylvania, Virginia<br />
+          All Rights Reserved
+        </p>
+      </div>
+
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem;">
+      <p style="color:rgba(255,255,255,0.18); font-size:0.73rem; text-align:center;">
+        N-FINIT DEVELOPMENT is an independent software development company and is not affiliated with Microsoft Corporation.
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ── NAV HAMBURGER ──────────────────────────────── */
+  var ham        = document.getElementById('ham-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if (ham && mobileMenu) {
+    ham.addEventListener('click', function () {
+      var open = mobileMenu.classList.toggle('open');
+      ham.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', String(open));
+    });
+  }
+
+  /* ── SCROLL ANIMATIONS ──────────────────────────── */
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(function (el) { observer.observe(el); });
+
+  /* ── PAYMENT MODAL ──────────────────────────────── */
+  var STRIPE_LINKS = {
+    'jeopardy':   'https://buy.stripe.com/REPLACE_WITH_JEOPARDY_LINK',
+    'mapplot':    'https://buy.stripe.com/REPLACE_WITH_MAPPLOT_LINK',
+    'servicereq': 'https://buy.stripe.com/REPLACE_WITH_SERVICEREQ_LINK',
+    'taekwondo':  'https://buy.stripe.com/REPLACE_WITH_TAEKWONDO_LINK',
+    'bc1':        'https://buy.stripe.com/REPLACE_WITH_BC1_LINK',
+    'bc2':        'https://buy.stripe.com/REPLACE_WITH_BC2_LINK'
+  };
+
+  var payModal      = document.getElementById('payment-modal');
+  var payModalClose = document.getElementById('modal-close-btn');
+  var payModalName  = document.getElementById('modal-product-name');
+  var payModalPrice = document.getElementById('modal-price');
+  var payModalDesc  = document.getElementById('modal-desc');
+  var payStripeBtn  = document.getElementById('modal-stripe-btn');
+  var payBtnText    = document.getElementById('modal-btn-text');
+
+  function openPayModal(btn) {
+    payModalName.textContent  = btn.getAttribute('data-name');
+    payModalPrice.textContent = btn.getAttribute('data-price');
+    payModalDesc.textContent  = btn.getAttribute('data-desc');
+    payBtnText.textContent    = 'Proceed to Secure Checkout \u2014 ' + btn.getAttribute('data-price');
+    var link = STRIPE_LINKS[btn.getAttribute('data-stripe-key')] || '#';
+    payStripeBtn.setAttribute('href', link);
+    payModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    payModalClose.focus();
+  }
+
+  function closePayModal() {
+    payModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.product-buy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () { openPayModal(btn); });
+  });
+
+  if (payModalClose) payModalClose.addEventListener('click', closePayModal);
+
+  if (payModal) payModal.addEventListener('click', function (e) {
+    if (e.target === payModal) closePayModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && payModal && payModal.classList.contains('open')) closePayModal();
+  });
+
+});
+</script>
+
+</body>
+</html>

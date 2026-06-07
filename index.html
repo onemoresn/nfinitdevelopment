@@ -615,84 +615,6 @@
     }
     .stripe-pay-btn:focus-visible { outline: 3px solid #7fb3ff; outline-offset: 3px; }
 
-    /* ─── BC SERIES PRODUCT LINE TRIGGER ────────────────── */
-    .bc-series-trigger {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--accent-dark) 100%);
-      border-radius: 16px;
-      padding: 2.25rem 2rem;
-      text-align: center;
-      cursor: pointer;
-      border: 1.5px solid rgba(255,255,255,0.1);
-      box-shadow: 0 2px 16px rgba(13,27,42,0.12);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      user-select: none;
-    }
-    .bc-series-trigger:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 52px rgba(13,27,42,0.22);
-    }
-    .bc-series-trigger:focus-visible {
-      outline: 3px solid var(--accent-light);
-      outline-offset: 3px;
-    }
-    .bc-browse-btn {
-      background: rgba(255,255,255,0.12);
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: 700;
-      padding: 0.65rem 1.75rem;
-      border-radius: 30px;
-      border: 1.5px solid rgba(255,255,255,0.22);
-      cursor: pointer;
-      transition: background 0.2s;
-      font-family: inherit;
-    }
-    .bc-browse-btn:hover { background: rgba(255,255,255,0.2); }
-
-    /* ─── BC SERIES MODAL ────────────────────────────────── */
-    #bc-series-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 998;
-      background: rgba(8,17,26,0.72);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    #bc-series-modal.open { display: flex; }
-    .bc-modal-inner {
-      background: #fff;
-      border-radius: 18px;
-      width: 100%;
-      max-width: 700px;
-      box-shadow: 0 32px 80px rgba(13,27,42,0.32);
-      overflow: hidden;
-      position: relative;
-      animation: modalIn 0.25s ease;
-      max-height: 92vh;
-      overflow-y: auto;
-    }
-    .bc-modal-header {
-      background: var(--navy);
-      padding: 1.5rem 1.75rem 1.35rem;
-      position: sticky;
-      top: 0;
-      z-index: 2;
-    }
-    .bc-modal-body {
-      padding: 1.75rem;
-    }
-    @media (max-width: 520px) {
-      .bc-products-grid { grid-template-columns: 1fr !important; }
-    }
-
     /* ─── FOOTER ───────────────────────────────────────────── */
     footer { background: var(--navy-dark); }
   </style>
@@ -715,7 +637,7 @@
       <div class="hidden md:flex items-center gap-7" role="list">
         <a href="#services" class="nav-link" role="listitem">Services</a>
         <a href="#portfolio" class="nav-link" role="listitem">Portfolio</a>
-        <a href="#products" class="nav-link" role="listitem">Products</a>
+        <a href="products.html" class="nav-link" role="listitem">Products</a>
         <a href="#about" class="nav-link" role="listitem">About</a>
         <a href="#why-n-finit" class="nav-link" role="listitem">Why N-FINIT</a>
         <a href="#pricing" class="nav-link" role="listitem">Pricing</a>
@@ -738,7 +660,7 @@
   <div id="mobile-menu" role="menu" aria-label="Mobile navigation">
     <a href="#services"    class="nav-link" role="menuitem">Services</a>
     <a href="#portfolio"   class="nav-link" role="menuitem">Portfolio</a>
-    <a href="#products"    class="nav-link" role="menuitem">Products</a>
+    <a href="products.html" class="nav-link" role="menuitem">Products</a>
     <a href="#about"       class="nav-link" role="menuitem">About</a>
     <a href="#why-n-finit" class="nav-link" role="menuitem">Why N-FINIT</a>
     <a href="#pricing"     class="nav-link" role="menuitem">Pricing</a>
@@ -1036,120 +958,90 @@
 
 
 <!-- ═══════════════════════════════════════════════════
-     PRODUCTS
+     PRODUCTS CTA
 ═══════════════════════════════════════════════════ -->
 <section id="products" style="background:#fff; padding:5.5rem 0;" aria-labelledby="products-heading">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
 
-    <div class="text-center mb-14 fade-up">
+    <div class="text-center mb-12 fade-up">
       <span class="section-label">Ready-Made Software</span>
       <h2 id="products-heading" class="section-title">Download Our Apps</h2>
-      <p style="color:#64748b; max-width:580px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
-        Pre-built, production-ready applications available for immediate purchase. Contact us after purchase and we'll send your download link and setup guide within one business day.
+      <p style="color:#64748b; max-width:560px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
+        Six pre-built, production-ready applications available for immediate purchase. One-time price &mdash; no subscriptions.
       </p>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Product preview strip -->
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-bottom:2.75rem;">
 
-      <!-- Jeopardy Employee Engagement App -->
-      <div class="product-dl-card fade-up">
-        <div class="product-dl-icon" style="background:#fff; overflow:hidden;" aria-hidden="true">
-          <img src="EmployeeJeopardy.png" alt="Jeopardy App Icon" style="width:100%; height:100%; object-fit:contain;" />
-        </div>
-        <div class="product-dl-body">
-          <h3 style="font-size:0.97rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; line-height:1.35;">Jeopardy Employee Engagement App</h3>
-          <p style="color:#64748b; font-size:0.82rem; line-height:1.7; flex:1; margin-bottom:1rem;">Real-time interactive Jeopardy-style game for employee engagement events with live scoring.</p>
-          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
-            <span class="tag-pill">Web App</span>
-            <span class="tag-pill">Real-Time</span>
+      <a href="products.html" style="text-decoration:none;" class="fade-up">
+        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <img src="EmployeeJeopardy.png" alt="" style="width:38px;height:38px;object-fit:contain;border-radius:8px;border:1px solid #e2e8f0;" aria-hidden="true" />
+          <div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Jeopardy App</div>
+            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">$29</div>
           </div>
-          <div style="margin-bottom:1.1rem;">
-            <div class="product-price">$29</div>
-            <div class="product-price-note">one-time purchase</div>
-          </div>
-          <button class="btn-primary product-buy-btn" data-name="Jeopardy Employee Engagement App" data-price="$29" data-desc="Real-time interactive Jeopardy-style game for employee engagement events with live scoring." data-stripe-key="jeopardy" style="display:block; width:100%; font-size:0.88rem; padding:0.6rem 1rem; cursor:pointer;">Buy Now &middot; $29</button>
         </div>
-      </div>
+      </a>
 
-      <!-- Map Plot App -->
-      <div class="product-dl-card fade-up d1">
-        <div class="product-dl-icon" style="background:#fff; overflow:hidden;" aria-hidden="true">
-          <img src="MapPlotIcon.png" alt="Map Plot App Icon" style="width:100%; height:100%; object-fit:contain;" />
-        </div>
-        <div class="product-dl-body">
-          <h3 style="font-size:0.97rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; line-height:1.35;">Map Plot App</h3>
-          <p style="color:#64748b; font-size:0.82rem; line-height:1.7; flex:1; margin-bottom:1rem;">Interactive real-time map for team ice breakers &mdash; participants pin their location live from any device.</p>
-          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
-            <span class="tag-pill">Web App</span>
-            <span class="tag-pill">Real-Time</span>
+      <a href="products.html" style="text-decoration:none;" class="fade-up d1">
+        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <img src="MapPlotIcon.png" alt="" style="width:38px;height:38px;object-fit:contain;border-radius:8px;border:1px solid #e2e8f0;" aria-hidden="true" />
+          <div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Map Plot App</div>
+            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">$19</div>
           </div>
-          <div style="margin-bottom:1.1rem;">
-            <div class="product-price">$19</div>
-            <div class="product-price-note">one-time purchase</div>
-          </div>
-          <button class="btn-primary product-buy-btn" data-name="Map Plot App" data-price="$19" data-desc="Interactive real-time map for team ice breakers — participants pin their location live from any device." data-stripe-key="mapplot" style="display:block; width:100%; font-size:0.88rem; padding:0.6rem 1rem; cursor:pointer;">Buy Now &middot; $19</button>
         </div>
-      </div>
+      </a>
 
-      <!-- Service Request App -->
-      <div class="product-dl-card fade-up d2">
-        <div class="product-dl-icon" style="background:linear-gradient(135deg,#3730a3,#6366f1);" aria-hidden="true">
-          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          <span class="dl-placeholder-label">Placeholder Icon</span>
-        </div>
-        <div class="product-dl-body">
-          <h3 style="font-size:0.97rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; line-height:1.35;">Service Request App</h3>
-          <p style="color:#64748b; font-size:0.82rem; line-height:1.7; flex:1; margin-bottom:1rem;">MSAL-secured request submission and tracking backed by a SharePoint List &mdash; no email chains needed.</p>
-          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
-            <span class="tag-pill">MSAL</span>
-            <span class="tag-pill">SharePoint</span>
+      <a href="products.html" style="text-decoration:none;" class="fade-up d2">
+        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <div style="width:38px;height:38px;background:linear-gradient(135deg,#3730a3,#6366f1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           </div>
-          <div style="margin-bottom:1.1rem;">
-            <div class="product-price">$299</div>
-            <div class="product-price-note">one-time purchase</div>
+          <div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Service Request App</div>
+            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">$299</div>
           </div>
-          <button class="btn-primary product-buy-btn" data-name="Service Request App" data-price="$299" data-desc="MSAL-secured request submission and tracking backed by a SharePoint List — no email chains needed." data-stripe-key="servicereq" style="display:block; width:100%; font-size:0.88rem; padding:0.6rem 1rem; cursor:pointer;">Buy Now &middot; $299</button>
         </div>
-      </div>
+      </a>
 
-      <!-- Taekwondo Student Management App -->
-      <div class="product-dl-card fade-up d3">
-        <div class="product-dl-icon" style="background:linear-gradient(135deg,#7c2d12,#ea580c);" aria-hidden="true">
-          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <span class="dl-placeholder-label">Placeholder Icon</span>
-        </div>
-        <div class="product-dl-body">
-          <h3 style="font-size:0.97rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; line-height:1.35;">Taekwondo Student Management App</h3>
-          <p style="color:#64748b; font-size:0.82rem; line-height:1.7; flex:1; margin-bottom:1rem;">Manage student records, belt ranks, and attendance for martial arts schools. Purpose-built for instructors.</p>
-          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
-            <span class="tag-pill">Web App</span>
-            <span class="tag-pill">Small Business</span>
+      <a href="products.html" style="text-decoration:none;" class="fade-up d3">
+        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <div style="width:38px;height:38px;background:linear-gradient(135deg,#7c2d12,#ea580c);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
           </div>
-          <div style="margin-bottom:1.1rem;">
-            <div class="product-price">$199</div>
-            <div class="product-price-note">one-time purchase</div>
+          <div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Taekwondo Mgmt App</div>
+            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">$199</div>
           </div>
-          <button class="btn-primary product-buy-btn" data-name="Taekwondo Student Management App" data-price="$199" data-desc="Manage student records, belt ranks, and attendance for martial arts schools. Purpose-built for instructors." data-stripe-key="taekwondo" style="display:block; width:100%; font-size:0.88rem; padding:0.6rem 1rem; cursor:pointer;">Buy Now &middot; $199</button>
         </div>
-      </div>
+      </a>
+
+      <a href="products.html" style="text-decoration:none;" class="fade-up d4">
+        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <img src="DCicon.png" alt="" style="width:38px;height:38px;object-fit:contain;border-radius:8px;border:1px solid #e2e8f0;" aria-hidden="true" />
+          <div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">BC1 Video</div>
+            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">$49</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="products.html" style="text-decoration:none;" class="fade-up d5">
+        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <img src="DCicon.png" alt="" style="width:38px;height:38px;object-fit:contain;border-radius:8px;border:1px solid #e2e8f0;" aria-hidden="true" />
+          <div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">BC2 Video</div>
+            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">$79</div>
+          </div>
+        </div>
+      </a>
 
     </div>
 
-    <!-- BC Series Product Line -->
-    <div class="mt-8 fade-up">
-      <div class="bc-series-trigger" id="bc-series-trigger" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="bc-series-modal" aria-label="Browse BC Series product line">
-        <img src="DCicon.png" alt="DC Series Icon" style="width:72px; height:72px; object-fit:contain; border-radius:14px; background:rgba(255,255,255,0.08); padding:0.5rem;" />
-        <div>
-          <div style="color:rgba(255,255,255,0.5); font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.3rem;">Product Line</div>
-          <h3 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0 0 0.5rem; line-height:1.3;">BC Series &mdash; Video Products</h3>
-          <p style="color:rgba(255,255,255,0.6); font-size:0.88rem; line-height:1.7; max-width:520px; margin:0 auto;">Purpose-built video products for business communications. Two editions available &mdash; BC1 and BC2.</p>
-        </div>
-        <button class="bc-browse-btn" tabindex="-1" aria-hidden="true">Browse BC Series &rarr;</button>
-      </div>
-    </div>
-
-    <div class="text-center mt-10 fade-up">
-      <p style="color:#64748b; font-size:0.92rem;">After purchase, we&rsquo;ll send your download link and deployment guide within one business day.</p>
+    <div class="text-center fade-up">
+      <a href="products.html" class="btn-primary" style="font-size:1rem; padding:0.85rem 2.25rem;">Browse All Products &rarr;</a>
     </div>
 
   </div>
@@ -1564,7 +1456,7 @@
         <div style="display:flex; flex-direction:column; gap:0.55rem;" class="md:items-center">
           <a href="#services"    class="nav-link" style="font-size:0.85rem;">Services</a>
           <a href="#portfolio"   class="nav-link" style="font-size:0.85rem;">Portfolio</a>
-          <a href="#products"    class="nav-link" style="font-size:0.85rem;">Products</a>
+          <a href="products.html"    class="nav-link" style="font-size:0.85rem;">Products</a>
           <a href="#about"       class="nav-link" style="font-size:0.85rem;">About</a>
           <a href="#why-n-finit" class="nav-link" style="font-size:0.85rem;">Why N-FINIT</a>
           <a href="#pricing"     class="nav-link" style="font-size:0.85rem;">Pricing</a>
@@ -1597,7 +1489,7 @@
      JAVASCRIPT
 ═══════════════════════════════════════════════════ -->
 <script>
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   /* ── NAV SCROLL ─────────────────────────────────── */
@@ -1820,132 +1712,22 @@
 
   document.querySelectorAll('.product-buy-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      if (bcModal && bcModal.classList.contains('open')) closeBcModal();
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     });
   });
 
-  payModalClose.addEventListener('click', closePayModal);
+  if (payModalClose) payModalClose.addEventListener('click', closePayModal);
 
-  payModal.addEventListener('click', function (e) {
+  if (payModal) payModal.addEventListener('click', function (e) {
     if (e.target === payModal) closePayModal();
   });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && payModal.classList.contains('open')) closePayModal();
+    if (e.key === 'Escape' && payModal && payModal.classList.contains('open')) closePayModal();
   });
 
-  /* ── BC SERIES PRODUCT LINE MODAL ────────────────── */
-  var bcModal      = document.getElementById('bc-series-modal');
-  var bcModalClose = document.getElementById('bc-modal-close-btn');
-  var bcTrigger    = document.getElementById('bc-series-trigger');
-
-  function openBcModal() {
-    bcModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    bcModalClose.focus();
-  }
-
-  function closeBcModal() {
-    bcModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  if (bcTrigger) {
-    bcTrigger.addEventListener('click', openBcModal);
-    bcTrigger.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBcModal(); }
-    });
-  }
-
-  if (bcModalClose) {
-    bcModalClose.addEventListener('click', closeBcModal);
-  }
-
-  bcModal.addEventListener('click', function (e) {
-    if (e.target === bcModal) closeBcModal();
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && bcModal.classList.contains('open')) closeBcModal();
-  });
-
-})();
+});
 </script>
-
-<!-- ═══════════════════════════════════════════════════
-     BC SERIES PRODUCT LINE MODAL
-═══════════════════════════════════════════════════ -->
-<div id="bc-series-modal" role="dialog" aria-modal="true" aria-labelledby="bc-modal-title">
-  <div class="bc-modal-inner">
-
-    <div class="bc-modal-header">
-      <button class="modal-close-btn" id="bc-modal-close-btn" aria-label="Close BC Series window">&#x2715;</button>
-      <div style="display:flex; align-items:center; gap:1rem;">
-        <img src="DCicon.png" alt="DC Series Icon" style="width:50px; height:50px; object-fit:contain; border-radius:10px; background:rgba(255,255,255,0.1); padding:0.35rem; flex-shrink:0;" />
-        <div>
-          <div style="color:rgba(255,255,255,0.5); font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.2rem;">Product Line</div>
-          <h2 id="bc-modal-title" style="color:#fff; font-size:1.3rem; font-weight:800; margin:0; line-height:1.25;">BC Series &mdash; Video Products</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="bc-modal-body">
-      <p style="color:#64748b; font-size:0.88rem; line-height:1.75; margin-bottom:1.5rem;">
-        Two purpose-built video products for business communications. Each is a one-time purchase &mdash; no subscriptions.
-      </p>
-
-      <div class="bc-products-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
-
-        <!-- BC1_vid -->
-        <div class="product-dl-card" style="margin:0;">
-          <div class="product-dl-icon" style="background:#fff; overflow:hidden;" aria-hidden="true">
-            <img src="DCicon.png" alt="BC1 Video Icon" style="width:75%; height:75%; object-fit:contain;" />
-          </div>
-          <div class="product-dl-body">
-            <h3 style="font-size:0.97rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; line-height:1.35;">BC1 Video</h3>
-            <p style="color:#64748b; font-size:0.82rem; line-height:1.7; flex:1; margin-bottom:1rem;">Entry-level business communications video product. Ready for immediate deployment in any environment.</p>
-            <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
-              <span class="tag-pill">Video</span>
-              <span class="tag-pill">Business</span>
-            </div>
-            <div style="margin-bottom:1.1rem;">
-              <div class="product-price">$49</div>
-              <div class="product-price-note">one-time purchase</div>
-            </div>
-            <button class="btn-primary product-buy-btn" data-name="BC1 Video" data-price="$49" data-desc="Entry-level business communications video product. Ready for immediate deployment in any environment." data-stripe-key="bc1" style="display:block; width:100%; font-size:0.88rem; padding:0.6rem 1rem; cursor:pointer;">Buy Now &middot; $49</button>
-          </div>
-        </div>
-
-        <!-- BC2_vid -->
-        <div class="product-dl-card" style="margin:0;">
-          <div class="product-dl-icon" style="background:#fff; overflow:hidden;" aria-hidden="true">
-            <img src="DCicon.png" alt="BC2 Video Icon" style="width:75%; height:75%; object-fit:contain;" />
-          </div>
-          <div class="product-dl-body">
-            <h3 style="font-size:0.97rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; line-height:1.35;">BC2 Video</h3>
-            <p style="color:#64748b; font-size:0.82rem; line-height:1.7; flex:1; margin-bottom:1rem;">Advanced business communications video product. Includes expanded features and scalable deployment options.</p>
-            <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
-              <span class="tag-pill">Video</span>
-              <span class="tag-pill">Business</span>
-            </div>
-            <div style="margin-bottom:1.1rem;">
-              <div class="product-price">$79</div>
-              <div class="product-price-note">one-time purchase</div>
-            </div>
-            <button class="btn-primary product-buy-btn" data-name="BC2 Video" data-price="$79" data-desc="Advanced business communications video product. Includes expanded features and scalable deployment options." data-stripe-key="bc2" style="display:block; width:100%; font-size:0.88rem; padding:0.6rem 1rem; cursor:pointer;">Buy Now &middot; $79</button>
-          </div>
-        </div>
-
-      </div>
-
-      <p style="color:#94a3b8; font-size:0.75rem; text-align:center; margin-top:1.5rem; line-height:1.65;">
-        After purchase, your download link will be sent within one business day.
-      </p>
-    </div>
-
-  </div>
-</div>
 
 <!-- ═══════════════════════════════════════════════════
      PAYMENT MODAL
