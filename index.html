@@ -1697,9 +1697,8 @@ document.addEventListener('DOMContentLoaded', function () {
     payModalName.textContent  = btn.getAttribute('data-name');
     payModalPrice.textContent = btn.getAttribute('data-price');
     payModalDesc.textContent  = btn.getAttribute('data-desc');
-    payBtnText.textContent    = 'Proceed to Secure Checkout \u2014 ' + btn.getAttribute('data-price');
-    var link = STRIPE_LINKS[btn.getAttribute('data-stripe-key')] || '#';
-    payStripeBtn.setAttribute('href', link);
+    payBtnText.textContent    = 'Get a Free Quote';
+    payStripeBtn.setAttribute('href', '#contact');
     payModal.classList.add('open');
     document.body.style.overflow = 'hidden';
     payModalClose.focus();
@@ -1714,6 +1713,14 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', function () {
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     });
+  });
+
+  if (payStripeBtn) payStripeBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    closePayModal();
+    setTimeout(function () {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }, 200);
   });
 
   if (payModalClose) payModalClose.addEventListener('click', closePayModal);
@@ -1742,7 +1749,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
         </div>
         <div>
-          <div style="color:rgba(255,255,255,0.5); font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.15rem;">Secure Checkout</div>
+          <div style="color:rgba(255,255,255,0.5); font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.15rem;">Product Inquiry</div>
           <div id="modal-product-name" style="color:#fff; font-weight:700; font-size:1rem; line-height:1.3;"></div>
         </div>
       </div>
@@ -1764,18 +1771,18 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       </div>
 
-      <a id="modal-stripe-btn" href="#" target="_blank" rel="noopener noreferrer" class="stripe-pay-btn" aria-label="Proceed to secure Stripe checkout">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-        <span id="modal-btn-text">Proceed to Secure Checkout</span>
-      </a>
-
-      <div style="display:flex; align-items:center; justify-content:center; gap:0.4rem; color:#94a3b8; font-size:0.74rem; margin-bottom:0.85rem;">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Payments secured &amp; processed by <strong style="color:#6772e5;">Stripe</strong>
+      <div style="background:#fff8e1; border:1.5px solid #f59e0b; border-radius:8px; padding:0.65rem 0.9rem; margin-bottom:1.1rem; display:flex; align-items:flex-start; gap:0.5rem;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2" style="flex-shrink:0; margin-top:1px;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span style="color:#92400e; font-size:0.78rem; line-height:1.55;"><strong>Online checkout is temporarily unavailable.</strong> Stripe payments are not yet active.</span>
       </div>
 
-      <p style="color:#94a3b8; font-size:0.72rem; text-align:center; line-height:1.65;">
-        You&rsquo;ll be redirected to Stripe&rsquo;s secure checkout. After payment, we&rsquo;ll email your download link within 1 business day.
+      <a id="modal-stripe-btn" href="#contact" class="stripe-pay-btn" aria-label="Get a free quote via contact form">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span id="modal-btn-text">Get a Free Quote</span>
+      </a>
+
+      <p style="color:#94a3b8; font-size:0.72rem; text-align:center; line-height:1.65; margin-top:0.85rem;">
+        To purchase, contact the developer directly via the <strong style="color:#2b5797;">Get a Free Quote</strong> form and we&rsquo;ll follow up within 1 business day.
       </p>
     </div>
 
