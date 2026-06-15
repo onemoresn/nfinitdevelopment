@@ -10,6 +10,16 @@
 
   gtag('config', 'G-7HYNQ4WFMR');
 </script>
+  <!-- SiteCommand monitoring -->
+  <script src="/endpoint.js"></script>
+  <script>
+    window.SiteCommand = {
+      siteKey: 'sc_live_nfinit_nfinitdevelopment_com',
+      ga4PropertyId: 'G-7HYNQ4WFMR',
+      endpoint: window.SiteCommandEndpoint
+    };
+  </script>
+  <script src="/sitecommand-beacon.js" async></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>N-FINIT DEVELOPMENT — Purpose-Built Software. One Price. No Subscriptions.</title>
@@ -1652,6 +1662,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     formErr.style.display = 'none';
+
+    if (window.SiteCommandTrack) {
+      window.SiteCommandTrack('contact_submit', { form: 'discovery_call' });
+    }
 
     var org     = document.getElementById('f-org').value.trim();
     var subject = encodeURIComponent('Discovery Call Request from ' + name + (org ? ' \u2013 ' + org : ''));
