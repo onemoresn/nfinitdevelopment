@@ -1422,7 +1422,8 @@
           <textarea id="f-msg" name="message" class="form-field" rows="5" placeholder="Describe your project, current challenge, or what you're hoping to automate..." required style="resize:vertical;"></textarea>
         </div>
         <div id="form-error" role="alert" style="display:none; color:#fca5a5; font-size:0.85rem; margin-bottom:0.9rem; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); padding:0.65rem 0.9rem; border-radius:6px;"></div>
-        <button type="submit" class="btn-submit">Request Free Discovery Call</button>
+        <input type="text" name="_honey" id="f-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; opacity:0; height:0; width:0;" />
+        <button type="submit" class="btn-submit" id="form-submit-btn">Request Free Discovery Call</button>
       </form>
     </div>
 
@@ -1626,6 +1627,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var formWrap   = document.getElementById('form-wrap');
   var successMsg = document.getElementById('success-msg');
   var formErr    = document.getElementById('form-error');
+  var submitBtn  = document.getElementById('form-submit-btn');
+  var CONTACT_EMAIL = 'sm@nfinitdevelopment.com';
 
   function showError(msg) {
     formErr.textContent = msg;
@@ -1635,6 +1638,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    if (document.getElementById('f-honey').value) return;
 
     var name    = document.getElementById('f-name').value.trim();
     var email   = document.getElementById('f-email').value.trim();
@@ -1662,25 +1667,48 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     formErr.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
 
-    if (window.SiteCommandTrack) {
-      window.SiteCommandTrack('contact_submit', { form: 'discovery_call' });
-    }
+    var org = document.getElementById('f-org').value.trim();
 
-    var org     = document.getElementById('f-org').value.trim();
-    var subject = encodeURIComponent('Discovery Call Request from ' + name + (org ? ' \u2013 ' + org : ''));
-    var body    = encodeURIComponent(
-      'Name: ' + name + '\r\n' +
-      'Organization: ' + (org || '(not provided)') + '\r\n' +
-      'Email: ' + email + '\r\n\r\n' +
-      message
-    );
+    fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        organization: org || '(not provided)',
+        email: email,
+        message: message,
+        _subject: 'Discovery Call Request from ' + name + (org ? ' \u2013 ' + org : ''),
+        _replyto: email,
+        _captcha: 'false',
+        _template: 'table'
+      })
+    })
+    .then(function (response) {
+      if (!response.ok) throw new Error('Request failed');
+      return response.json();
+    })
+    .then(function (data) {
+      if (data.success !== 'true' && data.success !== true) throw new Error('Send failed');
 
-    window.location.href = 'mailto:sm@nfinitdevelopment.com?subject=' + subject + '&body=' + body;
+      if (window.SiteCommandTrack) {
+        window.SiteCommandTrack('contact_submit', { form: 'discovery_call' });
+      }
 
-    formWrap.style.display = 'none';
-    successMsg.style.display = 'block';
-    successMsg.focus();
+      formWrap.style.display = 'none';
+      successMsg.style.display = 'block';
+      successMsg.focus();
+    })
+    .catch(function () {
+      showError('We could not send your request right now. Please email us directly at ' + CONTACT_EMAIL + '.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request Free Discovery Call';
+    });
   });
 
   ['f-name', 'f-email', 'f-msg'].forEach(function (id) {
