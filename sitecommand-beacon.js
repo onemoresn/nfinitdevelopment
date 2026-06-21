@@ -47,8 +47,7 @@
     var payload = JSON.stringify({ site_key: siteKey, events: batch });
 
     if (navigator.sendBeacon) {
-      var blob = new Blob([payload], { type: 'application/json' });
-      if (!navigator.sendBeacon(endpoint, blob)) {
+      if (!navigator.sendBeacon(endpoint, payload)) {
         queue = batch.concat(queue);
       }
       return;
@@ -57,8 +56,10 @@
     fetch(endpoint, {
       method: 'POST',
       body: payload,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       keepalive: true,
+      credentials: 'omit',
+      mode: 'no-cors',
     }).catch(function () {
       queue = batch.concat(queue);
     });

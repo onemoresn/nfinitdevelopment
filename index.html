@@ -335,6 +335,17 @@
       flex: 1;
     }
 
+    /* ─── COMPANY INTRO VIDEO ─────────────────────────────── */
+    .intro-video {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      background: var(--navy-dark);
+      box-shadow: 0 18px 52px rgba(13,27,42,0.18);
+      aspect-ratio: 16/9;
+      object-fit: contain;
+    }
+
     /* ─── WHY ROWS ─────────────────────────────────────────── */
     .why-row {
       display: flex;
@@ -762,6 +773,28 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     COMPANY INTRO VIDEO
+═══════════════════════════════════════════════════ -->
+<section id="intro-video" style="background:#fff; padding:4.5rem 0 5.5rem;" aria-labelledby="intro-video-heading">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center fade-up">
+    <span class="section-label">About Us</span>
+    <h2 id="intro-video-heading" class="section-title">Meet N-FINIT DEVELOPMENT</h2>
+    <p style="color:#64748b; max-width:520px; margin:0.85rem auto 2rem; font-size:1.02rem; line-height:1.75;">
+      See how we help organizations build custom software that lives inside their Microsoft&nbsp;365 tenant.
+    </p>
+    <video
+      class="intro-video"
+      src="N-Finit%20Development%20LLC%20vid.mp4"
+      controls
+      preload="metadata"
+      playsinline
+      aria-label="N-FINIT DEVELOPMENT company overview video">
+    </video>
   </div>
 </section>
 
@@ -1636,6 +1669,23 @@ document.addEventListener('DOMContentLoaded', function () {
     formErr.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
 
+  function ensureHiddenField(name, value) {
+    var input = form.querySelector('input[type="hidden"][name="' + name + '"]');
+    if (!input) {
+      input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      form.appendChild(input);
+    }
+    input.value = value;
+  }
+
+  if (new URLSearchParams(location.search).get('quote') === 'sent') {
+    formWrap.style.display = 'none';
+    successMsg.style.display = 'block';
+    history.replaceState(null, '', location.pathname + '#contact');
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -1671,44 +1721,22 @@ document.addEventListener('DOMContentLoaded', function () {
     submitBtn.textContent = 'Sending...';
 
     var org = document.getElementById('f-org').value.trim();
+    var returnUrl = location.origin + location.pathname + '?quote=sent#contact';
 
-    fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        name: name,
-        organization: org || '(not provided)',
-        email: email,
-        message: message,
-        _subject: 'Discovery Call Request from ' + name + (org ? ' \u2013 ' + org : ''),
-        _replyto: email,
-        _captcha: 'false',
-        _template: 'table'
-      })
-    })
-    .then(function (response) {
-      if (!response.ok) throw new Error('Request failed');
-      return response.json();
-    })
-    .then(function (data) {
-      if (data.success !== 'true' && data.success !== true) throw new Error('Send failed');
+    ensureHiddenField('_next', returnUrl);
+    ensureHiddenField('_subject', 'Discovery Call Request from ' + name + (org ? ' \u2013 ' + org : ''));
+    ensureHiddenField('_replyto', email);
+    ensureHiddenField('_captcha', 'false');
+    ensureHiddenField('_template', 'table');
 
-      if (window.SiteCommandTrack) {
-        window.SiteCommandTrack('contact_submit', { form: 'discovery_call' });
-      }
+    form.action = 'https://formsubmit.co/' + CONTACT_EMAIL;
+    form.method = 'POST';
 
-      formWrap.style.display = 'none';
-      successMsg.style.display = 'block';
-      successMsg.focus();
-    })
-    .catch(function () {
-      showError('We could not send your request right now. Please email us directly at ' + CONTACT_EMAIL + '.');
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Request Free Discovery Call';
-    });
+    if (window.SiteCommandTrack) {
+      window.SiteCommandTrack('contact_submit', { form: 'discovery_call' });
+    }
+
+    form.submit();
   });
 
   ['f-name', 'f-email', 'f-msg'].forEach(function (id) {
