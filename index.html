@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>N-FINIT DEVELOPMENT — Purpose-Built Software. One Price. No Subscriptions.</title>
   <link rel="icon" href="data:,">
-  <meta name="description" content="N-FINIT DEVELOPMENT builds custom Microsoft Power Platform apps and MSAL-secured web applications for small businesses, nonprofits, and government contractors — deployed inside your own Microsoft 365 tenant." />
+  <meta name="description" content="N-FINIT DEVELOPMENT builds AI-enhanced Microsoft Power Platform apps, LLM-powered agent applications, and MSAL-secured web solutions for small businesses, nonprofits, and government contractors — deployed inside your own Microsoft 365 tenant." />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -306,6 +306,33 @@
     .use-case-chip:hover {
       background: #eef2f9;
       border-color: var(--accent);
+    }
+
+    /* ─── TECHNOLOGY STACK ───────────────────────────────── */
+    .stack-group {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--gray-border);
+      box-shadow: 0 2px 16px rgba(13,27,42,0.07);
+      height: 100%;
+    }
+    .stack-group h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+    .stack-group p {
+      color: #64748b;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 1.15rem;
+    }
+    .stack-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
     }
 
     /* ─── PRODUCT GALLERY ─────────────────────────────────── */
@@ -712,7 +739,7 @@
     </h1>
 
     <p class="fade-up d2" style="font-size:clamp(1rem, 2.2vw, 1.18rem); color:rgba(255,255,255,0.75); max-width:660px; margin:0 auto 2.75rem; line-height:1.75;">
-      N-FINIT DEVELOPMENT builds custom Microsoft Power Platform apps and MSAL-secured web applications for small businesses, nonprofits, and government contractors&nbsp;— deployed inside your own Microsoft&nbsp;365 tenant.
+      N-FINIT DEVELOPMENT builds AI-enhanced Microsoft Power Platform apps, LLM-powered agent applications, and MSAL-secured web solutions for small businesses, nonprofits, and government contractors&nbsp;— deployed inside your own Microsoft&nbsp;365 tenant.
     </p>
 
     <div class="fade-up d3" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
@@ -767,6 +794,13 @@
 
       <div class="trust-item fade-up d4">
         <div class="trust-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1h1a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v3a4 4 0 0 1-8 0v-3H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1V6a4 4 0 0 1 4-4z"/></svg>
+        </div>
+        <span>AI-Enhanced Delivery</span>
+      </div>
+
+      <div class="trust-item fade-up d5">
+        <div class="trust-icon" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
         <span>Virginia-Based, Remote Delivery</span>
@@ -785,7 +819,7 @@
     <span class="section-label">About Us</span>
     <h2 id="intro-video-heading" class="section-title">Meet N-FINIT DEVELOPMENT</h2>
     <p style="color:#64748b; max-width:520px; margin:0.85rem auto 2rem; font-size:1.02rem; line-height:1.75;">
-      See how we help organizations build custom software that lives inside their Microsoft&nbsp;365 tenant.
+      See how N-FINIT DEVELOPMENT delivers AI-enhanced, tenant-hosted software built for organizations like yours.
     </p>
     <video
       class="intro-video"
@@ -807,13 +841,13 @@
 
     <div class="text-center mb-14 fade-up">
       <span class="section-label">What We Build</span>
-      <h2 id="services-heading" class="section-title">Software That Lives in Your Ecosystem</h2>
-      <p style="color:#64748b; max-width:540px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
-        Every solution deploys inside your Microsoft&nbsp;365 tenant. Your data never touches our servers.
+      <h2 id="services-heading" class="section-title">AI-Enhanced Software That Lives in Your Ecosystem</h2>
+      <p style="color:#64748b; max-width:580px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
+        Every solution deploys inside your Microsoft&nbsp;365 tenant — with AI-integrated workflows, intelligent automation, and LLM-powered agents where they add real value. Your data never touches our servers.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 mb-10">
+    <div class="grid md:grid-cols-2 gap-7 mb-10">
 
       <!-- Card A: Power Platform -->
       <div class="service-card fade-up">
@@ -822,12 +856,13 @@
         </div>
         <h3 style="font-size:1.28rem; font-weight:700; color:var(--navy); margin-bottom:0.65rem;">Power Platform Applications</h3>
         <p style="color:#64748b; line-height:1.78; font-size:0.93rem;">
-          Power Apps (Canvas &amp; Model-Driven), Power Automate workflows, Power BI dashboards, Dataverse &amp; SharePoint integration. Built inside your Microsoft&nbsp;365 environment. <strong style="color:var(--navy);">No new software to install.</strong>
+          Power Apps (Canvas &amp; Model-Driven), Power Automate workflows, Power BI dashboards, Dataverse &amp; SharePoint integration — enhanced with AI Builder and Copilot-connected automation. Built inside your Microsoft&nbsp;365 environment. <strong style="color:var(--navy);">No new software to install.</strong>
         </p>
         <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid #e2e8f0;">
           <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
             <span class="tag-pill">Power Apps</span>
             <span class="tag-pill">Power Automate</span>
+            <span class="tag-pill">AI Builder</span>
             <span class="tag-pill">Power BI</span>
             <span class="tag-pill">Dataverse</span>
             <span class="tag-pill">SharePoint</span>
@@ -842,12 +877,13 @@
         </div>
         <h3 style="font-size:1.28rem; font-weight:700; color:var(--navy); margin-bottom:0.65rem;">MSAL-Secured Web Apps</h3>
         <p style="color:#64748b; line-height:1.78; font-size:0.93rem;">
-          Custom HTML/CSS/JavaScript apps secured with Microsoft Authentication Library. Deployed as SharePoint-hosted pages or Azure Static Web Apps inside your tenant. <strong style="color:var(--navy);">Only your team can access them.</strong>
+          Custom HTML/CSS/JavaScript apps secured with Microsoft Authentication Library — including LLM-powered agent interfaces connected to your business data. Deployed as SharePoint-hosted pages or Azure Static Web Apps inside your tenant. <strong style="color:var(--navy);">Only your team can access them.</strong>
         </p>
         <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid #e2e8f0;">
           <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
             <span class="tag-pill">MSAL</span>
             <span class="tag-pill">Entra ID</span>
+            <span class="tag-pill">LLM Agents</span>
             <span class="tag-pill">Azure Static Web Apps</span>
             <span class="tag-pill">SharePoint</span>
           </div>
@@ -855,7 +891,7 @@
       </div>
 
       <!-- Card C: Website Development -->
-      <div class="service-card fade-up d4">
+      <div class="service-card fade-up d3">
         <div class="card-icon" aria-hidden="true">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
@@ -873,13 +909,40 @@
         </div>
       </div>
 
+      <!-- Card D: AI-Enhanced Solution Delivery -->
+      <div class="service-card fade-up d4">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1h1a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v3a4 4 0 0 1-8 0v-3H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1V6a4 4 0 0 1 4-4z"/></svg>
+        </div>
+        <h3 style="font-size:1.28rem; font-weight:700; color:var(--navy); margin-bottom:0.65rem;">AI-Enhanced Solution Delivery</h3>
+        <p style="color:#64748b; line-height:1.78; font-size:0.93rem; margin-bottom:1rem;">
+          We embed AI into your Microsoft&nbsp;365 solutions — not as a bolt-on, but as part of how your apps work. Every implementation stays inside your tenant with the security and control your organization requires.
+        </p>
+        <ul style="color:#64748b; line-height:1.75; font-size:0.9rem; padding-left:1.1rem; margin:0 0 1.25rem; list-style:disc;">
+          <li style="margin-bottom:0.45rem;"><strong style="color:var(--navy);">AI-Integrated Workflows</strong> — Intelligent intake, routing, and decision automation with Power Automate and AI Builder</li>
+          <li style="margin-bottom:0.45rem;"><strong style="color:var(--navy);">AI Agent Applications</strong> — Custom MSAL-secured apps with LLM-powered assistants tailored to your processes</li>
+          <li><strong style="color:var(--navy);">Automation-Driven Accuracy</strong> — Document parsing, validation, and structured data extraction that reduces manual errors</li>
+        </ul>
+        <div style="padding-top:1.25rem; border-top:1px solid #e2e8f0;">
+          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="tag-pill">Azure OpenAI</span>
+            <span class="tag-pill">Copilot Studio</span>
+            <span class="tag-pill">Semantic Kernel</span>
+            <span class="tag-pill">RAG Pipelines</span>
+            <span class="tag-pill">LangChain</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- Use-case chips -->
     <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.65rem;" class="fade-up d2">
       <span class="use-case-chip">Employee Portals</span>
+      <span class="use-case-chip">AI-Assisted Intake</span>
       <span class="use-case-chip">Project Dashboards</span>
-      <span class="use-case-chip">Intake Forms</span>
+      <span class="use-case-chip">Smart Routing</span>
+      <span class="use-case-chip">Document Processing</span>
       <span class="use-case-chip">Approval Workflows</span>
       <span class="use-case-chip">BI Reporting</span>
     </div>
@@ -889,9 +952,74 @@
 
 
 <!-- ═══════════════════════════════════════════════════
+     TECHNOLOGY STACK
+═══════════════════════════════════════════════════ -->
+<section id="tech-stack" style="background:var(--gray-light); padding:5.5rem 0;" aria-labelledby="tech-stack-heading">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-14 fade-up">
+      <span class="section-label">How We Build</span>
+      <h2 id="tech-stack-heading" class="section-title">Technology Stack</h2>
+      <p style="color:#64748b; max-width:560px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
+        N-FINIT DEVELOPMENT combines Microsoft-native platforms with modern AI frameworks and proven integration patterns — all deployed inside your tenant.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-7">
+
+      <div class="stack-group fade-up">
+        <h3>Microsoft Platform</h3>
+        <p>The foundation every solution is built on — native to your Microsoft&nbsp;365 environment.</p>
+        <div class="stack-tags">
+          <span class="tag-pill">Power Apps</span>
+          <span class="tag-pill">Power Automate</span>
+          <span class="tag-pill">Power BI</span>
+          <span class="tag-pill">Dataverse</span>
+          <span class="tag-pill">SharePoint</span>
+          <span class="tag-pill">Microsoft Graph</span>
+          <span class="tag-pill">Azure Static Web Apps</span>
+        </div>
+      </div>
+
+      <div class="stack-group fade-up d2">
+        <h3>AI Frameworks &amp; Agents</h3>
+        <p>LLM-powered capabilities integrated responsibly — with your data staying in your control.</p>
+        <div class="stack-tags">
+          <span class="tag-pill">Azure OpenAI</span>
+          <span class="tag-pill">Copilot Studio</span>
+          <span class="tag-pill">AI Builder</span>
+          <span class="tag-pill">Semantic Kernel</span>
+          <span class="tag-pill">LangChain</span>
+          <span class="tag-pill">LLM Agents</span>
+          <span class="tag-pill">RAG Pipelines</span>
+          <span class="tag-pill">Prompt Engineering</span>
+        </div>
+      </div>
+
+      <div class="stack-group fade-up d3">
+        <h3>Integration &amp; Security Patterns</h3>
+        <p>Enterprise-grade authentication, data access, and workflow connectivity built in from day one.</p>
+        <div class="stack-tags">
+          <span class="tag-pill">MSAL / Entra ID</span>
+          <span class="tag-pill">SharePoint Lists</span>
+          <span class="tag-pill">REST APIs</span>
+          <span class="tag-pill">Webhooks</span>
+          <span class="tag-pill">Event-Driven Flows</span>
+          <span class="tag-pill">OAuth 2.0</span>
+          <span class="tag-pill">Tenant Isolation</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
      PRODUCT GALLERY
 ═══════════════════════════════════════════════════ -->
-<section id="portfolio" style="background:var(--gray-light); padding:5.5rem 0;" aria-labelledby="portfolio-heading">
+<section id="portfolio" style="background:#fff; padding:5.5rem 0;" aria-labelledby="portfolio-heading">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
 
     <div class="text-center mb-14 fade-up">
@@ -1132,6 +1260,14 @@
         <div>
           <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem;">Fast, Lean Delivery</h3>
           <p style="color:#64748b; line-height:1.75; font-size:0.93rem;">Most projects delivered in <strong style="color:var(--accent);">2–8 weeks</strong>. No enterprise overhead. Just clean, working software.</p>
+        </div>
+      </div>
+
+      <div class="why-row fade-up d4">
+        <div class="why-icon" aria-hidden="true">🤖</div>
+        <div>
+          <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem;">AI Where It Earns Its Keep</h3>
+          <p style="color:#64748b; line-height:1.75; font-size:0.93rem;">We apply AI to accelerate delivery and improve accuracy — integrated workflows, custom agent apps, and intelligent automation — without compromising tenant security or data ownership.</p>
         </div>
       </div>
     </div>
@@ -1491,7 +1627,7 @@
           <img src="N-FNIT%20Logo.png?v=2" alt="N-FINIT DEVELOPMENT" style="height:42px; width:auto;" />
         </div>
         <p style="color:rgba(255,255,255,0.38); font-size:0.85rem; line-height:1.7; max-width:270px;">
-          To empower organizations with purpose-built software — delivered simply, securely, and affordably.
+          To empower organizations with AI-enhanced, purpose-built software — delivered simply, securely, and affordably.
         </p>
       </div>
 
