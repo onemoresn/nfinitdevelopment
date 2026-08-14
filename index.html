@@ -472,6 +472,36 @@
 
     /* ─── CONTACT ──────────────────────────────────────────── */
     #contact { background: var(--accent); }
+    .use-type-toggle {
+      display: inline-flex;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 4px;
+      gap: 2px;
+      margin-bottom: 1.75rem;
+    }
+    .use-type-toggle button {
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.65);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.45rem 1.35rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      line-height: 1;
+    }
+    .use-type-toggle button.active {
+      background: #fff;
+      color: var(--accent-dark);
+    }
+    .use-type-toggle button:focus-visible {
+      outline: 2px solid rgba(255,255,255,0.7);
+      outline-offset: 2px;
+    }
     .form-field {
       width: 100%;
       padding: 0.78rem 1rem;
@@ -1571,13 +1601,21 @@
 
     <!-- Form -->
     <div id="form-wrap" class="fade-up d1">
+      <!-- Business / Personal toggle -->
+      <div style="text-align:center;">
+        <div class="use-type-toggle" role="group" aria-label="Use type">
+          <button type="button" id="toggle-business" class="active" aria-pressed="true">Business</button>
+          <button type="button" id="toggle-personal" aria-pressed="false">Personal</button>
+        </div>
+      </div>
       <form id="contact-form" novalidate>
+        <input type="hidden" id="f-use-type" name="use_type" value="Business" />
         <div class="grid sm:grid-cols-2 gap-4 mb-4">
           <div>
             <label for="f-name" style="color:rgba(255,255,255,0.82); font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.38rem;">Name <span aria-hidden="true">*</span></label>
             <input type="text" id="f-name" name="name" class="form-field" placeholder="Your full name" required autocomplete="name" />
           </div>
-          <div>
+          <div id="f-org-wrap">
             <label for="f-org" style="color:rgba(255,255,255,0.82); font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.38rem;">Organization</label>
             <input type="text" id="f-org" name="organization" class="form-field" placeholder="Company or org name" autocomplete="organization" />
           </div>
@@ -1859,8 +1897,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var org = document.getElementById('f-org').value.trim();
     var returnUrl = location.origin + location.pathname + '?quote=sent#contact';
 
+    var useType = document.getElementById('f-use-type').value;
     ensureHiddenField('_next', returnUrl);
-    ensureHiddenField('_subject', 'Discovery Call Request from ' + name + (org ? ' \u2013 ' + org : ''));
+    ensureHiddenField('_subject', '[' + useType + '] Discovery Call Request from ' + name + (org ? ' \u2013 ' + org : ''));
     ensureHiddenField('_replyto', email);
     ensureHiddenField('_captcha', 'false');
     ensureHiddenField('_template', 'table');
@@ -1879,6 +1918,40 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById(id).addEventListener('input', function () {
       formErr.style.display = 'none';
     });
+  });
+
+  /* ── BUSINESS / PERSONAL TOGGLE ────────────────── */
+  var toggleBusiness = document.getElementById('toggle-business');
+  var togglePersonal = document.getElementById('toggle-personal');
+  var orgWrap        = document.getElementById('f-org-wrap');
+  var useTypeInput   = document.getElementById('f-use-type');
+  var msgField       = document.getElementById('f-msg');
+  var emailField     = document.getElementById('f-email');
+  var BIZ_PLACEHOLDER = "Describe your project, current challenge, or what you're hoping to automate...";
+  var PER_PLACEHOLDER = "Tell us about what you're looking to build or solve...";
+  var BIZ_EMAIL_PH    = "you@yourorganization.com";
+  var PER_EMAIL_PH    = "you@example.com";
+
+  toggleBusiness.addEventListener('click', function () {
+    toggleBusiness.classList.add('active');
+    toggleBusiness.setAttribute('aria-pressed', 'true');
+    togglePersonal.classList.remove('active');
+    togglePersonal.setAttribute('aria-pressed', 'false');
+    orgWrap.style.display = '';
+    useTypeInput.value = 'Business';
+    msgField.placeholder = BIZ_PLACEHOLDER;
+    emailField.placeholder = BIZ_EMAIL_PH;
+  });
+
+  togglePersonal.addEventListener('click', function () {
+    togglePersonal.classList.add('active');
+    togglePersonal.setAttribute('aria-pressed', 'true');
+    toggleBusiness.classList.remove('active');
+    toggleBusiness.setAttribute('aria-pressed', 'false');
+    orgWrap.style.display = 'none';
+    useTypeInput.value = 'Personal';
+    msgField.placeholder = PER_PLACEHOLDER;
+    emailField.placeholder = PER_EMAIL_PH;
   });
 
   /* ── PAYMENT MODAL ──────────────────────────────── */
