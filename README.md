@@ -35,7 +35,7 @@ DevTest/
 | 3 | Trust Bar | _(below hero)_ |
 | 4 | Services — What We Build | `#services` |
 | 5 | Why KaviTek | `#why-kavitek` |
-| 6 | Pricing | `#pricing` |
+| 6 | Packages | `#packages` |
 | 7 | How It Works | `#how-it-works` |
 | 8 | Who We Serve | `#about` |
 | 9 | Contact / Quote Form | `#contact` |
@@ -50,7 +50,7 @@ DevTest/
 - **Animated hero background** — canvas-based particle network (no library)
 - **Scroll animations** — `IntersectionObserver` fade-in-up on all sections and cards
 - **Hover effects** — lift + shadow on all cards and buttons
-- **Pricing cards** — "Most Popular" badge on Business tier; all three link to the contact form
+- **Package cards** — "Most Popular" badge on Business tier; all tiers link to the contact form
 - **7-step process stepper** — horizontal on desktop, vertical list on mobile
 - **Contact form** — client-side validation (name, email format, message); shows a success message on submit; no backend required
 - **Fully responsive** — mobile, tablet, and desktop breakpoints via Tailwind
@@ -106,7 +106,7 @@ Then navigate to `http://localhost:8080`.
 All content is inline in `index.html`. Key areas to update:
 
 - **Business details** — search for `Spotsylvania` to find location references
-- **Pricing figures** — update inside the `#pricing` section cards
+- **Package tiers** — update inside the `#packages` section cards
 - **Color palette** — CSS custom properties are declared in the `:root` block near the top of the `<style>` tag
 - **Contact form action** — the form is UI-only; wire up the `submit` handler in the `<script>` block to your preferred backend (e.g., Formspree, EmailJS, Azure Function)
 
