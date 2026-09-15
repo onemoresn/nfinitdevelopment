@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Download — N-FINIT DEVELOPMENT</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --navy:#0d1b2a; --accent:#2b5797; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, sans-serif;
+      background: #f5f7fa;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      max-width: 480px;
+      width: 100%;
+      padding: 2.25rem 2rem 2rem;
+      box-shadow: 0 18px 52px rgba(13,27,42,0.1);
+      text-align: center;
+    }
+    img.logo { height: 42px; width: auto; margin-bottom: 1.4rem; }
+    h1 { font-size: 1.35rem; margin: 0 0 0.6rem; letter-spacing: -0.02em; }
+    p { color: #64748b; font-size: 0.95rem; line-height: 1.7; margin: 0 0 1rem; }
+    .note { font-size: 0.8rem; color: #b45309; font-weight: 600; }
+    .home { display: inline-block; margin-top: 1.25rem; color: var(--accent); font-weight: 700; font-size: 0.9rem; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <a href="index.html"><img class="logo" src="N-FNIT%20Logo.png?v=2" alt="N-FINIT DEVELOPMENT" /></a>
+    <h1 id="title">Preparing your download</h1>
+    <p id="message">If you just completed checkout, your Windows installer should start downloading automatically.</p>
+    <p class="note">Windows only &mdash; not available for Mac.</p>
+    <a class="home" href="index.html">Return to homepage</a>
+  </div>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var product = (params.get('product') || '').toLowerCase();
+      var session = params.get('session_id') || params.get('checkout_session_id') || '';
+      var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+      var paid = /^cs_(test|live)_/.test(session) && session.length > 20;
+      var files = {
+        orion: {
+          name: 'Orion-Setup-1.0.0.exe',
+          label: 'Orion'
+        },
+        mapplot: {
+          name: 'MapPlot-Setup-1.0.0.exe',
+          label: 'Map Plot'
+        }
+      };
+      var item = files[product];
+      var title = document.getElementById('title');
+      var message = document.getElementById('message');
+
+      if (!item || (!isLocal && !paid)) {
+        title.textContent = 'Download unavailable';
+        message.textContent = 'This page is only used after a completed Stripe checkout. Please return to Products to purchase.';
+        return;
+      }
+
+      var fileUrl = (isLocal ? 'downloads/' : 'https://github.com/onemoresn/nfinitdevelopment/raw/main/downloads/') + item.name;
+      title.textContent = 'Thank you for your purchase';
+      message.textContent = 'Your ' + item.label + ' Windows installer is starting. Keep this window open until the download begins.';
+      window.setTimeout(function () {
+        window.location.assign(fileUrl);
+      }, 600);
+    })();
+  </script>
+</body>
+</html>

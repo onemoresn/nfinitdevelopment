@@ -446,7 +446,6 @@
               data-desc="Windows desktop companion that chats with Google’s Gemma 4 on your PC through Ollama — no account required."
               data-stripe-key="orion"
               data-platform="windows"
-              data-download="https://github.com/onemoresn/nfinitdevelopment/raw/main/downloads/Orion-Setup-1.0.0.exe"
               style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Buy Now &middot; $9.99</button>
           </div>
         </div>
@@ -511,7 +510,6 @@
               data-desc="Real-time interactive staff map for team ice breakers. Participants pin where they’re from on a live map — Windows download only."
               data-stripe-key="mapplot"
               data-platform="windows"
-              data-download="https://github.com/onemoresn/nfinitdevelopment/raw/main/downloads/MapPlot-Setup-1.0.0.exe"
               style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Buy Now &middot; $9.99</button>
           </div>
         </div>
@@ -644,8 +642,6 @@
         <span id="modal-btn-text">Get a Free Quote</span>
       </a>
 
-      <a id="modal-download-link" href="#" download style="display:none; text-align:center; font-size:0.84rem; font-weight:700; color:#2b5797; margin:0.15rem 0 0.7rem;">Download Windows installer (.exe)</a>
-
       <p id="modal-footer-note" style="color:#94a3b8; font-size:0.72rem; text-align:center; line-height:1.65; margin-top:0.85rem;">
         To purchase, contact the developer directly via the <strong style="color:#2b5797;">Get a Free Quote</strong> form and we&rsquo;ll follow up within 1 business day.
       </p>
@@ -752,7 +748,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var payWindowsNote   = document.getElementById('modal-windows-note');
   var payReceiveQuote  = document.getElementById('modal-receive-quote');
   var payReceivePaid   = document.getElementById('modal-receive-paid');
-  var payDownloadLink  = document.getElementById('modal-download-link');
   var payFooterNote    = document.getElementById('modal-footer-note');
 
   function isLiveStripe(url) {
@@ -764,7 +759,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var stripeUrl = STRIPE_LINKS[key];
     var paid      = isLiveStripe(stripeUrl);
     var windows   = btn.getAttribute('data-platform') === 'windows';
-    var download  = btn.getAttribute('data-download');
 
     payModalName.textContent  = btn.getAttribute('data-name');
     payModalPrice.textContent = btn.getAttribute('data-price');
@@ -778,10 +772,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (paid) {
       payBtnText.textContent = 'Pay with Stripe';
       payStripeBtn.setAttribute('href', stripeUrl);
-      payStripeBtn.setAttribute('target', '_blank');
-      payStripeBtn.setAttribute('rel', 'noopener noreferrer');
+      payStripeBtn.removeAttribute('target');
+      payStripeBtn.removeAttribute('rel');
       payStripeBtn.setAttribute('aria-label', 'Pay with Stripe');
-      payFooterNote.innerHTML = 'After checkout, download the <strong style="color:#2b5797;">Windows installer (.exe)</strong>. This product is not available for Mac.';
+      payFooterNote.innerHTML = 'Your Windows installer will download automatically after payment. This product is not available for Mac.';
     } else {
       payBtnText.textContent = 'Get a Free Quote';
       payStripeBtn.setAttribute('href', 'index.html#contact');
@@ -789,18 +783,6 @@ document.addEventListener('DOMContentLoaded', function () {
       payStripeBtn.removeAttribute('rel');
       payStripeBtn.setAttribute('aria-label', 'Get a free quote via contact form');
       payFooterNote.innerHTML = 'To purchase, contact the developer directly via the <strong style="color:#2b5797;">Get a Free Quote</strong> form and we&rsquo;ll follow up within 1 business day.';
-    }
-
-    if (paid && download) {
-      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-        download = 'downloads/' + download.split('/').pop();
-      }
-      payDownloadLink.setAttribute('href', download);
-      payDownloadLink.setAttribute('download', download.split('/').pop());
-      payDownloadLink.style.display = 'block';
-    } else {
-      payDownloadLink.removeAttribute('href');
-      payDownloadLink.style.display = 'none';
     }
 
     payModal.classList.add('open');
