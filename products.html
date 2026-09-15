@@ -23,7 +23,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products — N-FINIT DEVELOPMENT</title>
   <link rel="icon" href="data:,">
-  <meta name="description" content="Browse N-FINIT DEVELOPMENT's ready-made, production-ready software apps. One-time purchase, no subscriptions. Jeopardy, Map Plot, Service Request, Taekwondo." />
+  <meta name="description" content="Browse N-FINIT DEVELOPMENT's ready-made, production-ready software apps. One-time purchase, no subscriptions. Orion, Map Plot, Jeopardy, Service Request, Taekwondo." />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -232,6 +232,21 @@
       color: #94a3b8;
       margin-top: 0.2rem;
     }
+    .windows-note {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #b45309;
+      margin-top: 0.35rem;
+      line-height: 1.4;
+    }
+    .prod-card-media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 45%, #16352f 0%, #0b1a18 70%);
+    }
 
     /* ─── PAYMENT MODAL ────────────────────────────────────── */
     #payment-modal {
@@ -387,7 +402,7 @@
       Download Our Apps
     </h1>
     <p style="font-size:clamp(0.97rem, 2vw, 1.1rem); color:rgba(255,255,255,0.7); max-width:600px; margin:0 auto; line-height:1.8;">
-      Four pre-built, production-ready applications available for immediate purchase. One-time price &mdash; no subscriptions. We&rsquo;ll send your download link and setup guide within one business day.
+      Five pre-built, production-ready applications available for immediate purchase. One-time price &mdash; no subscriptions. Windows desktop apps include an instant .exe download after checkout.
     </p>
   </div>
 </section>
@@ -400,6 +415,42 @@
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+      <!-- ── Orion ──────────────────────────────────────── -->
+      <div class="prod-card fade-up">
+        <div class="prod-card-media" aria-hidden="true">
+          <img src="OrionIcon.png" alt="" style="width:96px; height:96px; border-radius:22px; box-shadow:0 12px 32px rgba(0,0,0,0.35);" />
+        </div>
+        <div class="prod-card-body">
+          <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+            <div class="prod-card-icon" style="border:1px solid var(--gray-border);" aria-hidden="true">
+              <img src="OrionIcon.png" alt="" style="width:100%; height:100%; object-fit:contain;" />
+            </div>
+            <h2 style="font-size:0.96rem; font-weight:700; color:var(--navy); line-height:1.35; margin:0;">Orion</h2>
+          </div>
+          <p style="color:#64748b; font-size:0.84rem; line-height:1.75; flex:1; margin-bottom:1rem;">Windows desktop companion that chats with Google&rsquo;s Gemma 4 on your PC through Ollama &mdash; no account required. Ask questions, attach screenshots, and build simple pages with a live preview.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+            <span class="tag-pill">Desktop App</span>
+            <span class="tag-pill">Windows</span>
+            <span class="tag-pill">AI Chat</span>
+          </div>
+          <div style="border-top:1px solid var(--gray-border); padding-top:1.1rem; margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;">
+            <div>
+              <div class="prod-price">$9.99</div>
+              <div class="prod-price-note">one-time purchase</div>
+              <div class="windows-note">Windows download only &mdash; not available for Mac</div>
+            </div>
+            <button class="btn-primary product-buy-btn"
+              data-name="Orion"
+              data-price="$9.99"
+              data-desc="Windows desktop companion that chats with Google’s Gemma 4 on your PC through Ollama — no account required."
+              data-stripe-key="orion"
+              data-platform="windows"
+              data-download="https://github.com/onemoresn/nfinitdevelopment/raw/main/downloads/Orion-Setup-1.0.0.exe"
+              style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Buy Now &middot; $9.99</button>
+          </div>
+        </div>
+      </div>
 
       <!-- ── Jeopardy Employee Engagement App ───────────── -->
       <div class="prod-card fade-up">
@@ -444,20 +495,23 @@
           </div>
           <p style="color:#64748b; font-size:0.84rem; line-height:1.75; flex:1; margin-bottom:1rem;">Interactive real-time map for team ice breakers &mdash; participants pin their location live from any device with a shared database keeping everyone in sync.</p>
           <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
-            <span class="tag-pill">Web App</span>
+            <span class="tag-pill">Desktop App</span>
+            <span class="tag-pill">Windows</span>
             <span class="tag-pill">Real-Time</span>
-            <span class="tag-pill">Employee Engagement</span>
           </div>
           <div style="border-top:1px solid var(--gray-border); padding-top:1.1rem; margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;">
             <div>
               <div class="prod-price">$9.99</div>
               <div class="prod-price-note">one-time purchase</div>
+              <div class="windows-note">Windows download only &mdash; not available for Mac</div>
             </div>
             <button class="btn-primary product-buy-btn"
               data-name="Map Plot App"
               data-price="$9.99"
-              data-desc="Interactive real-time map for team ice breakers — participants pin their location live from any device."
+              data-desc="Real-time interactive staff map for team ice breakers. Participants pin where they’re from on a live map — Windows download only."
               data-stripe-key="mapplot"
+              data-platform="windows"
+              data-download="https://github.com/onemoresn/nfinitdevelopment/raw/main/downloads/MapPlot-Setup-1.0.0.exe"
               style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Buy Now &middot; $9.99</button>
           </div>
         </div>
@@ -564,14 +618,23 @@
 
       <div style="background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:10px; padding:1rem 1.1rem; margin-bottom:1.5rem;">
         <div style="font-size:0.82rem; font-weight:700; color:var(--navy); margin-bottom:0.55rem;">What you&rsquo;ll receive:</div>
-        <div style="display:flex; flex-direction:column; gap:0.45rem;">
+        <div id="modal-receive-quote" style="display:flex; flex-direction:column; gap:0.45rem;">
           <div style="display:flex; align-items:center; gap:0.5rem; color:#475569; font-size:0.83rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Full source code (download link sent within 1 business day)</div>
           <div style="display:flex; align-items:center; gap:0.5rem; color:#475569; font-size:0.83rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Setup &amp; deployment guide</div>
           <div style="display:flex; align-items:center; gap:0.5rem; color:#475569; font-size:0.83rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 30-day email support</div>
         </div>
+        <div id="modal-receive-paid" style="display:none; flex-direction:column; gap:0.45rem;">
+          <div style="display:flex; align-items:center; gap:0.5rem; color:#475569; font-size:0.83rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Windows installer (.exe)</div>
+          <div style="display:flex; align-items:center; gap:0.5rem; color:#475569; font-size:0.83rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Instant download after checkout</div>
+          <div style="display:flex; align-items:center; gap:0.5rem; color:#475569; font-size:0.83rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 30-day email support</div>
+        </div>
       </div>
 
-      <div style="background:#fff8e1; border:1.5px solid #f59e0b; border-radius:8px; padding:0.65rem 0.9rem; margin-bottom:1.1rem; display:flex; align-items:flex-start; gap:0.5rem;">
+      <div id="modal-windows-note" style="display:none; background:#fff8e1; border:1.5px solid #f59e0b; border-radius:8px; padding:0.65rem 0.9rem; margin-bottom:1.1rem;">
+        <span style="color:#92400e; font-size:0.78rem; line-height:1.55;"><strong>Windows only.</strong> This is a Windows .exe download and is not available for Mac.</span>
+      </div>
+
+      <div id="modal-unavailable" style="background:#fff8e1; border:1.5px solid #f59e0b; border-radius:8px; padding:0.65rem 0.9rem; margin-bottom:1.1rem; display:flex; align-items:flex-start; gap:0.5rem;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2" style="flex-shrink:0; margin-top:1px;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         <span style="color:#92400e; font-size:0.78rem; line-height:1.55;"><strong>Online checkout is temporarily unavailable.</strong> Stripe payments are not yet active.</span>
       </div>
@@ -581,7 +644,9 @@
         <span id="modal-btn-text">Get a Free Quote</span>
       </a>
 
-      <p style="color:#94a3b8; font-size:0.72rem; text-align:center; line-height:1.65; margin-top:0.85rem;">
+      <a id="modal-download-link" href="#" download style="display:none; text-align:center; font-size:0.84rem; font-weight:700; color:#2b5797; margin:0.15rem 0 0.7rem;">Download Windows installer (.exe)</a>
+
+      <p id="modal-footer-note" style="color:#94a3b8; font-size:0.72rem; text-align:center; line-height:1.65; margin-top:0.85rem;">
         To purchase, contact the developer directly via the <strong style="color:#2b5797;">Get a Free Quote</strong> form and we&rsquo;ll follow up within 1 business day.
       </p>
     </div>
@@ -669,25 +734,75 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ── PAYMENT MODAL ──────────────────────────────── */
   var STRIPE_LINKS = {
+    'orion':      'https://buy.stripe.com/aFafZia7ffy1bZLaWl2Ji03',
+    'mapplot':    'https://buy.stripe.com/6oUaEY5QZdpT0h36G52Ji02',
     'jeopardy':   'https://buy.stripe.com/REPLACE_WITH_JEOPARDY_LINK',
-    'mapplot':    'https://buy.stripe.com/REPLACE_WITH_MAPPLOT_LINK',
     'servicereq': 'https://buy.stripe.com/REPLACE_WITH_SERVICEREQ_LINK',
     'taekwondo':  'https://buy.stripe.com/REPLACE_WITH_TAEKWONDO_LINK'
   };
 
-  var payModal      = document.getElementById('payment-modal');
-  var payModalClose = document.getElementById('modal-close-btn');
-  var payModalName  = document.getElementById('modal-product-name');
-  var payModalPrice = document.getElementById('modal-price');
-  var payModalDesc  = document.getElementById('modal-desc');
-  var payStripeBtn  = document.getElementById('modal-stripe-btn');
-  var payBtnText    = document.getElementById('modal-btn-text');
+  var payModal         = document.getElementById('payment-modal');
+  var payModalClose    = document.getElementById('modal-close-btn');
+  var payModalName     = document.getElementById('modal-product-name');
+  var payModalPrice    = document.getElementById('modal-price');
+  var payModalDesc     = document.getElementById('modal-desc');
+  var payStripeBtn     = document.getElementById('modal-stripe-btn');
+  var payBtnText       = document.getElementById('modal-btn-text');
+  var payUnavailable   = document.getElementById('modal-unavailable');
+  var payWindowsNote   = document.getElementById('modal-windows-note');
+  var payReceiveQuote  = document.getElementById('modal-receive-quote');
+  var payReceivePaid   = document.getElementById('modal-receive-paid');
+  var payDownloadLink  = document.getElementById('modal-download-link');
+  var payFooterNote    = document.getElementById('modal-footer-note');
+
+  function isLiveStripe(url) {
+    return url && url.indexOf('buy.stripe.com') !== -1 && url.indexOf('REPLACE_WITH_') === -1;
+  }
 
   function openPayModal(btn) {
+    var key       = btn.getAttribute('data-stripe-key');
+    var stripeUrl = STRIPE_LINKS[key];
+    var paid      = isLiveStripe(stripeUrl);
+    var windows   = btn.getAttribute('data-platform') === 'windows';
+    var download  = btn.getAttribute('data-download');
+
     payModalName.textContent  = btn.getAttribute('data-name');
     payModalPrice.textContent = btn.getAttribute('data-price');
     payModalDesc.textContent  = btn.getAttribute('data-desc');
-    payBtnText.textContent    = 'Get a Free Quote';
+
+    payReceiveQuote.style.display = paid ? 'none' : 'flex';
+    payReceivePaid.style.display  = paid ? 'flex' : 'none';
+    payUnavailable.style.display  = paid ? 'none' : 'flex';
+    payWindowsNote.style.display  = windows ? 'block' : 'none';
+
+    if (paid) {
+      payBtnText.textContent = 'Pay with Stripe';
+      payStripeBtn.setAttribute('href', stripeUrl);
+      payStripeBtn.setAttribute('target', '_blank');
+      payStripeBtn.setAttribute('rel', 'noopener noreferrer');
+      payStripeBtn.setAttribute('aria-label', 'Pay with Stripe');
+      payFooterNote.innerHTML = 'After checkout, download the <strong style="color:#2b5797;">Windows installer (.exe)</strong>. This product is not available for Mac.';
+    } else {
+      payBtnText.textContent = 'Get a Free Quote';
+      payStripeBtn.setAttribute('href', 'index.html#contact');
+      payStripeBtn.removeAttribute('target');
+      payStripeBtn.removeAttribute('rel');
+      payStripeBtn.setAttribute('aria-label', 'Get a free quote via contact form');
+      payFooterNote.innerHTML = 'To purchase, contact the developer directly via the <strong style="color:#2b5797;">Get a Free Quote</strong> form and we&rsquo;ll follow up within 1 business day.';
+    }
+
+    if (paid && download) {
+      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+        download = 'downloads/' + download.split('/').pop();
+      }
+      payDownloadLink.setAttribute('href', download);
+      payDownloadLink.setAttribute('download', download.split('/').pop());
+      payDownloadLink.style.display = 'block';
+    } else {
+      payDownloadLink.removeAttribute('href');
+      payDownloadLink.style.display = 'none';
+    }
+
     payModal.classList.add('open');
     document.body.style.overflow = 'hidden';
     payModalClose.focus();
@@ -703,6 +818,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   if (payStripeBtn) payStripeBtn.addEventListener('click', function (e) {
+    if (isLiveStripe(payStripeBtn.getAttribute('href'))) return;
     e.preventDefault();
     closePayModal();
     setTimeout(function () {
