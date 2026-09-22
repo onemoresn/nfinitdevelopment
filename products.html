@@ -204,6 +204,45 @@
       margin-bottom: 0.5rem;
       display: block;
     }
+    .catalog-heading { margin: 0 0 2rem; }
+    #apps, #websites { scroll-margin-top: 5.5rem; }
+    .catalog-heading h2 {
+      font-size: clamp(1.45rem, 3vw, 1.9rem);
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin: 0.25rem 0 0.45rem;
+    }
+    .catalog-heading p {
+      color: #64748b;
+      font-size: 0.97rem;
+      line-height: 1.7;
+      max-width: 38rem;
+      margin: 0;
+    }
+    .catalog-divider {
+      border: 0;
+      height: 1px;
+      background: var(--gray-border);
+      margin: 3.75rem 0 2.75rem;
+    }
+    .hero-jump {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1.6rem;
+    }
+    .hero-jump a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 999px;
+      padding: 0.5rem 1.05rem;
+    }
+    .hero-jump a:hover { background: rgba(255,255,255,0.1); }
 
     /* ─── TAG PILLS ────────────────────────────────────────── */
     .tag-pill {
@@ -429,11 +468,15 @@
   <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
     <span class="section-label">Ready-Made Software</span>
     <h1 id="products-page-heading" style="font-size:clamp(2rem, 5vw, 3.2rem); font-weight:900; color:#fff; line-height:1.1; letter-spacing:-0.03em; margin:0.5rem 0 1.2rem;">
-      Download Our Apps
+      Apps &amp; Website Templates
     </h1>
     <p style="font-size:clamp(0.97rem, 2vw, 1.1rem); color:rgba(255,255,255,0.7); max-width:600px; margin:0 auto; line-height:1.8;">
-      Ready-made apps and website templates. View the live demos below, then request a quote to purchase and brand a site for your business.
+      Purpose-built apps and SaaS tools are listed separately from branded website templates. Browse the catalog that fits what you need.
     </p>
+    <div class="hero-jump">
+      <a href="#apps">Apps &amp; SaaS</a>
+      <a href="#websites">Website Templates</a>
+    </div>
   </div>
 </section>
 
@@ -441,8 +484,14 @@
 <!-- ═══════════════════════════════════════════════════
      PRODUCTS GRID
 ═══════════════════════════════════════════════════ -->
-<section style="background:var(--gray-light); padding:4rem 0 6rem;" aria-label="All products">
+<section style="background:var(--gray-light); padding:4rem 0 6rem;" aria-label="Product catalog">
   <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="catalog-heading fade-up" id="apps">
+      <span class="section-label" style="color:var(--accent);">Apps &amp; SaaS</span>
+      <h2>Applications</h2>
+      <p>Desktop and web apps for operations, engagement, and day-to-day work. One-time purchase or request a quote.</p>
+    </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
 
@@ -605,6 +654,18 @@
           </div>
         </div>
       </div>
+
+    </div>
+
+    <hr class="catalog-divider" />
+
+    <div class="catalog-heading fade-up" id="websites">
+      <span class="section-label" style="color:var(--accent);">Websites</span>
+      <h2>Website Templates</h2>
+      <p>Ready-made business sites you can view live, then request a quote to purchase and brand for your company.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
 
       <!-- ── Photographer Website ────────────────────────── -->
       <div class="prod-card fade-up">
