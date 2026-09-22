@@ -23,7 +23,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products — N-FINIT DEVELOPMENT</title>
   <link rel="icon" href="data:,">
-  <meta name="description" content="Browse N-FINIT DEVELOPMENT's ready-made, production-ready software apps. One-time purchase, no subscriptions. Orion, Map Plot, Jeopardy, Service Request, Taekwondo." />
+  <meta name="description" content="Browse N-FINIT DEVELOPMENT ready-made apps and website templates. Photographer, landscaping, and steakhouse sites available to view and request a quote." />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -128,6 +128,36 @@
     }
     .btn-primary:active { transform: translateY(0); }
     .btn-primary:focus-visible { outline: 3px solid #7fb3ff; outline-offset: 3px; }
+    .btn-outline {
+      background: #fff;
+      color: var(--accent);
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      padding: 0.6rem 1.1rem;
+      border-radius: 7px;
+      border: 1.5px solid #c5d4ea;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.87rem;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+    .btn-outline:hover { border-color: var(--accent); background: #f4f7fb; }
+    .prod-card-cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      background: #0b1a18;
+    }
+    .prod-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: flex-end;
+      align-items: center;
+    }
 
     /* ─── HAMBURGER ────────────────────────────────────────── */
     .hamburger {
@@ -402,7 +432,7 @@
       Download Our Apps
     </h1>
     <p style="font-size:clamp(0.97rem, 2vw, 1.1rem); color:rgba(255,255,255,0.7); max-width:600px; margin:0 auto; line-height:1.8;">
-      Five pre-built, production-ready applications available for immediate purchase. One-time price &mdash; no subscriptions. Windows desktop apps include an instant .exe download after checkout.
+      Ready-made apps and website templates. View the live demos below, then request a quote to purchase and brand a site for your business.
     </p>
   </div>
 </section>
@@ -576,6 +606,114 @@
         </div>
       </div>
 
+      <!-- ── Photographer Website ────────────────────────── -->
+      <div class="prod-card fade-up">
+        <a href="templates/photographer/index.html" target="_blank" rel="noopener noreferrer">
+          <img class="prod-card-cover" src="templates/photographer/assets/hero_cinematic.png" alt="Photographer website preview" />
+        </a>
+        <div class="prod-card-body">
+          <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+            <div class="prod-card-icon" style="background:linear-gradient(135deg,#1a1208,#c5922c);" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <h2 style="font-size:0.96rem; font-weight:700; color:var(--navy); line-height:1.35; margin:0;">Photographer Website</h2>
+          </div>
+          <p style="color:#64748b; font-size:0.84rem; line-height:1.75; flex:1; margin-bottom:1rem;">Luxury photography studio template with cinematic gallery, services, and pricing. Built for portraits, weddings, and editorial work.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+            <span class="tag-pill">Website</span>
+            <span class="tag-pill">Photography</span>
+            <span class="tag-pill">Template</span>
+          </div>
+          <div style="border-top:1px solid var(--gray-border); padding-top:1.1rem; margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;">
+            <div>
+              <div class="prod-price">Request Quote</div>
+              <div class="prod-price-note">one-time purchase</div>
+            </div>
+            <div class="prod-actions">
+              <a href="templates/photographer/index.html" class="btn-outline" target="_blank" rel="noopener noreferrer">View Site</a>
+              <button class="btn-primary product-buy-btn"
+                data-name="Photographer Website"
+                data-price="Request Quote"
+                data-desc="Luxury photography studio website template with cinematic gallery, services, and pricing."
+                data-stripe-key="photographer"
+                style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Request Quote</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Landscaping Website ─────────────────────────── -->
+      <div class="prod-card fade-up">
+        <a href="templates/landscaping/index.html" target="_blank" rel="noopener noreferrer">
+          <img class="prod-card-cover" src="templates/landscaping/images/hero-landscape.jpg" alt="Landscaping website preview" />
+        </a>
+        <div class="prod-card-body">
+          <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+            <div class="prod-card-icon" style="background:linear-gradient(135deg,#14241a,#2f6b45);" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M12 22c4-4 7-8 7-12a7 7 0 1 0-14 0c0 4 3 8 7 12z"/><circle cx="12" cy="10" r="2"/></svg>
+            </div>
+            <h2 style="font-size:0.96rem; font-weight:700; color:var(--navy); line-height:1.35; margin:0;">Landscaping Website</h2>
+          </div>
+          <p style="color:#64748b; font-size:0.84rem; line-height:1.75; flex:1; margin-bottom:1rem;">Verdant Edge landscaping template with service gallery and price ranges. Built for lawn care, hardscaping, and outdoor design companies.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+            <span class="tag-pill">Website</span>
+            <span class="tag-pill">Landscaping</span>
+            <span class="tag-pill">Template</span>
+          </div>
+          <div style="border-top:1px solid var(--gray-border); padding-top:1.1rem; margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;">
+            <div>
+              <div class="prod-price">Request Quote</div>
+              <div class="prod-price-note">one-time purchase</div>
+            </div>
+            <div class="prod-actions">
+              <a href="templates/landscaping/index.html" class="btn-outline" target="_blank" rel="noopener noreferrer">View Site</a>
+              <button class="btn-primary product-buy-btn"
+                data-name="Landscaping Website"
+                data-price="Request Quote"
+                data-desc="Landscaping business website template with service gallery and price ranges."
+                data-stripe-key="landscaping"
+                style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Request Quote</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Steakhouse Website ──────────────────────────── -->
+      <div class="prod-card fade-up">
+        <a href="templates/steakhouse/index.html" target="_blank" rel="noopener noreferrer">
+          <img class="prod-card-cover" src="templates/steakhouse/images/hero.png" alt="Steakhouse website preview" />
+        </a>
+        <div class="prod-card-body">
+          <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+            <div class="prod-card-icon" style="background:linear-gradient(135deg,#1b1512,#c45c2a);" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M4 11h16M6 11c0 5 3 9 6 9s6-4 6-9"/><path d="M8 7c1-2 2.5-3 4-3s3 1 4 3"/></svg>
+            </div>
+            <h2 style="font-size:0.96rem; font-weight:700; color:var(--navy); line-height:1.35; margin:0;">Steakhouse Website</h2>
+          </div>
+          <p style="color:#64748b; font-size:0.84rem; line-height:1.75; flex:1; margin-bottom:1rem;">Halden steakhouse template with a short menu, signature dishes, and a dark dining-room look. Built for restaurants that want a premium web presence.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:1.1rem;">
+            <span class="tag-pill">Website</span>
+            <span class="tag-pill">Restaurant</span>
+            <span class="tag-pill">Template</span>
+          </div>
+          <div style="border-top:1px solid var(--gray-border); padding-top:1.1rem; margin-top:auto; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;">
+            <div>
+              <div class="prod-price">Request Quote</div>
+              <div class="prod-price-note">one-time purchase</div>
+            </div>
+            <div class="prod-actions">
+              <a href="templates/steakhouse/index.html" class="btn-outline" target="_blank" rel="noopener noreferrer">View Site</a>
+              <button class="btn-primary product-buy-btn"
+                data-name="Steakhouse Website"
+                data-price="Request Quote"
+                data-desc="Premium steakhouse website template with menu, signature dishes, and restaurant branding."
+                data-stripe-key="steakhouse"
+                style="font-size:0.87rem; padding:0.6rem 1.1rem; white-space:nowrap; cursor:pointer;">Request Quote</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- Bottom CTA -->
@@ -730,11 +868,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ── PAYMENT MODAL ──────────────────────────────── */
   var STRIPE_LINKS = {
-    'orion':      'https://buy.stripe.com/aFafZia7ffy1bZLaWl2Ji03',
-    'mapplot':    'https://buy.stripe.com/6oUaEY5QZdpT0h36G52Ji02',
-    'jeopardy':   'https://buy.stripe.com/REPLACE_WITH_JEOPARDY_LINK',
-    'servicereq': 'https://buy.stripe.com/REPLACE_WITH_SERVICEREQ_LINK',
-    'taekwondo':  'https://buy.stripe.com/REPLACE_WITH_TAEKWONDO_LINK'
+    'orion':        'https://buy.stripe.com/aFafZia7ffy1bZLaWl2Ji03',
+    'mapplot':      'https://buy.stripe.com/6oUaEY5QZdpT0h36G52Ji02',
+    'jeopardy':     'https://buy.stripe.com/REPLACE_WITH_JEOPARDY_LINK',
+    'servicereq':   'https://buy.stripe.com/REPLACE_WITH_SERVICEREQ_LINK',
+    'taekwondo':    'https://buy.stripe.com/REPLACE_WITH_TAEKWONDO_LINK',
+    'photographer': 'https://buy.stripe.com/REPLACE_WITH_PHOTOGRAPHER_LINK',
+    'landscaping':  'https://buy.stripe.com/REPLACE_WITH_LANDSCAPING_LINK',
+    'steakhouse':   'https://buy.stripe.com/REPLACE_WITH_STEAKHOUSE_LINK'
   };
 
   var payModal         = document.getElementById('payment-modal');

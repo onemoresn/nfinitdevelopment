@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="/templates/steakhouse/" />
+  <title>Halden — Steakhouse Template Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#1b1512; --ember:#c45c2a; --paper:#f3ece3; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Outfit, sans-serif; background: var(--bg); color: var(--paper); }
+    .bar { background: #0d1b2a; font-size: 0.82rem; padding: 0.7rem 1.2rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .bar a { color: #9ec3ff; font-weight: 700; text-decoration: none; }
+    .hero { min-height: 78vh; background: linear-gradient(180deg, rgba(27,21,18,0.25), rgba(27,21,18,0.82)), url("images/hero.png") center/cover; display: flex; align-items: flex-end; padding: 4rem 8vw 3.2rem; }
+    h1, h2 { font-family: Fraunces, serif; }
+    h1 { font-size: clamp(2.4rem, 6vw, 5rem); margin: 0 0 0.6rem; }
+    section { padding: 4.2rem 8vw; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.1rem; }
+    .dish { background: #241c18; border-radius: 12px; overflow: hidden; }
+    .dish img { width: 100%; height: 170px; object-fit: cover; }
+    .dish div { padding: 1rem 1.05rem 1.15rem; }
+    .price { color: var(--ember); font-weight: 600; }
+    .cta { text-align: center; background: #140f0d; }
+    .cta a { display: inline-block; margin-top: 1rem; background: var(--ember); color: #fff; font-weight: 700; text-decoration: none; padding: 0.75rem 1.4rem; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <span>N-FINIT DEVELOPMENT template preview</span>
+    <span><a href="../../products.html">Back to products</a> · <a href="../../index.html#contact">Request a quote</a></span>
+  </div>
+  <header class="hero">
+    <div>
+      <p style="letter-spacing:0.16em; text-transform:uppercase; font-size:0.76rem;">New York · Est. 2016</p>
+      <h1>Fire, salt, and time.</h1>
+      <p style="max-width:36rem; line-height:1.7; opacity:0.9;">A charcoal dining room on Mercer Street. Whole animals, hardwood coals, and a short menu we know by heart.</p>
+    </div>
+  </header>
+  <section>
+    <h2>Less on the plate. More behind it.</h2>
+    <p style="max-width:40rem; line-height:1.75; color:#d7c8b8;">We buy whole animals from farms we can name. We dry-age them until the fat tastes sweet, then cook them over hardwood and almost nothing else.</p>
+  </section>
+  <section>
+    <h2>The dishes we are known for</h2>
+    <div class="grid" style="margin-top:1.4rem;">
+      <article class="dish"><img src="images/ribeye.png" alt=""><div><strong>Dry-Aged Ribeye</strong><div class="price">$74</div></div></article>
+      <article class="dish"><img src="images/tomahawk.png" alt=""><div><strong>Tomahawk</strong><div class="price">$148</div></div></article>
+      <article class="dish"><img src="images/marrow.png" alt=""><div><strong>Roasted Bone Marrow</strong><div class="price">$22</div></div></article>
+      <article class="dish"><img src="images/lobster.png" alt=""><div><strong>Butter-Poached Lobster</strong><div class="price">$69</div></div></article>
+      <article class="dish"><img src="images/filet.png" alt=""><div><strong>Center-Cut Filet</strong><div class="price">$62</div></div></article>
+      <article class="dish"><img src="images/torte.png" alt=""><div><strong>Dark Chocolate Torte</strong><div class="price">$15</div></div></article>
+    </div>
+  </section>
+  <section class="cta">
+    <h2>Want this website for your restaurant?</h2>
+    <p>This Halden steakhouse template is available as a one-time purchase from N-FINIT DEVELOPMENT.</p>
+    <a href="../../index.html#contact">Request a purchase quote</a>
+  </section>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="/templates/landscaping/" />
+  <title>Verdant Edge Landscaping — Template Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#14241a; --moss:#2f6b45; --sand:#f4efe6; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Source Sans 3", sans-serif; color: var(--ink); background: #fff; }
+    .bar { background: #0d1b2a; color: #fff; font-size: 0.82rem; padding: 0.7rem 1.2rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .bar a { color: #9ec3ff; font-weight: 700; text-decoration: none; }
+    .hero { min-height: 72vh; background: linear-gradient(180deg, rgba(20,36,26,0.45), rgba(20,36,26,0.72)), url("images/hero-landscape.jpg") center/cover; color: #fff; display: flex; align-items: flex-end; padding: 4rem 8vw 3.5rem; }
+    h1, h2 { font-family: Fraunces, serif; }
+    h1 { font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 1.1; max-width: 14ch; margin: 0 0 0.8rem; }
+    .hero p { max-width: 38rem; font-size: 1.1rem; opacity: 0.92; }
+    section { padding: 4.5rem 8vw; }
+    .services { background: var(--sand); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px rgba(20,36,26,0.08); }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card div { padding: 1.1rem 1.15rem 1.3rem; }
+    .cta { background: var(--moss); color: #fff; text-align: center; }
+    .cta a { display: inline-block; margin-top: 1rem; background: #fff; color: var(--moss); font-weight: 700; text-decoration: none; padding: 0.75rem 1.4rem; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <span>N-FINIT DEVELOPMENT template preview</span>
+    <span><a href="../../products.html">Back to products</a> · <a href="../../index.html#contact">Request a quote</a></span>
+  </div>
+  <header class="hero">
+    <div>
+      <p style="letter-spacing:0.14em; text-transform:uppercase; font-size:0.78rem; font-weight:700;">Verdant Edge Landscaping</p>
+      <h1>Where your landscape becomes a living masterpiece</h1>
+      <p>Design, build, and maintain outdoor environments that elevate how you live. Greater Metro &amp; surrounding counties.</p>
+    </div>
+  </header>
+  <section>
+    <h2>Rooted in craft, grown with care</h2>
+    <p style="max-width:42rem; line-height:1.75; color:#3d5346;">For over fifteen years, Verdant Edge has partnered with homeowners and businesses to transform ordinary yards into refined outdoor rooms. From precision lawn care to custom hardscapes, every project is treated like a long-term relationship.</p>
+  </section>
+  <section class="services">
+    <h2>Services tailored to your property</h2>
+    <div class="grid" style="margin-top:1.5rem;">
+      <article class="card"><img src="images/service-lawn-care.jpg" alt=""><div><strong>Premium Lawn Care</strong><p>$89–$220 per visit</p></div></article>
+      <article class="card"><img src="images/service-hardscaping.jpg" alt=""><div><strong>Hardscaping &amp; Patios</strong><p>$4,500–$28,000 project</p></div></article>
+      <article class="card"><img src="images/service-garden-design.jpg" alt=""><div><strong>Garden &amp; Bed Design</strong><p>$1,200–$8,500 project</p></div></article>
+      <article class="card"><img src="images/service-tree-planting.jpg" alt=""><div><strong>Tree &amp; Shrub Planting</strong><p>$350–$2,400 per tree</p></div></article>
+      <article class="card"><img src="images/service-irrigation.jpg" alt=""><div><strong>Irrigation Systems</strong><p>$2,800–$12,000 system</p></div></article>
+      <article class="card"><img src="images/service-seasonal-cleanup.jpg" alt=""><div><strong>Seasonal Cleanup</strong><p>$275–$950 visit</p></div></article>
+    </div>
+  </section>
+  <section class="cta">
+    <h2>Want this website for your landscaping business?</h2>
+    <p>This is a ready-made N-FINIT DEVELOPMENT template. We can brand it to your company.</p>
+    <a href="../../index.html#contact">Request a purchase quote</a>
+  </section>
+</body>
+</html>
