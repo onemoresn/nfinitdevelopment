@@ -25,715 +25,44 @@
   <title>N-FINIT DEVELOPMENT — Purpose-Built Software. One Price. No Subscriptions.</title>
   <link rel="icon" href="data:,">
   <meta name="description" content="N-FINIT DEVELOPMENT builds AI-enhanced Microsoft Power Platform apps, LLM-powered agent applications, and MSAL-secured web solutions for small businesses, nonprofits, and government contractors — deployed inside your own Microsoft 365 tenant." />
+  <meta name="theme-color" content="#0a1120" />
+  <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: '#0d1b2a',
-            'navy-dark': '#08111a',
-            'navy-light': '#152438',
-            accent: '#2b5797',
-            'accent-light': '#3a6db5',
-            'accent-dark': '#1e3f6f',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
-
-  <style>
-    :root {
-      --navy: #0d1b2a;
-      --navy-dark: #08111a;
-      --navy-light: #152438;
-      --accent: #2b5797;
-      --accent-light: #3a6db5;
-      --accent-dark: #1e3f6f;
-      --gray-light: #f5f7fa;
-      --gray-border: #e2e8f0;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      color: var(--navy);
-      background: #fff;
-      margin: 0;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    ::selection { background: var(--accent); color: #fff; }
-
-    /* ─── NAVIGATION ─────────────────────────────────────── */
-    #navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      transition: background 0.35s ease, box-shadow 0.35s ease;
-    }
-    #navbar.transparent { background: transparent; }
-    #navbar.solid {
-      background: var(--navy);
-      box-shadow: 0 2px 24px rgba(0,0,0,0.35);
-    }
-
-    .nav-link {
-      color: rgba(255,255,255,0.82);
-      font-weight: 500;
-      font-size: 0.88rem;
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      padding-bottom: 2px;
-      border-bottom: 2px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .nav-link:hover { color: #fff; border-bottom-color: var(--accent-light); }
-    .nav-link:focus-visible {
-      outline: 2px solid var(--accent-light);
-      outline-offset: 4px;
-      border-radius: 2px;
-    }
-
-    /* ─── BUTTONS ──────────────────────────────────────────── */
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-      padding: 0.65rem 1.5rem;
-      border-radius: 7px;
-      border: 2px solid transparent;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-    .btn-primary:hover {
-      background: var(--accent-light);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(43,87,151,0.4);
-    }
-    .btn-primary:active { transform: translateY(0); }
-    .btn-primary:focus-visible {
-      outline: 3px solid #7fb3ff;
-      outline-offset: 3px;
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: #fff;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-      padding: 0.65rem 1.5rem;
-      border-radius: 7px;
-      border: 2px solid rgba(255,255,255,0.45);
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s, border-color 0.2s, transform 0.15s;
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.85);
-      transform: translateY(-2px);
-    }
-    .btn-outline:focus-visible {
-      outline: 3px solid rgba(255,255,255,0.6);
-      outline-offset: 3px;
-    }
-
-    /* ─── HAMBURGER ────────────────────────────────────────── */
-    .hamburger {
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      padding: 5px;
-      border-radius: 4px;
-    }
-    .hamburger:focus-visible { outline: 2px solid #7fb3ff; }
-    .hamburger span {
-      display: block;
-      width: 24px; height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: all 0.28s ease;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    #mobile-menu {
-      display: none;
-      flex-direction: column;
-      gap: 0.25rem;
-      padding: 0.75rem 1.5rem 1.25rem;
-      background: var(--navy);
-      border-top: 1px solid rgba(255,255,255,0.07);
-    }
-    #mobile-menu.open { display: flex; }
-    #mobile-menu .nav-link { font-size: 0.95rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    #mobile-menu .nav-link:last-of-type { border-bottom: none; }
-
-    /* ─── SECTION TYPOGRAPHY ──────────────────────────────── */
-    .section-label {
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    .section-title {
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-    }
-    .section-title.light { color: #fff; }
-
-    /* ─── HERO ─────────────────────────────────────────────── */
-    #hero {
-      background: var(--navy);
-      min-height: 100vh;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #hero-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(43,87,151,0.25);
-      border: 1px solid rgba(43,87,151,0.5);
-      color: #93c5fd;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      padding: 0.4rem 1rem;
-      border-radius: 999px;
-      margin-bottom: 1.5rem;
-    }
-
-    /* ─── TRUST BAR ────────────────────────────────────────── */
-    .trust-bar { background: #f5f7fa; border-bottom: 1px solid var(--gray-border); }
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      color: var(--navy);
-      font-weight: 600;
-      font-size: 0.83rem;
-    }
-    .trust-icon {
-      width: 38px; height: 38px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      border-radius: 9px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-
-    /* ─── CARDS ────────────────────────────────────────────── */
-    .service-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 2.25rem;
-      box-shadow: 0 2px 16px rgba(13,27,42,0.07);
-      border: 1px solid var(--gray-border);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 48px rgba(13,27,42,0.13);
-    }
-    .card-icon {
-      width: 54px; height: 54px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.25rem;
-    }
-    .tag-pill {
-      background: #eef2f9;
-      color: #1e3f6f;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid #d0daf0;
-    }
-    .use-case-chip {
-      background: #fff;
-      color: var(--accent-dark);
-      font-size: 0.82rem;
-      font-weight: 600;
-      padding: 0.45rem 1.1rem;
-      border-radius: 999px;
-      border: 1.5px solid #d0daf0;
-      white-space: nowrap;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .use-case-chip:hover {
-      background: #eef2f9;
-      border-color: var(--accent);
-    }
-
-    /* ─── TECHNOLOGY STACK ───────────────────────────────── */
-    .stack-group {
-      background: #fff;
-      border-radius: 16px;
-      padding: 2rem;
-      border: 1px solid var(--gray-border);
-      box-shadow: 0 2px 16px rgba(13,27,42,0.07);
-      height: 100%;
-    }
-    .stack-group h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 0.35rem;
-    }
-    .stack-group p {
-      color: #64748b;
-      font-size: 0.88rem;
-      line-height: 1.65;
-      margin-bottom: 1.15rem;
-    }
-    .stack-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    /* ─── PRODUCT GALLERY ─────────────────────────────────── */
-    .product-card {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 2px 16px rgba(13,27,42,0.08);
-      border: 1px solid var(--gray-border);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 52px rgba(13,27,42,0.14);
-    }
-    .product-card video {
-      width: 100%;
-      display: block;
-      background: var(--navy-dark);
-      aspect-ratio: 16/9;
-      object-fit: cover;
-    }
-    .product-card-body {
-      padding: 1.5rem 1.75rem 1.75rem;
-      flex: 1;
-    }
-
-    /* ─── COMPANY INTRO VIDEO ─────────────────────────────── */
-    .intro-video {
-      width: 100%;
-      display: block;
-      border-radius: 16px;
-      background: var(--navy-dark);
-      box-shadow: 0 18px 52px rgba(13,27,42,0.18);
-      aspect-ratio: 16/9;
-      object-fit: contain;
-    }
-
-    /* ─── WHY ROWS ─────────────────────────────────────────── */
-    .why-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.5rem;
-      padding: 1.75rem 0;
-      border-bottom: 1px solid var(--gray-border);
-    }
-    .why-row:last-child { border-bottom: none; }
-    .why-icon {
-      width: 54px; height: 54px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      font-size: 1.4rem;
-    }
-
-    /* ─── PRICING ──────────────────────────────────────────── */
-    .pricing-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 2rem 1.75rem 2.25rem;
-      border: 2px solid var(--gray-border);
-      position: relative;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-    .pricing-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 56px rgba(13,27,42,0.11);
-    }
-    .pricing-card.popular {
-      border-color: var(--accent);
-      box-shadow: 0 8px 32px rgba(43,87,151,0.2);
-    }
-    .pricing-card.popular:hover { box-shadow: 0 24px 60px rgba(43,87,151,0.28); }
-    .popular-badge {
-      position: absolute;
-      top: -14px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 1.1rem;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-    .pricing-feature {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      color: #475569;
-      font-size: 0.88rem;
-      padding: 0.3rem 0;
-    }
-    .pricing-feature svg { flex-shrink: 0; }
-
-    /* ─── HOW IT WORKS ─────────────────────────────────────── */
-    #how-it-works { background: var(--navy); }
-    .step-wrap { position: relative; }
-    .step-num {
-      width: 50px; height: 50px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-weight: 800; font-size: 1rem;
-      position: relative; z-index: 1;
-      margin: 0 auto 0.75rem;
-      box-shadow: 0 0 0 6px rgba(43,87,151,0.18);
-    }
-    .step-num.done { background: #059669; box-shadow: 0 0 0 6px rgba(5,150,105,0.18); }
-    .step-line {
-      position: absolute;
-      top: 25px;
-      left: calc(50% + 25px);
-      width: calc(100% - 50px);
-      height: 2px;
-      background: linear-gradient(to right, rgba(43,87,151,0.5), rgba(43,87,151,0.15));
-    }
-
-    /* ─── SERVE CARDS ──────────────────────────────────────── */
-    .serve-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 2rem;
-      border: 1px solid var(--gray-border);
-      box-shadow: 0 2px 12px rgba(13,27,42,0.05);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .serve-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(13,27,42,0.1);
-    }
-
-    /* ─── CONTACT ──────────────────────────────────────────── */
-    #contact { background: var(--accent); }
-    .use-type-toggle {
-      display: inline-flex;
-      background: rgba(255,255,255,0.12);
-      border: 1.5px solid rgba(255,255,255,0.25);
-      border-radius: 999px;
-      padding: 4px;
-      gap: 2px;
-      margin-bottom: 1.75rem;
-    }
-    .use-type-toggle button {
-      background: transparent;
-      border: none;
-      color: rgba(255,255,255,0.65);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 600;
-      padding: 0.45rem 1.35rem;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      line-height: 1;
-    }
-    .use-type-toggle button.active {
-      background: #fff;
-      color: var(--accent-dark);
-    }
-    .use-type-toggle button:focus-visible {
-      outline: 2px solid rgba(255,255,255,0.7);
-      outline-offset: 2px;
-    }
-    .form-field {
-      width: 100%;
-      padding: 0.78rem 1rem;
-      border-radius: 8px;
-      border: 1.5px solid rgba(255,255,255,0.28);
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.92rem;
-      transition: border-color 0.2s, background 0.2s;
-      outline: none;
-    }
-    .form-field::placeholder { color: rgba(255,255,255,0.5); }
-    .form-field:focus {
-      border-color: rgba(255,255,255,0.7);
-      background: rgba(255,255,255,0.16);
-    }
-    .form-field:focus-visible { box-shadow: 0 0 0 3px rgba(255,255,255,0.25); }
-    .btn-submit {
-      width: 100%;
-      background: #fff;
-      color: var(--accent-dark);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.98rem;
-      font-weight: 700;
-      padding: 0.9rem 1rem;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    }
-    .btn-submit:hover {
-      background: #eef4ff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    }
-    .btn-submit:focus-visible { outline: 3px solid rgba(255,255,255,0.7); outline-offset: 3px; }
-    #success-msg {
-      display: none;
-      background: rgba(255,255,255,0.12);
-      border: 1.5px solid rgba(255,255,255,0.4);
-      border-radius: 14px;
-      padding: 2.5rem 2rem;
-      text-align: center;
-    }
-
-    /* ─── SCROLL ANIMATIONS ────────────────────────────────── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-up.d1 { transition-delay: 0.1s; }
-    .fade-up.d2 { transition-delay: 0.2s; }
-    .fade-up.d3 { transition-delay: 0.3s; }
-    .fade-up.d4 { transition-delay: 0.4s; }
-    .fade-up.d5 { transition-delay: 0.5s; }
-    .fade-up.d6 { transition-delay: 0.6s; }
-
-    /* ─── SCROLL CUE ───────────────────────────────────────── */
-    @keyframes bounceY {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(9px); }
-    }
-    .scroll-cue { animation: bounceY 2.2s ease-in-out infinite; }
-
-    /* ─── PRODUCT DOWNLOAD CARDS ─────────────────────────── */
-    .product-dl-card {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 2px 16px rgba(13,27,42,0.08);
-      border: 1px solid var(--gray-border);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .product-dl-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 52px rgba(13,27,42,0.14);
-    }
-    .product-dl-icon {
-      aspect-ratio: 1 / 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-    }
-    .dl-placeholder-label {
-      font-size: 0.68rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.38);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .product-dl-body {
-      padding: 1.35rem 1.5rem 1.75rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .product-price {
-      font-size: 1.65rem;
-      font-weight: 900;
-      color: var(--navy);
-      line-height: 1;
-    }
-    .product-price-note {
-      font-size: 0.74rem;
-      color: #94a3b8;
-      margin-top: 0.2rem;
-    }
-
-    /* ─── PAYMENT MODAL ────────────────────────────────────── */
-    #payment-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(8,17,26,0.72);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    #payment-modal.open { display: flex; }
-    .payment-modal-inner {
-      background: #fff;
-      border-radius: 18px;
-      width: 100%;
-      max-width: 460px;
-      box-shadow: 0 32px 80px rgba(13,27,42,0.32);
-      overflow: hidden;
-      position: relative;
-      animation: modalIn 0.25s ease;
-    }
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(0.94) translateY(14px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    .payment-modal-header {
-      background: var(--navy);
-      padding: 1.5rem 1.75rem 1.35rem;
-      position: relative;
-    }
-    .modal-close-btn {
-      position: absolute;
-      top: 0.85rem; right: 0.85rem;
-      background: rgba(255,255,255,0.12);
-      border: none;
-      color: rgba(255,255,255,0.7);
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      font-size: 1.15rem;
-      line-height: 1;
-      transition: background 0.2s, color 0.2s;
-    }
-    .modal-close-btn:hover { background: rgba(255,255,255,0.22); color: #fff; }
-    .modal-close-btn:focus-visible { outline: 2px solid rgba(255,255,255,0.5); outline-offset: 2px; }
-    .payment-modal-body { padding: 1.75rem; }
-    .stripe-pay-btn {
-      width: 100%;
-      background: #5469d4;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 0.9rem 1rem;
-      border-radius: 9px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.55rem;
-      text-decoration: none;
-      margin-bottom: 1rem;
-    }
-    .stripe-pay-btn:hover {
-      background: #4152c4;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(84,105,212,0.4);
-    }
-    .stripe-pay-btn:focus-visible { outline: 3px solid #7fb3ff; outline-offset: 3px; }
-
-    /* ─── FOOTER ───────────────────────────────────────────── */
-    footer { background: var(--navy-dark); }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/img/hero-studio.jpg" />
+  <link rel="stylesheet" href="assets/css/site.css?v=1" />
 </head>
 <body>
+
+<div id="scroll-progress" aria-hidden="true"></div>
 
 <!-- ═══════════════════════════════════════════════════
      STICKY NAVIGATION
 ═══════════════════════════════════════════════════ -->
 <nav id="navbar" class="transparent" role="navigation" aria-label="Main navigation">
-  <div class="max-w-7xl mx-auto px-5 sm:px-8">
-    <div class="flex items-center justify-between h-16">
+  <div class="nav-shell">
+    <a href="#" class="nav-logo" aria-label="N-FINIT DEVELOPMENT home">
+      <img src="N-FNIT%20Logo.png?v=2" alt="N-FINIT DEVELOPMENT" />
+    </a>
 
-      <!-- Logo -->
-      <a href="#" aria-label="N-FINIT DEVELOPMENT home" style="text-decoration:none;">
-        <img src="N-FNIT%20Logo.png?v=2" alt="N-FINIT DEVELOPMENT" style="height:40px; width:auto; display:block;" />
-      </a>
-
-      <!-- Desktop links -->
-      <div class="hidden md:flex items-center gap-7" role="list">
-        <a href="#services" class="nav-link" role="listitem">Services</a>
-        <a href="#portfolio" class="nav-link" role="listitem">Portfolio</a>
-        <a href="products.html" class="nav-link" role="listitem">Products</a>
-        <a href="#about" class="nav-link" role="listitem">About</a>
-        <a href="#why-n-finit" class="nav-link" role="listitem">Why N-FINIT</a>
-        <a href="#contact" class="nav-link" role="listitem">Contact</a>
-      </div>
-
-      <!-- Desktop CTA -->
-      <div class="hidden md:block">
-        <a href="#contact" class="btn-primary">Get a Free Quote</a>
-      </div>
-
-      <!-- Hamburger -->
-      <button class="hamburger md:hidden" id="ham-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="nav-links" role="list">
+      <a href="#services" class="nav-link" role="listitem">Services</a>
+      <a href="#portfolio" class="nav-link" role="listitem">Portfolio</a>
+      <a href="products.html" class="nav-link" role="listitem">Products</a>
+      <a href="#about" class="nav-link" role="listitem">About</a>
+      <a href="#why-n-finit" class="nav-link" role="listitem">Why N-FINIT</a>
+      <a href="#contact" class="nav-link" role="listitem">Contact</a>
     </div>
+
+    <a href="#contact" class="btn-primary nav-cta" data-magnetic>Get a Free Quote</a>
+
+    <button class="hamburger" id="ham-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 
-  <!-- Mobile menu -->
   <div id="mobile-menu" role="menu" aria-label="Mobile navigation">
     <a href="#services"    class="nav-link" role="menuitem">Services</a>
     <a href="#portfolio"   class="nav-link" role="menuitem">Portfolio</a>
@@ -741,99 +70,113 @@
     <a href="#about"       class="nav-link" role="menuitem">About</a>
     <a href="#why-n-finit" class="nav-link" role="menuitem">Why N-FINIT</a>
     <a href="#contact"     class="nav-link" role="menuitem">Contact</a>
-    <a href="#contact" class="btn-primary mt-3" style="text-align:center;" role="menuitem">Get a Free Quote</a>
+    <a href="#contact" class="btn-primary" role="menuitem">Get a Free Quote</a>
   </div>
 </nav>
 
 
 <!-- ═══════════════════════════════════════════════════
-     HERO SECTION
+     HERO
 ═══════════════════════════════════════════════════ -->
 <section id="hero" aria-labelledby="hero-heading">
-  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-media" aria-hidden="true">
+    <img src="assets/img/hero-studio.jpg" alt="" fetchpriority="high" />
+  </div>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
 
-  <div class="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center py-28 pt-36">
-
-    <div class="fade-up" style="display:flex; justify-content:center; margin-bottom:1.5rem;">
-      <span class="hero-badge">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="hero-badge hero-intro" style="--a:0.1s;">
+        <span class="pulse-dot" aria-hidden="true"></span>
         Microsoft 365 Native · Spotsylvania, Virginia
       </span>
+
+      <h1 id="hero-heading" class="hero-title">
+        <span class="line" style="--l:0;"><span>Purpose-Built Software.</span></span>
+        <span class="line" style="--l:1;"><span><em>One Price.</em></span></span>
+        <span class="line" style="--l:2;"><span>No Subscriptions.</span></span>
+      </h1>
+
+      <div class="rotator hero-intro" style="--a:0.75s;" aria-hidden="true">
+        <span>Built for</span>
+        <span class="rotator-window" data-rotator>
+          <span class="rotator-word">small businesses</span>
+          <span class="rotator-word">nonprofits</span>
+          <span class="rotator-word">government contractors</span>
+          <span class="rotator-word">professional services</span>
+          <span class="rotator-word">your Microsoft&nbsp;365 tenant</span>
+        </span>
+      </div>
+
+      <p class="hero-lead hero-intro" style="--a:0.9s;">
+        N-FINIT DEVELOPMENT builds AI-enhanced Microsoft Power Platform apps, LLM-powered agent applications, and MSAL-secured web solutions for small businesses, nonprofits, and government contractors&nbsp;— deployed inside your own Microsoft&nbsp;365 tenant.
+      </p>
+
+      <div class="hero-actions hero-intro" style="--a:1.05s;">
+        <a href="#services" class="btn-primary btn-lg" data-magnetic>See Our Services <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="products.html" class="btn-outline is-light btn-lg" data-magnetic>Browse Products</a>
+      </div>
     </div>
 
-    <h1 id="hero-heading" class="fade-up" style="font-size:clamp(2.1rem, 5.5vw, 3.85rem); font-weight:900; color:#fff; line-height:1.08; letter-spacing:-0.03em; margin-bottom:1.5rem;">
-      Purpose-Built Software.<br />
-      <span style="color:#93c5fd;">One Price.</span> No Subscriptions.
-    </h1>
-
-    <p class="fade-up d2" style="font-size:clamp(1rem, 2.2vw, 1.18rem); color:rgba(255,255,255,0.75); max-width:660px; margin:0 auto 2.75rem; line-height:1.75;">
-      N-FINIT DEVELOPMENT builds AI-enhanced Microsoft Power Platform apps, LLM-powered agent applications, and MSAL-secured web solutions for small businesses, nonprofits, and government contractors&nbsp;— deployed inside your own Microsoft&nbsp;365 tenant.
-    </p>
-
-    <div class="fade-up d3" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
-      <a href="#services" class="btn-primary" style="font-size:1rem; padding:0.85rem 2.1rem;">See Our Services</a>
-      <a href="products.html" class="btn-outline" style="font-size:1rem; padding:0.85rem 2.1rem;">Browse Products</a>
+    <div class="orbit" data-orbit aria-hidden="true">
+      <div class="orbit-tilt">
+        <div class="orbit-path"></div>
+        <div class="orbit-ring">
+          <figure class="orbit-card"><img src="assets/img/svc-power-platform.jpg" alt="" draggable="false" /><figcaption>Power Platform</figcaption><span class="orbit-dim"></span></figure>
+          <figure class="orbit-card"><img src="templates/photographer/assets/hero_cinematic.png" alt="" draggable="false" /><figcaption>Photographer Site</figcaption><span class="orbit-dim"></span></figure>
+          <figure class="orbit-card"><img src="assets/img/svc-ai-delivery.jpg" alt="" draggable="false" /><figcaption>AI-Enhanced Delivery</figcaption><span class="orbit-dim"></span></figure>
+          <figure class="orbit-card"><img src="templates/landscaping/images/hero-landscape.jpg" alt="" draggable="false" /><figcaption>Landscaping Site</figcaption><span class="orbit-dim"></span></figure>
+          <figure class="orbit-card"><img src="assets/img/svc-secure-apps.jpg" alt="" draggable="false" /><figcaption>MSAL-Secured Web Apps</figcaption><span class="orbit-dim"></span></figure>
+          <figure class="orbit-card"><img src="templates/steakhouse/images/hero.png" alt="" draggable="false" /><figcaption>Steakhouse Site</figcaption><span class="orbit-dim"></span></figure>
+          <figure class="orbit-card"><img src="assets/img/svc-websites.jpg" alt="" draggable="false" /><figcaption>Website Development</figcaption><span class="orbit-dim"></span></figure>
+          <figure class="orbit-card"><img src="assets/img/serve-small-business.jpg" alt="" draggable="false" /><figcaption>Small Businesses</figcaption><span class="orbit-dim"></span></figure>
+        </div>
+      </div>
+      <div class="orbit-floor"></div>
+      <div class="orbit-hint">Drag to explore</div>
     </div>
   </div>
 
-  <!-- Scroll cue -->
-  <div class="scroll-cue" style="position:absolute; bottom:2rem; left:50%;" aria-hidden="true">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2">
-      <polyline points="6 9 12 15 18 9"></polyline>
-    </svg>
-  </div>
+  <a href="#intro-video" class="scroll-cue" aria-label="Scroll to content">Scroll<i></i></a>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════════
      TRUST BAR
 ═══════════════════════════════════════════════════ -->
-<section class="trust-bar py-7" aria-label="Trust signals">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="flex flex-wrap justify-center md:justify-between items-center gap-6">
-
-      <div class="trust-item fade-up">
-        <div class="trust-icon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        </div>
-        <span>Microsoft Power Platform</span>
+<section class="trust-bar" aria-label="Trust signals">
+  <div class="marquee">
+    <div class="marquee-track" style="--dur:46s;">
+      <div class="marquee-group">
+        <div class="trust-item"><span class="trust-icon" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>Microsoft Power Platform</span></div>
+        <span class="trust-sep" aria-hidden="true"></span>
+        <div class="trust-item"><span class="trust-icon" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span>MSAL / Entra ID Secured</span></div>
+        <span class="trust-sep" aria-hidden="true"></span>
+        <div class="trust-item"><span class="trust-icon" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span>One-Time Pricing</span></div>
+        <span class="trust-sep" aria-hidden="true"></span>
+        <div class="trust-item"><span class="trust-icon" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span>Tenant-Hosted Deployment</span></div>
+        <span class="trust-sep" aria-hidden="true"></span>
+        <div class="trust-item"><span class="trust-icon" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1h1a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v3a4 4 0 0 1-8 0v-3H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1V6a4 4 0 0 1 4-4z"/></svg></span><span>AI-Enhanced Delivery</span></div>
+        <span class="trust-sep" aria-hidden="true"></span>
+        <div class="trust-item"><span class="trust-icon" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span>Virginia-Based, Remote Delivery</span></div>
+        <span class="trust-sep" aria-hidden="true"></span>
       </div>
-
-      <div class="trust-item fade-up d1">
-        <div class="trust-icon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <span>MSAL / Entra ID Secured</span>
+      <div class="marquee-group" aria-hidden="true">
+        <div class="trust-item"><span class="trust-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>Microsoft Power Platform</span></div>
+        <span class="trust-sep"></span>
+        <div class="trust-item"><span class="trust-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span>MSAL / Entra ID Secured</span></div>
+        <span class="trust-sep"></span>
+        <div class="trust-item"><span class="trust-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span>One-Time Pricing</span></div>
+        <span class="trust-sep"></span>
+        <div class="trust-item"><span class="trust-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span>Tenant-Hosted Deployment</span></div>
+        <span class="trust-sep"></span>
+        <div class="trust-item"><span class="trust-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1h1a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v3a4 4 0 0 1-8 0v-3H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1V6a4 4 0 0 1 4-4z"/></svg></span><span>AI-Enhanced Delivery</span></div>
+        <span class="trust-sep"></span>
+        <div class="trust-item"><span class="trust-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span>Virginia-Based, Remote Delivery</span></div>
+        <span class="trust-sep"></span>
       </div>
-
-      <div class="trust-item fade-up d2">
-        <div class="trust-icon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <span>One-Time Pricing</span>
-      </div>
-
-      <div class="trust-item fade-up d3">
-        <div class="trust-icon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <span>Tenant-Hosted Deployment</span>
-      </div>
-
-      <div class="trust-item fade-up d4">
-        <div class="trust-icon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1h1a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v3a4 4 0 0 1-8 0v-3H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1V6a4 4 0 0 1 4-4z"/></svg>
-        </div>
-        <span>AI-Enhanced Delivery</span>
-      </div>
-
-      <div class="trust-item fade-up d5">
-        <div class="trust-icon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <span>Virginia-Based, Remote Delivery</span>
-      </div>
-
     </div>
   </div>
 </section>
@@ -842,139 +185,204 @@
 <!-- ═══════════════════════════════════════════════════
      COMPANY INTRO VIDEO
 ═══════════════════════════════════════════════════ -->
-<section id="intro-video" style="background:#fff; padding:4.5rem 0 5.5rem;" aria-labelledby="intro-video-heading">
-  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center fade-up">
-    <span class="section-label">About Us</span>
-    <h2 id="intro-video-heading" class="section-title">Meet N-FINIT DEVELOPMENT</h2>
-    <p style="color:#64748b; max-width:520px; margin:0.85rem auto 2rem; font-size:1.02rem; line-height:1.75;">
+<section id="intro-video" class="section" aria-labelledby="intro-video-heading">
+  <div class="wrap center">
+    <span class="section-label fade-up">About Us</span>
+    <h2 id="intro-video-heading" class="section-title" data-split>Meet <em>N-FINIT</em> DEVELOPMENT</h2>
+    <p class="lead fade-up d2" style="margin-top:1.1rem;">
       See how N-FINIT DEVELOPMENT delivers AI-enhanced, tenant-hosted software built for organizations like yours.
     </p>
-    <video
-      class="intro-video"
-      src="N-Finit%20Development%20LLC%20vid.mp4"
-      controls
-      preload="metadata"
-      playsinline
-      aria-label="N-FINIT DEVELOPMENT company overview video">
-    </video>
+
+    <div class="device-stage">
+      <div class="device-glow" aria-hidden="true"></div>
+      <div class="device" data-device>
+        <div class="device-bar" aria-hidden="true"><i></i><i></i><i></i><span>nfinitdevelopment.com</span></div>
+        <video
+          class="intro-video"
+          src="N-Finit%20Development%20LLC%20vid.mp4"
+          controls
+          preload="metadata"
+          playsinline
+          aria-label="N-FINIT DEVELOPMENT company overview video">
+        </video>
+      </div>
+    </div>
   </div>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════════
-     SERVICES SECTION
+     SERVICES
 ═══════════════════════════════════════════════════ -->
-<section id="services" style="background:#fff; padding:5.5rem 0;" aria-labelledby="services-heading">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+<section id="services" class="section" aria-labelledby="services-heading">
+  <div class="wrap">
 
-    <div class="text-center mb-14 fade-up">
-      <span class="section-label">What We Build</span>
-      <h2 id="services-heading" class="section-title">AI-Enhanced Software That Lives in Your Ecosystem</h2>
-      <p style="color:#64748b; max-width:580px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
+    <div class="sec-head sec-head--split">
+      <div>
+        <span class="section-label fade-up">What We Build</span>
+        <h2 id="services-heading" class="section-title" data-split>AI-Enhanced Software That Lives in Your <em>Ecosystem</em></h2>
+      </div>
+      <p class="lead fade-up d2">
         Every solution deploys inside your Microsoft&nbsp;365 tenant — with AI-integrated workflows, intelligent automation, and LLM-powered agents where they add real value. Your data never touches our servers.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-7 mb-10">
+    <div class="svc-grid">
 
       <!-- Card A: Power Platform -->
-      <div class="service-card fade-up">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        </div>
-        <h3 style="font-size:1.28rem; font-weight:700; color:var(--navy); margin-bottom:0.65rem;">Power Platform Applications</h3>
-        <p style="color:#64748b; line-height:1.78; font-size:0.93rem;">
-          Power Apps (Canvas &amp; Model-Driven), Power Automate workflows, Power BI dashboards, Dataverse &amp; SharePoint integration — enhanced with AI Builder and Copilot-connected automation. Built inside your Microsoft&nbsp;365 environment. <strong style="color:var(--navy);">No new software to install.</strong>
-        </p>
-        <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid #e2e8f0;">
-          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
-            <span class="tag-pill">Power Apps</span>
-            <span class="tag-pill">Power Automate</span>
-            <span class="tag-pill">AI Builder</span>
-            <span class="tag-pill">Power BI</span>
-            <span class="tag-pill">Dataverse</span>
-            <span class="tag-pill">SharePoint</span>
+      <div class="fade-up">
+        <article class="svc-card" data-tilt="3.5">
+          <div class="svc-media">
+            <img src="assets/img/svc-power-platform.jpg" alt="Business professional building a workflow app on a tablet" loading="lazy" decoding="async" />
+            <span class="svc-num" aria-hidden="true">01</span>
           </div>
-        </div>
+          <div class="svc-body">
+            <div class="svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            </div>
+            <h3 class="card-title">Power Platform Applications</h3>
+            <p class="card-text">
+              Power Apps (Canvas &amp; Model-Driven), Power Automate workflows, Power BI dashboards, Dataverse &amp; SharePoint integration — enhanced with AI Builder and Copilot-connected automation. Built inside your Microsoft&nbsp;365 environment. <strong>No new software to install.</strong>
+            </p>
+            <div class="svc-spacer"></div>
+            <div class="tags">
+              <span class="tag-pill">Power Apps</span>
+              <span class="tag-pill">Power Automate</span>
+              <span class="tag-pill">AI Builder</span>
+              <span class="tag-pill">Power BI</span>
+              <span class="tag-pill">Dataverse</span>
+              <span class="tag-pill">SharePoint</span>
+            </div>
+          </div>
+        </article>
       </div>
 
       <!-- Card B: MSAL Web Apps -->
-      <div class="service-card fade-up d2">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-        <h3 style="font-size:1.28rem; font-weight:700; color:var(--navy); margin-bottom:0.65rem;">MSAL-Secured Web Apps</h3>
-        <p style="color:#64748b; line-height:1.78; font-size:0.93rem;">
-          Custom HTML/CSS/JavaScript apps secured with Microsoft Authentication Library — including LLM-powered agent interfaces connected to your business data. Deployed as SharePoint-hosted pages or Azure Static Web Apps inside your tenant. <strong style="color:var(--navy);">Only your team can access them.</strong>
-        </p>
-        <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid #e2e8f0;">
-          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
-            <span class="tag-pill">MSAL</span>
-            <span class="tag-pill">Entra ID</span>
-            <span class="tag-pill">LLM Agents</span>
-            <span class="tag-pill">Azure Static Web Apps</span>
-            <span class="tag-pill">SharePoint</span>
+      <div class="fade-up d2">
+        <article class="svc-card" data-tilt="3.5">
+          <div class="svc-media">
+            <img src="assets/img/svc-secure-apps.jpg" alt="Developer working on a secure sign-in application" loading="lazy" decoding="async" />
+            <span class="svc-num" aria-hidden="true">02</span>
           </div>
-        </div>
+          <div class="svc-body">
+            <div class="svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3 class="card-title">MSAL-Secured Web Apps</h3>
+            <p class="card-text">
+              Custom HTML/CSS/JavaScript apps secured with Microsoft Authentication Library — including LLM-powered agent interfaces connected to your business data. Deployed as SharePoint-hosted pages or Azure Static Web Apps inside your tenant. <strong>Only your team can access them.</strong>
+            </p>
+            <div class="svc-spacer"></div>
+            <div class="tags">
+              <span class="tag-pill">MSAL</span>
+              <span class="tag-pill">Entra ID</span>
+              <span class="tag-pill">LLM Agents</span>
+              <span class="tag-pill">Azure Static Web Apps</span>
+              <span class="tag-pill">SharePoint</span>
+            </div>
+          </div>
+        </article>
       </div>
 
       <!-- Card C: Website Development -->
-      <div class="service-card fade-up d3">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3 style="font-size:1.28rem; font-weight:700; color:var(--navy); margin-bottom:0.65rem;">Website Development</h3>
-        <p style="color:#64748b; line-height:1.78; font-size:0.93rem;">
-          Custom brochure sites, business websites, and government-oriented web portals. Static or CMS-powered, GitHub-hosted or self-hosted. Built with clean code, fast load times, and WCAG accessibility compliance. <strong style="color:var(--navy);">Developer-grade quality. Lean overhead pricing.</strong>
-        </p>
-        <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid #e2e8f0;">
-          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
-            <span class="tag-pill">Static Sites</span>
-            <span class="tag-pill">GitHub Pages</span>
-            <span class="tag-pill">WCAG</span>
-            <span class="tag-pill">SEO</span>
+      <div class="fade-up">
+        <article class="svc-card" data-tilt="3.5">
+          <div class="svc-media">
+            <img src="assets/img/svc-websites.jpg" alt="Responsive business website shown on a laptop and phone" loading="lazy" decoding="async" />
+            <span class="svc-num" aria-hidden="true">03</span>
           </div>
-        </div>
+          <div class="svc-body">
+            <div class="svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3 class="card-title">Website Development</h3>
+            <p class="card-text">
+              Custom brochure sites, business websites, and government-oriented web portals. Static or CMS-powered, GitHub-hosted or self-hosted. Built with clean code, fast load times, and WCAG accessibility compliance. <strong>Developer-grade quality. Lean overhead pricing.</strong>
+            </p>
+            <div class="svc-spacer"></div>
+            <div class="tags">
+              <span class="tag-pill">Static Sites</span>
+              <span class="tag-pill">GitHub Pages</span>
+              <span class="tag-pill">WCAG</span>
+              <span class="tag-pill">SEO</span>
+            </div>
+          </div>
+        </article>
       </div>
 
       <!-- Card D: AI-Enhanced Solution Delivery -->
-      <div class="service-card fade-up d4">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1h1a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v3a4 4 0 0 1-8 0v-3H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1V6a4 4 0 0 1 4-4z"/></svg>
-        </div>
-        <h3 style="font-size:1.28rem; font-weight:700; color:var(--navy); margin-bottom:0.65rem;">AI-Enhanced Solution Delivery</h3>
-        <p style="color:#64748b; line-height:1.78; font-size:0.93rem; margin-bottom:1rem;">
-          We embed AI into your Microsoft&nbsp;365 solutions — not as a bolt-on, but as part of how your apps work. Every implementation stays inside your tenant with the security and control your organization requires.
-        </p>
-        <ul style="color:#64748b; line-height:1.75; font-size:0.9rem; padding-left:1.1rem; margin:0 0 1.25rem; list-style:disc;">
-          <li style="margin-bottom:0.45rem;"><strong style="color:var(--navy);">AI-Integrated Workflows</strong> — Intelligent intake, routing, and decision automation with Power Automate and AI Builder</li>
-          <li style="margin-bottom:0.45rem;"><strong style="color:var(--navy);">AI Agent Applications</strong> — Custom MSAL-secured apps with LLM-powered assistants tailored to your processes</li>
-          <li><strong style="color:var(--navy);">Automation-Driven Accuracy</strong> — Document parsing, validation, and structured data extraction that reduces manual errors</li>
-        </ul>
-        <div style="padding-top:1.25rem; border-top:1px solid #e2e8f0;">
-          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
-            <span class="tag-pill">Azure OpenAI</span>
-            <span class="tag-pill">Copilot Studio</span>
-            <span class="tag-pill">Semantic Kernel</span>
-            <span class="tag-pill">RAG Pipelines</span>
-            <span class="tag-pill">LangChain</span>
+      <div class="fade-up d2">
+        <article class="svc-card" data-tilt="3.5">
+          <div class="svc-media">
+            <img src="assets/img/svc-ai-delivery.jpg" alt="Analyst reviewing an AI assistant alongside structured document data" loading="lazy" decoding="async" />
+            <span class="svc-num" aria-hidden="true">04</span>
           </div>
-        </div>
+          <div class="svc-body">
+            <div class="svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1h1a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v3a4 4 0 0 1-8 0v-3H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1V6a4 4 0 0 1 4-4z"/></svg>
+            </div>
+            <h3 class="card-title">AI-Enhanced Solution Delivery</h3>
+            <p class="card-text">
+              We embed AI into your Microsoft&nbsp;365 solutions — not as a bolt-on, but as part of how your apps work. Every implementation stays inside your tenant with the security and control your organization requires.
+            </p>
+            <ul class="svc-list">
+              <li><strong>AI-Integrated Workflows</strong> — Intelligent intake, routing, and decision automation with Power Automate and AI Builder</li>
+              <li><strong>AI Agent Applications</strong> — Custom MSAL-secured apps with LLM-powered assistants tailored to your processes</li>
+              <li><strong>Automation-Driven Accuracy</strong> — Document parsing, validation, and structured data extraction that reduces manual errors</li>
+            </ul>
+            <div class="svc-spacer"></div>
+            <div class="tags">
+              <span class="tag-pill">Azure OpenAI</span>
+              <span class="tag-pill">Copilot Studio</span>
+              <span class="tag-pill">Semantic Kernel</span>
+              <span class="tag-pill">RAG Pipelines</span>
+              <span class="tag-pill">LangChain</span>
+            </div>
+          </div>
+        </article>
       </div>
 
     </div>
+  </div>
 
-    <!-- Use-case chips -->
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.65rem;" class="fade-up d2">
-      <span class="use-case-chip">Employee Portals</span>
-      <span class="use-case-chip">AI-Assisted Intake</span>
-      <span class="use-case-chip">Project Dashboards</span>
-      <span class="use-case-chip">Smart Routing</span>
-      <span class="use-case-chip">Document Processing</span>
-      <span class="use-case-chip">Approval Workflows</span>
-      <span class="use-case-chip">BI Reporting</span>
+  <!-- Use-case word carousel -->
+  <div class="word-marquee fade-up">
+    <div class="marquee">
+      <div class="marquee-track reverse" style="--dur:52s;">
+        <div class="marquee-group">
+          <span class="big-word">Employee Portals</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word outline">AI-Assisted Intake</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word">Project Dashboards</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word outline">Smart Routing</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word">Document Processing</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word outline">Approval Workflows</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word">BI Reporting</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span class="big-word">Employee Portals</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word outline">AI-Assisted Intake</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word">Project Dashboards</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word outline">Smart Routing</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word">Document Processing</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word outline">Approval Workflows</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+          <span class="big-word">BI Reporting</span>
+          <svg class="big-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+        </div>
+      </div>
     </div>
-
   </div>
 </section>
 
@@ -982,20 +390,24 @@
 <!-- ═══════════════════════════════════════════════════
      TECHNOLOGY STACK
 ═══════════════════════════════════════════════════ -->
-<section id="tech-stack" style="background:var(--gray-light); padding:5.5rem 0;" aria-labelledby="tech-stack-heading">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+<section id="tech-stack" class="section on-dark" aria-labelledby="tech-stack-heading">
+  <div class="wrap">
 
-    <div class="text-center mb-14 fade-up">
-      <span class="section-label">How We Build</span>
-      <h2 id="tech-stack-heading" class="section-title">Technology Stack</h2>
-      <p style="color:#64748b; max-width:560px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
+    <div class="sec-head center">
+      <span class="section-label fade-up">How We Build</span>
+      <h2 id="tech-stack-heading" class="section-title" data-split>Technology <em>Stack</em></h2>
+      <p class="lead fade-up d2">
         N-FINIT DEVELOPMENT combines Microsoft-native platforms with modern AI frameworks and proven integration patterns — all deployed inside your tenant.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-7">
+    <div class="stack-grid">
 
-      <div class="stack-group fade-up">
+      <div class="stack-group fade-up" data-spotlight>
+        <div class="stack-head">
+          <span class="stack-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9fbbe3" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+          <span class="stack-idx" aria-hidden="true">01</span>
+        </div>
         <h3>Microsoft Platform</h3>
         <p>The foundation every solution is built on — native to your Microsoft&nbsp;365 environment.</p>
         <div class="stack-tags">
@@ -1009,7 +421,11 @@
         </div>
       </div>
 
-      <div class="stack-group fade-up d2">
+      <div class="stack-group fade-up d2" data-spotlight>
+        <div class="stack-head">
+          <span class="stack-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9fbbe3" stroke-width="1.8"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15l.9 2.1 2.1.9-2.1.9L19 21l-.9-2.1-2.1-.9 2.1-.9z"/></svg></span>
+          <span class="stack-idx" aria-hidden="true">02</span>
+        </div>
         <h3>AI Frameworks &amp; Agents</h3>
         <p>LLM-powered capabilities integrated responsibly — with your data staying in your control.</p>
         <div class="stack-tags">
@@ -1024,7 +440,11 @@
         </div>
       </div>
 
-      <div class="stack-group fade-up d3">
+      <div class="stack-group fade-up d4" data-spotlight>
+        <div class="stack-head">
+          <span class="stack-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9fbbe3" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+          <span class="stack-idx" aria-hidden="true">03</span>
+        </div>
         <h3>Integration &amp; Security Patterns</h3>
         <p>Enterprise-grade authentication, data access, and workflow connectivity built in from day one.</p>
         <div class="stack-tags">
@@ -1039,117 +459,134 @@
       </div>
 
     </div>
-
   </div>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════════
-     PRODUCT GALLERY
+     PORTFOLIO / LIVE DEMOS
 ═══════════════════════════════════════════════════ -->
-<section id="portfolio" style="background:#fff; padding:5.5rem 0;" aria-labelledby="portfolio-heading">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+<section id="portfolio" class="section" aria-labelledby="portfolio-heading">
+  <div class="wrap">
 
-    <div class="text-center mb-14 fade-up">
-      <span class="section-label">Live Demos</span>
-      <h2 id="portfolio-heading" class="section-title">See What We&rsquo;ve Built</h2>
-      <p style="color:#64748b; max-width:520px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
+    <div class="sec-head sec-head--split">
+      <div>
+        <span class="section-label fade-up">Live Demos</span>
+        <h2 id="portfolio-heading" class="section-title" data-split>See What We&rsquo;ve <em>Built</em></h2>
+      </div>
+      <p class="lead fade-up d2">
         Real apps built and deployed inside Microsoft&nbsp;365 environments. Watch the demos below.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-7">
+    <div class="demo-grid">
 
       <!-- Jeopardy Employee Engagement App -->
-      <div class="product-card fade-up">
-        <video src="DemoJeopardyApp.mp4" controls preload="metadata" aria-label="Demo: Jeopardy Employee Engagement App"></video>
-        <div class="product-card-body">
-          <div style="display:flex; align-items:center; gap:0.65rem; margin-bottom:0.65rem;">
-            <div class="card-icon" style="width:40px; height:40px; border-radius:10px; flex-shrink:0; margin-bottom:0;" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div class="rise-3d">
+        <article class="demo-card">
+          <div class="demo-media">
+            <video src="DemoJeopardyApp.mp4" controls preload="metadata" playsinline aria-label="Demo: Jeopardy Employee Engagement App"></video>
+          </div>
+          <div class="demo-body">
+            <div class="demo-head">
+              <div class="mini-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <h3>Jeopardy Employee Engagement App</h3>
             </div>
-            <h3 style="font-size:1.08rem; font-weight:700; color:var(--navy); margin:0;">Jeopardy Employee Engagement App</h3>
+            <p class="card-text">
+              A custom web application that brings real-time, interactive Jeopardy-style gameplay to employee engagement events. Features a live real-time database so every buzz-in and score update is instantly synced across all players.
+            </p>
+            <div class="tags">
+              <span class="tag-pill">Web App</span>
+              <span class="tag-pill">Real-Time Database</span>
+              <span class="tag-pill">Employee Engagement</span>
+            </div>
           </div>
-          <p style="color:#64748b; line-height:1.75; font-size:0.88rem;">
-            A custom web application that brings real-time, interactive Jeopardy-style gameplay to employee engagement events. Features a live real-time database so every buzz-in and score update is instantly synced across all players.
-          </p>
-          <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
-            <span class="tag-pill">Web App</span>
-            <span class="tag-pill">Real-Time Database</span>
-            <span class="tag-pill">Employee Engagement</span>
-          </div>
-        </div>
+        </article>
       </div>
 
       <!-- Map Plot App -->
-      <div class="product-card fade-up d2">
-        <video src="DemoMapPlotApp.mp4" controls preload="metadata" aria-label="Demo: Map Plot App"></video>
-        <div class="product-card-body">
-          <div style="display:flex; align-items:center; gap:0.65rem; margin-bottom:0.65rem;">
-            <div class="card-icon" style="width:40px; height:40px; border-radius:10px; flex-shrink:0; margin-bottom:0;" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+      <div class="rise-3d d2">
+        <article class="demo-card">
+          <div class="demo-media">
+            <video src="DemoMapPlotApp.mp4" controls preload="metadata" playsinline aria-label="Demo: Map Plot App"></video>
+          </div>
+          <div class="demo-body">
+            <div class="demo-head">
+              <div class="mini-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+              </div>
+              <h3>Map Plot App</h3>
             </div>
-            <h3 style="font-size:1.08rem; font-weight:700; color:var(--navy); margin:0;">Map Plot App</h3>
+            <p class="card-text">
+              A custom web application for fun, interactive employee engagement activities like ice breakers. Participants plot their locations on a live map in real-time, with a shared database keeping everyone in sync instantly.
+            </p>
+            <div class="tags">
+              <span class="tag-pill">Web App</span>
+              <span class="tag-pill">Real-Time Database</span>
+              <span class="tag-pill">Employee Engagement</span>
+            </div>
           </div>
-          <p style="color:#64748b; line-height:1.75; font-size:0.88rem;">
-            A custom web application for fun, interactive employee engagement activities like ice breakers. Participants plot their locations on a live map in real-time, with a shared database keeping everyone in sync instantly.
-          </p>
-          <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
-            <span class="tag-pill">Web App</span>
-            <span class="tag-pill">Real-Time Database</span>
-            <span class="tag-pill">Employee Engagement</span>
-          </div>
-        </div>
+        </article>
       </div>
 
       <!-- Service Request App -->
-      <div class="product-card fade-up d4">
-        <video src="DemoServiceRequestApp.mp4" controls preload="metadata" aria-label="Demo: Service Request App"></video>
-        <div class="product-card-body">
-          <div style="display:flex; align-items:center; gap:0.65rem; margin-bottom:0.65rem;">
-            <div class="card-icon" style="width:40px; height:40px; border-radius:10px; flex-shrink:0; margin-bottom:0;" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <div class="rise-3d">
+        <article class="demo-card">
+          <div class="demo-media">
+            <video src="DemoServiceRequestApp.mp4" controls preload="metadata" playsinline aria-label="Demo: Service Request App"></video>
+          </div>
+          <div class="demo-body">
+            <div class="demo-head">
+              <div class="mini-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <h3>Service Request App</h3>
             </div>
-            <h3 style="font-size:1.08rem; font-weight:700; color:var(--navy); margin:0;">Service Request App</h3>
+            <p class="card-text">
+              Available as both a web application and a Power App. Secured with MSAL / Entra ID authentication and powered by a SharePoint List data source &mdash; giving your team a clean, structured way to submit, route, and track service requests without a single email chain.
+            </p>
+            <div class="tags">
+              <span class="tag-pill">Web App</span>
+              <span class="tag-pill">Power Apps</span>
+              <span class="tag-pill">MSAL</span>
+              <span class="tag-pill">SharePoint List</span>
+            </div>
           </div>
-          <p style="color:#64748b; line-height:1.75; font-size:0.88rem;">
-            Available as both a web application and a Power App. Secured with MSAL / Entra ID authentication and powered by a SharePoint List data source &mdash; giving your team a clean, structured way to submit, route, and track service requests without a single email chain.
-          </p>
-          <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
-            <span class="tag-pill">Web App</span>
-            <span class="tag-pill">Power Apps</span>
-            <span class="tag-pill">MSAL</span>
-            <span class="tag-pill">SharePoint List</span>
-          </div>
-        </div>
+        </article>
       </div>
 
       <!-- Taekwondo Student Management App -->
-      <div class="product-card fade-up d6">
-        <video src="DemoTaekwondoStudentManagementApp.mp4" controls preload="metadata" aria-label="Demo: Taekwondo Student Management App"></video>
-        <div class="product-card-body">
-          <div style="display:flex; align-items:center; gap:0.65rem; margin-bottom:0.65rem;">
-            <div class="card-icon" style="width:40px; height:40px; border-radius:10px; flex-shrink:0; margin-bottom:0;" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <div class="rise-3d d2">
+        <article class="demo-card">
+          <div class="demo-media">
+            <video src="DemoTaekwondoStudentManagementApp.mp4" controls preload="metadata" playsinline aria-label="Demo: Taekwondo Student Management App"></video>
+          </div>
+          <div class="demo-body">
+            <div class="demo-head">
+              <div class="mini-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <h3>Taekwondo Student Management App</h3>
             </div>
-            <h3 style="font-size:1.08rem; font-weight:700; color:var(--navy); margin:0;">Taekwondo Student Management App</h3>
+            <p class="card-text">
+              A purpose-built web application for martial arts schools to manage student records, belt ranks, and attendance. Streamlines class administration so instructors can focus on teaching, not paperwork.
+            </p>
+            <div class="tags">
+              <span class="tag-pill">Web App</span>
+              <span class="tag-pill">Student Management</span>
+              <span class="tag-pill">Small Business</span>
+            </div>
           </div>
-          <p style="color:#64748b; line-height:1.75; font-size:0.88rem;">
-            A purpose-built web application for martial arts schools to manage student records, belt ranks, and attendance. Streamlines class administration so instructors can focus on teaching, not paperwork.
-          </p>
-          <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
-            <span class="tag-pill">Web App</span>
-            <span class="tag-pill">Student Management</span>
-            <span class="tag-pill">Small Business</span>
-          </div>
-        </div>
+        </article>
       </div>
 
     </div>
 
-    <div class="text-center mt-12 fade-up">
-      <p style="color:#64748b; font-size:0.95rem; margin-bottom:1.25rem;">Ready to build something like this for your organization?</p>
-      <a href="#contact" class="btn-primary" style="font-size:1rem; padding:0.85rem 2.1rem;">Start a Free Discovery Call</a>
+    <div class="cta-line fade-up">
+      <p>Ready to build something like this for your organization?</p>
+      <a href="#contact" class="btn-primary btn-lg" data-magnetic>Start a Free Discovery Call <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
     </div>
 
   </div>
@@ -1159,123 +596,104 @@
 <!-- ═══════════════════════════════════════════════════
      PRODUCTS CTA
 ═══════════════════════════════════════════════════ -->
-<section id="products" style="background:#fff; padding:5.5rem 0;" aria-labelledby="products-heading">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+<section id="products" class="section" aria-labelledby="products-heading">
+  <div class="wrap">
 
-    <div class="text-center mb-12 fade-up">
-      <span class="section-label">Ready-Made Software</span>
-      <h2 id="products-heading" class="section-title">Apps &amp; Website Templates</h2>
-      <p style="color:#64748b; max-width:560px; margin:0.85rem auto 0; font-size:1.02rem; line-height:1.75;">
+    <div class="sec-head center">
+      <span class="section-label fade-up">Ready-Made Software</span>
+      <h2 id="products-heading" class="section-title" data-split>Apps &amp; Website <em>Templates</em></h2>
+      <p class="lead fade-up d2">
         Applications and branded website templates are listed separately. Browse the catalog that fits what you need.
       </p>
     </div>
 
-    <p style="text-align:center; font-size:0.76rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin:0 0 1rem;">Apps &amp; SaaS</p>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-bottom:2.25rem;">
+    <div class="catalog-split">
 
-      <a href="products.html#apps" style="text-decoration:none;" class="fade-up">
-        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <img src="OrionIcon.png" alt="" style="width:38px;height:38px;object-fit:contain;border-radius:8px;border:1px solid #e2e8f0;" aria-hidden="true" />
-          <div>
-            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Orion</div>
-            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">$9.99</div>
-            <div style="font-size:0.68rem;color:#b45309;font-weight:600;">Windows only</div>
+      <div class="fade-up">
+        <div class="catalog-panel">
+          <p class="panel-label"><span>Apps &amp; SaaS</span><span>05</span></p>
+          <div class="app-chips">
+
+            <a href="products.html#apps" class="app-chip">
+              <img src="OrionIcon.png" alt="" aria-hidden="true" />
+              <div>
+                <div class="chip-name">Orion</div>
+                <div class="chip-price">$9.99</div>
+                <div class="chip-note">Windows only</div>
+              </div>
+              <svg class="chip-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="products.html#apps" class="app-chip">
+              <img src="EmployeeJeopardy.png" alt="" aria-hidden="true" />
+              <div>
+                <div class="chip-name">Jeopardy App</div>
+                <div class="chip-price">Request Quote</div>
+              </div>
+              <svg class="chip-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="products.html#apps" class="app-chip">
+              <img src="MapPlotIcon.png" alt="" aria-hidden="true" />
+              <div>
+                <div class="chip-name">Map Plot App</div>
+                <div class="chip-price">$9.99</div>
+                <div class="chip-note">Windows only</div>
+              </div>
+              <svg class="chip-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="products.html#apps" class="app-chip">
+              <span class="chip-ico" style="background:linear-gradient(135deg,#2a3566,#4b5a9c);" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.92)" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </span>
+              <div>
+                <div class="chip-name">Service Request App</div>
+                <div class="chip-price">$299</div>
+              </div>
+              <svg class="chip-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="products.html#apps" class="app-chip">
+              <span class="chip-ico" style="background:linear-gradient(135deg,#5a2d1c,#9a5233);" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.92)" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </span>
+              <div>
+                <div class="chip-name">Taekwondo Mgmt App</div>
+                <div class="chip-price">$199</div>
+              </div>
+              <svg class="chip-go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
           </div>
         </div>
-      </a>
+      </div>
 
-      <a href="products.html#apps" style="text-decoration:none;" class="fade-up d1">
-        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <img src="EmployeeJeopardy.png" alt="" style="width:38px;height:38px;object-fit:contain;border-radius:8px;border:1px solid #e2e8f0;" aria-hidden="true" />
-          <div>
-            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Jeopardy App</div>
-            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">Request Quote</div>
+      <div class="fade-up d2">
+        <div class="catalog-panel">
+          <p class="panel-label"><span>Website Templates</span><span>03</span></p>
+          <div class="template-fan">
+            <a href="products.html#websites" class="fan-card">
+              <img src="templates/photographer/assets/hero_cinematic.png" alt="Photographer website template preview" loading="lazy" decoding="async" />
+              <span class="fan-meta"><b>Photographer Site</b><small>Request Quote</small></span>
+            </a>
+            <a href="products.html#websites" class="fan-card">
+              <img src="templates/landscaping/images/hero-landscape.jpg" alt="Landscaping website template preview" loading="lazy" decoding="async" />
+              <span class="fan-meta"><b>Landscaping Site</b><small>Request Quote</small></span>
+            </a>
+            <a href="products.html#websites" class="fan-card">
+              <img src="templates/steakhouse/images/hero.png" alt="Steakhouse website template preview" loading="lazy" decoding="async" />
+              <span class="fan-meta"><b>Steakhouse Site</b><small>Request Quote</small></span>
+            </a>
           </div>
         </div>
-      </a>
-
-      <a href="products.html#apps" style="text-decoration:none;" class="fade-up d1">
-        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <img src="MapPlotIcon.png" alt="" style="width:38px;height:38px;object-fit:contain;border-radius:8px;border:1px solid #e2e8f0;" aria-hidden="true" />
-          <div>
-            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Map Plot App</div>
-            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">$9.99</div>
-            <div style="font-size:0.68rem;color:#b45309;font-weight:600;">Windows only</div>
-          </div>
-        </div>
-      </a>
-
-      <a href="products.html#apps" style="text-decoration:none;" class="fade-up d2">
-        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="width:38px;height:38px;background:linear-gradient(135deg,#3730a3,#6366f1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          <div>
-            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Service Request App</div>
-            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">$299</div>
-          </div>
-        </div>
-      </a>
-
-      <a href="products.html#apps" style="text-decoration:none;" class="fade-up d3">
-        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="width:38px;height:38px;background:linear-gradient(135deg,#7c2d12,#ea580c);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-          </div>
-          <div>
-            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Taekwondo Mgmt App</div>
-            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">$199</div>
-          </div>
-        </div>
-      </a>
+      </div>
 
     </div>
 
-    <div style="max-width:36rem; height:1px; background:#e2e8f0; margin:0.25rem auto 1.75rem;"></div>
-    <p style="text-align:center; font-size:0.76rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin:0 0 1rem;">Website Templates</p>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-bottom:2.75rem;">
-
-      <a href="products.html#websites" style="text-decoration:none;" class="fade-up d4">
-        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="width:38px;height:38px;background:linear-gradient(135deg,#1a1208,#c5922c);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-          </div>
-          <div>
-            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Photographer Site</div>
-            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">Request Quote</div>
-          </div>
-        </div>
-      </a>
-
-      <a href="products.html#websites" style="text-decoration:none;" class="fade-up d4">
-        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="width:38px;height:38px;background:linear-gradient(135deg,#14241a,#2f6b45);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M12 22c4-4 7-8 7-12a7 7 0 1 0-14 0c0 4 3 8 7 12z"/></svg>
-          </div>
-          <div>
-            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Landscaping Site</div>
-            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">Request Quote</div>
-          </div>
-        </div>
-      </a>
-
-      <a href="products.html#websites" style="text-decoration:none;" class="fade-up d5">
-        <div style="background:#f5f7fa; border:1px solid #e2e8f0; border-radius:12px; padding:0.9rem 1.2rem; display:flex; align-items:center; gap:0.75rem; min-width:180px; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 30px rgba(13,27,42,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="width:38px;height:38px;background:linear-gradient(135deg,#1b1512,#c45c2a);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"><path d="M4 11h16M6 11c0 5 3 9 6 9s6-4 6-9"/></svg>
-          </div>
-          <div>
-            <div style="font-size:0.82rem;font-weight:700;color:var(--navy);line-height:1.3;">Steakhouse Site</div>
-            <div style="font-size:0.76rem;color:var(--accent);font-weight:700;">Request Quote</div>
-          </div>
-        </div>
-      </a>
-
-    </div>
-
-    <div class="text-center fade-up" style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.75rem;">
-      <a href="products.html#apps" class="btn-primary" style="font-size:1rem; padding:0.85rem 2.25rem;">Browse Apps &rarr;</a>
-      <a href="products.html#websites" class="btn-primary" style="font-size:1rem; padding:0.85rem 2.25rem;">Browse Websites &rarr;</a>
+    <div class="catalog-cta fade-up">
+      <a href="products.html#apps" class="btn-primary btn-lg" data-magnetic>Browse Apps <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="products.html#websites" class="btn-primary btn-lg" data-magnetic>Browse Websites <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
     </div>
 
   </div>
@@ -1285,156 +703,144 @@
 <!-- ═══════════════════════════════════════════════════
      WHY N-FINIT DEVELOPMENT
 ═══════════════════════════════════════════════════ -->
-<section id="why-n-finit" style="background:var(--gray-light); padding:5.5rem 0;" aria-labelledby="why-heading">
-  <div class="max-w-4xl mx-auto px-5 sm:px-8">
+<section id="why-n-finit" class="section" aria-labelledby="why-heading">
+  <div class="wrap">
+    <div class="why-layout">
 
-    <div class="text-center mb-14 fade-up">
-      <span class="section-label">Our Advantages</span>
-      <h2 id="why-heading" class="section-title">Why Organizations Choose N-FINIT DEVELOPMENT</h2>
+      <div class="why-aside">
+        <span class="section-label fade-up">Our Advantages</span>
+        <h2 id="why-heading" class="section-title" data-split>Why Organizations Choose <em>N-FINIT</em> DEVELOPMENT</h2>
+        <div class="stat-tiles" aria-hidden="true">
+          <div class="stat fade-up d2"><b><span data-count="60">60</span>–<span data-count="80">80</span>%</b><span>saved over 5 years vs. subscription tools</span></div>
+          <div class="stat fade-up d3"><b><span data-count="2">2</span>–<span data-count="8">8</span> wks</b><span>typical project delivery</span></div>
+        </div>
+      </div>
+
+      <div class="why-list">
+        <div class="why-row">
+          <div class="why-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          </div>
+          <div>
+            <div class="why-idx" aria-hidden="true">01</div>
+            <h3>One-Time Price</h3>
+            <p>No per-seat SaaS fees. Pay once, own it forever. Over 5 years, save <strong>60–80%</strong> vs. comparable subscription tools.</p>
+          </div>
+        </div>
+
+        <div class="why-row">
+          <div class="why-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div>
+            <div class="why-idx" aria-hidden="true">02</div>
+            <h3>Your Data Stays in Your Tenant</h3>
+            <p>We never store client data on N-FINIT DEVELOPMENT infrastructure. Your Microsoft&nbsp;365 tenant, your data, your control.</p>
+          </div>
+        </div>
+
+        <div class="why-row">
+          <div class="why-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="why-idx" aria-hidden="true">03</div>
+            <h3>Direct Access to Your Developer</h3>
+            <p>No account managers. No offshore hand-offs. You work directly with the person building your solution.</p>
+          </div>
+        </div>
+
+        <div class="why-row">
+          <div class="why-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div>
+            <div class="why-idx" aria-hidden="true">04</div>
+            <h3>Fast, Lean Delivery</h3>
+            <p>Most projects delivered in <strong>2–8 weeks</strong>. No enterprise overhead. Just clean, working software.</p>
+          </div>
+        </div>
+
+        <div class="why-row">
+          <div class="why-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+          </div>
+          <div>
+            <div class="why-idx" aria-hidden="true">05</div>
+            <h3>AI Where It Earns Its Keep</h3>
+            <p>We apply AI to accelerate delivery and improve accuracy — integrated workflows, custom agent apps, and intelligent automation — without compromising tenant security or data ownership.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <div>
-      <div class="why-row fade-up">
-        <div class="why-icon" aria-hidden="true">💰</div>
-        <div>
-          <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem;">One-Time Price</h3>
-          <p style="color:#64748b; line-height:1.75; font-size:0.93rem;">No per-seat SaaS fees. Pay once, own it forever. Over 5 years, save <strong style="color:var(--accent);">60–80%</strong> vs. comparable subscription tools.</p>
-        </div>
-      </div>
-
-      <div class="why-row fade-up d1">
-        <div class="why-icon" aria-hidden="true">🔒</div>
-        <div>
-          <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem;">Your Data Stays in Your Tenant</h3>
-          <p style="color:#64748b; line-height:1.75; font-size:0.93rem;">We never store client data on N-FINIT DEVELOPMENT infrastructure. Your Microsoft&nbsp;365 tenant, your data, your control.</p>
-        </div>
-      </div>
-
-      <div class="why-row fade-up d2">
-        <div class="why-icon" aria-hidden="true">🤝</div>
-        <div>
-          <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem;">Direct Access to Your Developer</h3>
-          <p style="color:#64748b; line-height:1.75; font-size:0.93rem;">No account managers. No offshore hand-offs. You work directly with the person building your solution.</p>
-        </div>
-      </div>
-
-      <div class="why-row fade-up d3">
-        <div class="why-icon" aria-hidden="true">⚡</div>
-        <div>
-          <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem;">Fast, Lean Delivery</h3>
-          <p style="color:#64748b; line-height:1.75; font-size:0.93rem;">Most projects delivered in <strong style="color:var(--accent);">2–8 weeks</strong>. No enterprise overhead. Just clean, working software.</p>
-        </div>
-      </div>
-
-      <div class="why-row fade-up d4">
-        <div class="why-icon" aria-hidden="true">🤖</div>
-        <div>
-          <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem;">AI Where It Earns Its Keep</h3>
-          <p style="color:#64748b; line-height:1.75; font-size:0.93rem;">We apply AI to accelerate delivery and improve accuracy — integrated workflows, custom agent apps, and intelligent automation — without compromising tenant security or data ownership.</p>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
-
 
 
 <!-- ═══════════════════════════════════════════════════
      HOW IT WORKS
 ═══════════════════════════════════════════════════ -->
-<section id="how-it-works" style="padding:5.5rem 0;" aria-labelledby="process-heading">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+<section id="how-it-works" class="section on-dark" aria-labelledby="process-heading">
+  <div class="wrap">
 
-    <div class="text-center mb-16 fade-up">
-      <span class="section-label" style="color:#93c5fd;">Our Process</span>
-      <h2 id="process-heading" class="section-title light">From Discovery to Delivery in 7 Simple Steps</h2>
+    <div class="sec-head center">
+      <span class="section-label fade-up">Our Process</span>
+      <h2 id="process-heading" class="section-title" data-split>From Discovery to Delivery in <em>7 Simple Steps</em></h2>
     </div>
 
-    <!-- Desktop stepper -->
-    <div class="hidden lg:grid fade-up" style="grid-template-columns:repeat(7,1fr); gap:0.5rem;">
+    <ol class="steps fade-up" data-steps aria-label="Process steps">
+      <li class="steps-rail" aria-hidden="true"><span class="steps-fill"></span></li>
 
-      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
-        <div style="position:relative;">
-          <div class="step-num">1</div>
-          <div class="step-line"></div>
-        </div>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Discovery</div>
-        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Free 30-min call to scope your needs</div>
-      </div>
+      <li class="step">
+        <div class="step-num">1</div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div class="step-title">Discovery</div>
+        <div class="step-desc">Free 30-min call to scope your needs</div>
+      </li>
 
-      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
-        <div style="position:relative;">
-          <div class="step-num">2</div>
-          <div class="step-line"></div>
-        </div>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Design</div>
-        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Wireframes &amp; fixed-price proposal</div>
-      </div>
+      <li class="step">
+        <div class="step-num">2</div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <div class="step-title">Design</div>
+        <div class="step-desc">Wireframes &amp; fixed-price proposal</div>
+      </li>
 
-      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
-        <div style="position:relative;">
-          <div class="step-num">3</div>
-          <div class="step-line"></div>
-        </div>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Build</div>
-        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Development with regular check-ins</div>
-      </div>
+      <li class="step">
+        <div class="step-num">3</div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <div class="step-title">Build</div>
+        <div class="step-desc">Development with regular check-ins</div>
+      </li>
 
-      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
-        <div style="position:relative;">
-          <div class="step-num">4</div>
-          <div class="step-line"></div>
-        </div>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Test</div>
-        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">UAT with your team in staging</div>
-      </div>
+      <li class="step">
+        <div class="step-num">4</div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <div class="step-title">Test</div>
+        <div class="step-desc">UAT with your team in staging</div>
+      </li>
 
-      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
-        <div style="position:relative;">
-          <div class="step-num">5</div>
-          <div class="step-line"></div>
-        </div>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Deploy</div>
-        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Live release to your tenant</div>
-      </div>
+      <li class="step">
+        <div class="step-num">5</div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <div class="step-title">Deploy</div>
+        <div class="step-desc">Live release to your tenant</div>
+      </li>
 
-      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
-        <div style="position:relative;">
-          <div class="step-num">6</div>
-          <div class="step-line"></div>
-        </div>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Train</div>
-        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Live training for your users</div>
-      </div>
+      <li class="step">
+        <div class="step-num">6</div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="step-title">Train</div>
+        <div class="step-desc">Live training for your users</div>
+      </li>
 
-      <div class="step-wrap" style="text-align:center; padding:0 0.25rem;">
-        <div style="position:relative;">
-          <div class="step-num done">7</div>
-        </div>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="1.5" style="margin:0 auto 0.5rem;" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <div style="color:#fff; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem;">Handoff</div>
-        <div style="color:rgba(255,255,255,0.45); font-size:0.72rem; line-height:1.45;">Docs, source files, full ownership</div>
-      </div>
-
-    </div>
-
-    <!-- Mobile stepper -->
-    <div class="lg:hidden space-y-5 fade-up" aria-label="Process steps">
-      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">1</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Discovery</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Free 30-min call to scope your needs</div></div></div>
-      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">2</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Design</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Wireframes &amp; fixed-price proposal</div></div></div>
-      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">3</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Build</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Development with regular check-ins</div></div></div>
-      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">4</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Test</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">UAT with your team in staging</div></div></div>
-      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">5</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Deploy</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Live release to your tenant</div></div></div>
-      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">6</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Train</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Live training for your users</div></div></div>
-      <div style="display:flex; gap:1rem; align-items:flex-start;"><div style="width:42px; height:42px; background:#059669; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0; font-size:0.9rem;">7</div><div><div style="color:#fff; font-weight:700; margin-bottom:0.2rem;">Handoff</div><div style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Docs, source files, full ownership</div></div></div>
-    </div>
+      <li class="step is-last">
+        <div class="step-num">7</div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div class="step-title">Handoff</div>
+        <div class="step-desc">Docs, source files, full ownership</div>
+      </li>
+    </ol>
 
   </div>
 </section>
@@ -1443,108 +849,141 @@
 <!-- ═══════════════════════════════════════════════════
      WHO WE SERVE
 ═══════════════════════════════════════════════════ -->
-<section id="about" style="background:var(--gray-light); padding:5.5rem 0;" aria-labelledby="serve-heading">
-  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+<section id="about" class="section" aria-labelledby="serve-heading">
+  <div class="wrap">
 
-    <div class="text-center mb-14 fade-up">
-      <span class="section-label">Our Clients</span>
-      <h2 id="serve-heading" class="section-title">Built for Organizations Like Yours</h2>
+    <div class="sec-head center">
+      <span class="section-label fade-up">Our Clients</span>
+      <h2 id="serve-heading" class="section-title" data-split>Built for Organizations <em>Like Yours</em></h2>
     </div>
 
-    <div class="grid sm:grid-cols-2 gap-6">
+    <div class="coverflow fade-up d2" data-coverflow tabindex="0" role="region" aria-roledescription="carousel" aria-label="Organizations we serve">
+      <div class="cf-stage">
 
-      <div class="serve-card fade-up">
-        <div style="font-size:2.25rem; margin-bottom:0.9rem;" aria-hidden="true">🏢</div>
-        <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">Small Businesses</h3>
-        <p style="color:#64748b; line-height:1.75; font-size:0.92rem;">10–200 employees using Microsoft 365 who need custom workflows and tools without enterprise price tags.</p>
+        <article class="cf-card" aria-roledescription="slide" aria-label="1 of 4">
+          <img src="assets/img/serve-small-business.jpg" alt="Small business team collaborating around a laptop" loading="lazy" decoding="async" draggable="false" />
+          <div class="cf-body">
+            <div class="cf-index" aria-hidden="true">01</div>
+            <h3>Small Businesses</h3>
+            <p>10–200 employees using Microsoft 365 who need custom workflows and tools without enterprise price tags.</p>
+          </div>
+        </article>
+
+        <article class="cf-card" aria-roledescription="slide" aria-label="2 of 4">
+          <img src="assets/img/serve-nonprofit.jpg" alt="Nonprofit staff organizing donations while reviewing a tablet" loading="lazy" decoding="async" draggable="false" />
+          <div class="cf-body">
+            <div class="cf-index" aria-hidden="true">02</div>
+            <h3>Nonprofits</h3>
+            <p>Limited IT budgets with big operational needs. We help nonprofits automate manual processes and maximize their M365 investment.</p>
+          </div>
+        </article>
+
+        <article class="cf-card" aria-roledescription="slide" aria-label="3 of 4">
+          <img src="assets/img/serve-government.jpg" alt="Government contractor professionals in a secure office corridor" loading="lazy" decoding="async" draggable="false" />
+          <div class="cf-body">
+            <div class="cf-index" aria-hidden="true">03</div>
+            <h3>Government Contractors</h3>
+            <p>Secure, compliant, tenant-hosted tooling for organizations operating under strict data governance requirements.</p>
+          </div>
+        </article>
+
+        <article class="cf-card" aria-roledescription="slide" aria-label="4 of 4">
+          <img src="assets/img/serve-professional.jpg" alt="Professional services advisor meeting with a client" loading="lazy" decoding="async" draggable="false" />
+          <div class="cf-body">
+            <div class="cf-index" aria-hidden="true">04</div>
+            <h3>Professional Services</h3>
+            <p>Law, accounting, and consulting firms who need purpose-built tools that match their exact workflows — not the other way around.</p>
+          </div>
+        </article>
+
       </div>
 
-      <div class="serve-card fade-up d1">
-        <div style="font-size:2.25rem; margin-bottom:0.9rem;" aria-hidden="true">🤲</div>
-        <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">Nonprofits</h3>
-        <p style="color:#64748b; line-height:1.75; font-size:0.92rem;">Limited IT budgets with big operational needs. We help nonprofits automate manual processes and maximize their M365 investment.</p>
+      <div class="cf-controls">
+        <button type="button" class="cf-btn cf-prev" aria-label="Previous">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="cf-dots">
+          <button type="button" class="cf-dot" aria-label="Show Small Businesses"></button>
+          <button type="button" class="cf-dot" aria-label="Show Nonprofits"></button>
+          <button type="button" class="cf-dot" aria-label="Show Government Contractors"></button>
+          <button type="button" class="cf-dot" aria-label="Show Professional Services"></button>
+        </div>
+        <button type="button" class="cf-btn cf-next" aria-label="Next">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
-
-      <div class="serve-card fade-up d2">
-        <div style="font-size:2.25rem; margin-bottom:0.9rem;" aria-hidden="true">🏛️</div>
-        <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">Government Contractors</h3>
-        <p style="color:#64748b; line-height:1.75; font-size:0.92rem;">Secure, compliant, tenant-hosted tooling for organizations operating under strict data governance requirements.</p>
-      </div>
-
-      <div class="serve-card fade-up d3">
-        <div style="font-size:2.25rem; margin-bottom:0.9rem;" aria-hidden="true">⚖️</div>
-        <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">Professional Services</h3>
-        <p style="color:#64748b; line-height:1.75; font-size:0.92rem;">Law, accounting, and consulting firms who need purpose-built tools that match their exact workflows — not the other way around.</p>
-      </div>
-
     </div>
+
   </div>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════════
-     CONTACT / QUOTE SECTION
+     CONTACT / QUOTE
 ═══════════════════════════════════════════════════ -->
-<section id="contact" style="padding:5.5rem 0;" aria-labelledby="contact-heading">
-  <div class="max-w-2xl mx-auto px-5 sm:px-8">
+<section id="contact" class="section on-dark" aria-labelledby="contact-heading">
+  <div class="wrap">
+    <div class="contact-grid">
 
-    <div class="text-center mb-10 fade-up">
-      <h2 id="contact-heading" style="font-size:clamp(1.7rem, 3.5vw, 2.4rem); font-weight:800; color:#fff; line-height:1.15; letter-spacing:-0.02em; margin-bottom:0.85rem;">
-        Ready to Build Something That Actually Fits?
-      </h2>
-      <p style="color:rgba(255,255,255,0.78); font-size:1.02rem; line-height:1.75;">
-        Start with a free 30-minute discovery call. No commitment, no pressure.
-      </p>
-    </div>
-
-    <!-- Form -->
-    <div id="form-wrap" class="fade-up d1">
-      <!-- Business / Personal toggle -->
-      <div style="text-align:center;">
-        <div class="use-type-toggle" role="group" aria-label="Use type">
-          <button type="button" id="toggle-business" class="active" aria-pressed="true">Business</button>
-          <button type="button" id="toggle-personal" aria-pressed="false">Personal</button>
+      <div class="contact-visual fade-up">
+        <div class="contact-visual-media" data-parallax="0.08" aria-hidden="true">
+          <img src="assets/img/contact-discovery.jpg" alt="" loading="lazy" decoding="async" />
+        </div>
+        <div class="contact-copy">
+          <h2 id="contact-heading">Ready to Build Something That Actually Fits?</h2>
+          <p>Start with a free 30-minute discovery call. No commitment, no pressure.</p>
+          <span class="loc-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Based in Spotsylvania, VA · Remote delivery nationwide
+          </span>
         </div>
       </div>
-      <form id="contact-form" novalidate>
-        <input type="hidden" id="f-use-type" name="use_type" value="Business" />
-        <div class="grid sm:grid-cols-2 gap-4 mb-4">
-          <div>
-            <label for="f-name" style="color:rgba(255,255,255,0.82); font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.38rem;">Name <span aria-hidden="true">*</span></label>
-            <input type="text" id="f-name" name="name" class="form-field" placeholder="Your full name" required autocomplete="name" />
+
+      <div class="form-card fade-up d2">
+        <div id="form-wrap">
+          <div class="use-type-toggle" role="group" aria-label="Use type">
+            <span class="toggle-pill" aria-hidden="true"></span>
+            <button type="button" id="toggle-business" class="active" aria-pressed="true">Business</button>
+            <button type="button" id="toggle-personal" aria-pressed="false">Personal</button>
           </div>
-          <div id="f-org-wrap">
-            <label for="f-org" style="color:rgba(255,255,255,0.82); font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.38rem;">Organization</label>
-            <input type="text" id="f-org" name="organization" class="form-field" placeholder="Company or org name" autocomplete="organization" />
+          <form id="contact-form" novalidate>
+            <input type="hidden" id="f-use-type" name="use_type" value="Business" />
+            <div class="form-row">
+              <div class="field">
+                <label for="f-name">Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="f-name" name="name" class="form-field" placeholder="Your full name" required autocomplete="name" />
+              </div>
+              <div class="field" id="f-org-wrap">
+                <label for="f-org">Organization</label>
+                <input type="text" id="f-org" name="organization" class="form-field" placeholder="Company or org name" autocomplete="organization" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="f-email" name="email" class="form-field" placeholder="you@yourorganization.com" required autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="f-msg">Tell us what you need <span aria-hidden="true">*</span></label>
+              <textarea id="f-msg" name="message" class="form-field" rows="5" placeholder="Describe your project, current challenge, or what you're hoping to automate..." required></textarea>
+            </div>
+            <div id="form-error" role="alert" style="display:none; color:#fca5a5; font-size:0.85rem; margin-bottom:0.9rem; background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.3); padding:0.7rem 0.95rem; border-radius:12px;"></div>
+            <input type="text" name="_honey" id="f-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; opacity:0; height:0; width:0;" />
+            <button type="submit" class="btn-submit" id="form-submit-btn">Request Free Discovery Call</button>
+          </form>
+        </div>
+
+        <div id="success-msg" role="alert" aria-live="polite">
+          <div class="success-icon" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
+          <h3 style="color:#fff; font-family:var(--display); font-size:1.5rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:0.65rem;">You're on our radar!</h3>
+          <p style="color:rgba(255,255,255,0.78); line-height:1.75; font-size:0.97rem;">
+            Thanks for reaching out. We'll be in touch within one business day to schedule your free discovery call.
+          </p>
         </div>
-        <div class="mb-4">
-          <label for="f-email" style="color:rgba(255,255,255,0.82); font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.38rem;">Email <span aria-hidden="true">*</span></label>
-          <input type="email" id="f-email" name="email" class="form-field" placeholder="you@yourorganization.com" required autocomplete="email" />
-        </div>
-        <div class="mb-6">
-          <label for="f-msg" style="color:rgba(255,255,255,0.82); font-size:0.82rem; font-weight:600; display:block; margin-bottom:0.38rem;">Tell us what you need <span aria-hidden="true">*</span></label>
-          <textarea id="f-msg" name="message" class="form-field" rows="5" placeholder="Describe your project, current challenge, or what you're hoping to automate..." required style="resize:vertical;"></textarea>
-        </div>
-        <div id="form-error" role="alert" style="display:none; color:#fca5a5; font-size:0.85rem; margin-bottom:0.9rem; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); padding:0.65rem 0.9rem; border-radius:6px;"></div>
-        <input type="text" name="_honey" id="f-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; opacity:0; height:0; width:0;" />
-        <button type="submit" class="btn-submit" id="form-submit-btn">Request Free Discovery Call</button>
-      </form>
+      </div>
+
     </div>
-
-    <!-- Success -->
-    <div id="success-msg" role="alert" aria-live="polite">
-      <div style="font-size:2.75rem; margin-bottom:1rem;" aria-hidden="true">✅</div>
-      <h3 style="color:#fff; font-size:1.45rem; font-weight:700; margin-bottom:0.65rem;">You're on our radar!</h3>
-      <p style="color:rgba(255,255,255,0.82); line-height:1.75; font-size:0.97rem;">
-        Thanks for reaching out. We'll be in touch within one business day to schedule your free discovery call.
-      </p>
-    </div>
-
-    <p class="text-center mt-8 fade-up" style="color:rgba(255,255,255,0.45); font-size:0.83rem;">
-      Based in Spotsylvania, VA · Remote delivery nationwide
-    </p>
-
   </div>
 </section>
 
@@ -1552,53 +991,42 @@
 <!-- ═══════════════════════════════════════════════════
      FOOTER
 ═══════════════════════════════════════════════════ -->
-<footer style="padding:3.5rem 0 2rem;" aria-label="Site footer">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+<footer aria-label="Site footer">
+  <div class="wrap">
+    <div class="foot-mark" aria-hidden="true">N-FINIT</div>
 
-    <div class="grid md:grid-cols-3 gap-10 mb-8">
-
-      <!-- Logo + tagline -->
+    <div class="foot-grid">
       <div>
-        <div style="margin-bottom:0.7rem;">
-          <img src="N-FNIT%20Logo.png?v=2" alt="N-FINIT DEVELOPMENT" style="height:42px; width:auto;" />
-        </div>
-        <p style="color:rgba(255,255,255,0.38); font-size:0.85rem; line-height:1.7; max-width:270px;">
+        <img src="N-FNIT%20Logo.png?v=2" alt="N-FINIT DEVELOPMENT" />
+        <p class="foot-tag">
           To empower organizations with AI-enhanced, purpose-built software — delivered simply, securely, and affordably.
         </p>
       </div>
 
-      <!-- Nav links -->
-      <nav aria-label="Footer navigation">
-        <div style="display:flex; flex-direction:column; gap:0.55rem;" class="md:items-center">
-          <a href="#services"    class="nav-link" style="font-size:0.85rem;">Services</a>
-          <a href="#portfolio"   class="nav-link" style="font-size:0.85rem;">Portfolio</a>
-          <a href="products.html"    class="nav-link" style="font-size:0.85rem;">Products</a>
-          <a href="#about"       class="nav-link" style="font-size:0.85rem;">About</a>
-          <a href="#why-n-finit" class="nav-link" style="font-size:0.85rem;">Why N-FINIT</a>
-          <a href="#contact"     class="nav-link" style="font-size:0.85rem;">Contact</a>
-        </div>
+      <nav aria-label="Footer navigation" class="foot-links">
+        <a href="#services"    class="foot-link">Services</a>
+        <a href="#portfolio"   class="foot-link">Portfolio</a>
+        <a href="products.html" class="foot-link">Products</a>
+        <a href="#about"       class="foot-link">About</a>
+        <a href="#why-n-finit" class="foot-link">Why N-FINIT</a>
+        <a href="#contact"     class="foot-link">Contact</a>
       </nav>
 
-      <!-- Copyright -->
-      <div class="md:text-right">
-        <p style="color:rgba(255,255,255,0.3); font-size:0.78rem; line-height:1.9;">
-          © 2026 N-FINIT DEVELOPMENT<br />
-          Spotsylvania, Virginia<br />
-          All Rights Reserved
-        </p>
-      </div>
-
-    </div>
-
-    <div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem;">
-      <p style="color:rgba(255,255,255,0.18); font-size:0.73rem; text-align:center;">
-        N-FINIT DEVELOPMENT is an independent software development company and is not affiliated with Microsoft Corporation.
+      <p class="foot-copy">
+        © 2026 N-FINIT DEVELOPMENT<br />
+        Spotsylvania, Virginia<br />
+        All Rights Reserved
       </p>
     </div>
 
+    <p class="foot-legal">
+      N-FINIT DEVELOPMENT is an independent software development company and is not affiliated with Microsoft Corporation.
+    </p>
   </div>
 </footer>
 
+
+<script src="assets/js/site.js?v=1"></script>
 
 <!-- ═══════════════════════════════════════════════════
      JAVASCRIPT
@@ -1606,125 +1034,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
-
-  /* ── NAV SCROLL ─────────────────────────────────── */
-  const navbar = document.getElementById('navbar');
-
-  function syncNav() {
-    if (window.scrollY > 55) {
-      navbar.classList.replace('transparent', 'solid');
-    } else {
-      navbar.classList.replace('solid', 'transparent');
-    }
-  }
-  window.addEventListener('scroll', syncNav, { passive: true });
-  syncNav();
-
-  /* ── HAMBURGER ──────────────────────────────────── */
-  const hamBtn     = document.getElementById('ham-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  hamBtn.addEventListener('click', function () {
-    const opening = !mobileMenu.classList.contains('open');
-    mobileMenu.classList.toggle('open', opening);
-    hamBtn.classList.toggle('open', opening);
-    hamBtn.setAttribute('aria-expanded', opening);
-    hamBtn.setAttribute('aria-label', opening ? 'Close navigation menu' : 'Open navigation menu');
-  });
-
-  mobileMenu.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      mobileMenu.classList.remove('open');
-      hamBtn.classList.remove('open');
-      hamBtn.setAttribute('aria-expanded', 'false');
-      hamBtn.setAttribute('aria-label', 'Open navigation menu');
-    });
-  });
-
-  /* ── SCROLL ANIMATIONS ──────────────────────────── */
-  const fadeEls = document.querySelectorAll('.fade-up');
-
-  const io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-
-  fadeEls.forEach(function (el) { io.observe(el); });
-
-  /* ── HERO CANVAS PARTICLE NETWORK ───────────────── */
-  (function initCanvas() {
-    const canvas = document.getElementById('hero-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let W, H, pts;
-
-    function resize() {
-      W = canvas.width  = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
-    }
-
-    function Point() {
-      this.x  = Math.random() * W;
-      this.y  = Math.random() * H;
-      this.vx = (Math.random() - 0.5) * 0.35;
-      this.vy = (Math.random() - 0.5) * 0.35;
-      this.r  = Math.random() * 1.8 + 0.8;
-      this.a  = Math.random() * 0.4 + 0.15;
-    }
-
-    Point.prototype.tick = function () {
-      this.x += this.vx;
-      this.y += this.vy;
-      if (this.x < 0 || this.x > W) this.vx *= -1;
-      if (this.y < 0 || this.y > H) this.vy *= -1;
-    };
-
-    function init() {
-      var count = Math.min(Math.floor((W * H) / 10000), 90);
-      pts = [];
-      for (var i = 0; i < count; i++) pts.push(new Point());
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      var MAX = 130;
-
-      for (var i = 0; i < pts.length; i++) {
-        pts[i].tick();
-
-        ctx.beginPath();
-        ctx.arc(pts[i].x, pts[i].y, pts[i].r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(58,109,181,' + pts[i].a + ')';
-        ctx.fill();
-
-        for (var j = i + 1; j < pts.length; j++) {
-          var dx = pts[i].x - pts[j].x;
-          var dy = pts[i].y - pts[j].y;
-          var d  = Math.sqrt(dx * dx + dy * dy);
-          if (d < MAX) {
-            var alpha = (1 - d / MAX) * 0.22;
-            ctx.beginPath();
-            ctx.moveTo(pts[i].x, pts[i].y);
-            ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = 'rgba(43,87,151,' + alpha + ')';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
-      }
-      requestAnimationFrame(draw);
-    }
-
-    resize();
-    init();
-    draw();
-
-    window.addEventListener('resize', function () { resize(); init(); }, { passive: true });
-  })();
 
   /* ── CONTACT FORM ───────────────────────────────── */
   var form       = document.getElementById('contact-form');
@@ -1923,25 +1232,25 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="payment-modal-header">
       <button class="modal-close-btn" id="modal-close-btn" aria-label="Close payment window">&#x2715;</button>
       <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.85rem;">
-        <div style="background:rgba(255,255,255,0.1); border-radius:10px; width:44px; height:44px; display:flex; align-items:center; justify-content:center; flex-shrink:0;" aria-hidden="true">
+        <div style="background:rgba(255,255,255,0.1); border-radius:12px; width:44px; height:44px; display:flex; align-items:center; justify-content:center; flex-shrink:0;" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
         </div>
         <div>
-          <div style="color:rgba(255,255,255,0.5); font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.15rem;">Product Inquiry</div>
-          <div id="modal-product-name" style="color:#fff; font-weight:700; font-size:1rem; line-height:1.3;"></div>
+          <div style="color:rgba(255,255,255,0.5); font-size:0.7rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.15rem;">Product Inquiry</div>
+          <div id="modal-product-name" style="color:#fff; font-weight:600; font-size:1rem; line-height:1.3;"></div>
         </div>
       </div>
-      <div style="display:flex; align-items:baseline; gap:0.4rem;">
-        <span id="modal-price" style="color:#fff; font-size:2.1rem; font-weight:900; line-height:1;"></span>
+      <div style="display:flex; align-items:baseline; gap:0.5rem;">
+        <span id="modal-price" style="color:#fff; font-family:var(--display); font-size:2.1rem; font-weight:600; letter-spacing:-0.03em; line-height:1;"></span>
         <span style="color:rgba(255,255,255,0.45); font-size:0.8rem;">one-time &middot; no subscription</span>
       </div>
     </div>
 
     <div class="payment-modal-body">
-      <p id="modal-desc" style="color:#64748b; font-size:0.88rem; line-height:1.75; margin-bottom:1.4rem;"></p>
+      <p id="modal-desc" style="color:#5a6577; font-size:0.88rem; line-height:1.75; margin-bottom:1.4rem;"></p>
 
-      <div style="background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:10px; padding:1rem 1.1rem; margin-bottom:1.5rem;">
-        <div style="font-size:0.82rem; font-weight:700; color:var(--navy); margin-bottom:0.55rem;">What you&rsquo;ll receive:</div>
+      <div style="background:#f5f4f0; border:1px solid rgba(13,27,42,0.1); border-radius:14px; padding:1rem 1.1rem; margin-bottom:1.5rem;">
+        <div style="font-size:0.82rem; font-weight:600; color:var(--navy); margin-bottom:0.55rem;">What you&rsquo;ll receive:</div>
         <div style="display:flex; flex-direction:column; gap:0.45rem;">
           <div style="display:flex; align-items:center; gap:0.5rem; color:#475569; font-size:0.83rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Full source code (download link sent within 1 business day)</div>
           <div style="display:flex; align-items:center; gap:0.5rem; color:#475569; font-size:0.83rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2b5797" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Setup &amp; deployment guide</div>
@@ -1949,9 +1258,9 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       </div>
 
-      <div style="background:#fff8e1; border:1.5px solid #f59e0b; border-radius:8px; padding:0.65rem 0.9rem; margin-bottom:1.1rem; display:flex; align-items:flex-start; gap:0.5rem;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2" style="flex-shrink:0; margin-top:1px;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <span style="color:#92400e; font-size:0.78rem; line-height:1.55;"><strong>Online checkout is temporarily unavailable.</strong> Stripe payments are not yet active.</span>
+      <div style="background:#fbf6ea; border:1px solid #e9cf8f; border-radius:12px; padding:0.7rem 0.9rem; margin-bottom:1.1rem; display:flex; align-items:flex-start; gap:0.5rem;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a16207" stroke-width="2" style="flex-shrink:0; margin-top:1px;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span style="color:#854d0e; font-size:0.78rem; line-height:1.55;"><strong>Online checkout is temporarily unavailable.</strong> Stripe payments are not yet active.</span>
       </div>
 
       <a id="modal-stripe-btn" href="#contact" class="stripe-pay-btn" aria-label="Get a free quote via contact form">
@@ -1959,7 +1268,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <span id="modal-btn-text">Get a Free Quote</span>
       </a>
 
-      <p style="color:#94a3b8; font-size:0.72rem; text-align:center; line-height:1.65; margin-top:0.85rem;">
+      <p style="color:#8b95a6; font-size:0.72rem; text-align:center; line-height:1.65; margin-top:0.85rem;">
         To purchase, contact the developer directly via the <strong style="color:#2b5797;">Get a Free Quote</strong> form and we&rsquo;ll follow up within 1 business day.
       </p>
     </div>
